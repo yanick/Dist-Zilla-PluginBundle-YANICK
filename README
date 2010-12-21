@@ -1,0 +1,75 @@
+NAME
+    Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your
+    dists
+
+VERSION
+    version 0.0.1
+
+DESCRIPTION
+    This is the plugin bundle that Yanick uses to release his distributions.
+    It's roughly equivalent to
+
+        [ModuleBuild]
+
+        [GithubMeta]
+        remote=github
+
+        [Homepage]
+        [Bugtracker]
+
+        [MetaYAML]
+        [MetaJSON]
+
+        [PodWeaver]
+
+        [License]
+
+        [ReadmeFromPod]
+
+        [NextRelease]
+        time_zone = America/Montreal
+
+        [MetaProvides::Package]
+
+        [MatchManifest]
+        [ManifestSkip]
+
+        [GatherDir]
+        [ExecDir]
+
+        [PkgVersion]
+
+        [ReportVersions]
+        [Signature]
+
+        [AutoPrereqs]
+
+        [CheckChangesHasContent]
+
+        [TestRelease]
+
+        [ConfirmRelease]
+
+        [Git::Check]
+        [Git::Commit]
+        [Git::CommitBuild]
+            release_branch = releases
+        [Git::Tag]
+            tag_format = v%v
+            branch     = releases
+        [Git::Push]
+            push_to = github
+
+        [UploadToCPAN]
+
+        [Twitter]
+
+AUTHOR
+    Yanick Champoux <yanick@babyl.dyndns.org>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2010 by Yanick Champoux.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+

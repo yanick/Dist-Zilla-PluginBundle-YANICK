@@ -1,0 +1,32 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.64.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 714b1b145d10d1c3f7fef721edb944dd093feded Build.PL
+SHA1 df31815e1de8c938a9bd542387145224a7d54d60 Changes
+SHA1 3ee0d276167c367325eebe1d5ec9877ade504d93 LICENSE
+SHA1 fe3f447c28478bf4dedde76430c47612e884a236 MANIFEST
+SHA1 6453841feb79d1e4e6fb1ce233817f04f4699db1 META.json
+SHA1 7d6507853675e17307197a3752590b648d768c25 META.yml
+SHA1 3d4a37fd2e4d24827e29501198993d66e3f5a648 README
+SHA1 2aff64c5c75be57f25c966d7b77be9ddb22ea695 lib/Dist/Zilla/PluginBundle/YANICK.pm
+SHA1 050aa113e828a52db3c86065c0c0ed50198b7ce8 t/000-report-versions.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.10 (GNU/Linux)
+
+iEYEARECAAYFAk0QxZYACgkQ34Hwf+GwC4xcyACfQBHkEUWEw+JbioiuafLC9jbV
+4qYAoOC3bpWBHhi0C1dGDuWuyi7FsQ8k
+=dZFJ
+-----END PGP SIGNATURE-----
