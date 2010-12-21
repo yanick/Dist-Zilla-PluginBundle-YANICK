@@ -1,4 +1,5 @@
 Build.PL
+Changes
 LICENSE
 MANIFEST
 META.json
@@ -7,4 +8,3 @@ README
 SIGNATURE
 lib/Dist/Zilla/PluginBundle/YANICK.pm
 t/000-report-versions.t
-Changes
