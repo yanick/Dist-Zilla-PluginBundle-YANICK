@@ -1,0 +1,10 @@
+Build.PL
+LICENSE
+MANIFEST
+META.json
+META.yml
+README
+SIGNATURE
+lib/Dist/Zilla/PluginBundle/YANICK.pm
+t/000-report-versions.t
+Changes
