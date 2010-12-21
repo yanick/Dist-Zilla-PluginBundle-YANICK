@@ -62,6 +62,12 @@ his distributions. It's roughly equivalent to
 
     [Twitter]
 
+=head2 ARGUMENTS
+
+=head3 mb_class
+
+Passed to C<ModuleBuild> plugin.
+
 =cut
 
 use strict;
@@ -83,12 +89,16 @@ use Dist::Zilla::Plugin::MetaProvides::Package;
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
 sub configure {
-    my $self = shift;
+    my ( $self ) = @_;
+    my $arg = $self->payload;
 
     my $release_branch = 'releases';
     my $upstream       = 'github';
 
-    $self->add_plugins('ModuleBuild');
+    my %mb_args;
+    $mb_args{mb_class} = $arg->{mb_class} if $arg->{mb_class};
+    $self->add_plugins([ 'ModuleBuild', \%mb_args ]);
+
     $self->add_plugins(
         [ GithubMeta => { remote => $upstream, } ],
         qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
@@ -114,6 +124,8 @@ sub configure {
         'UploadToCPAN',
         'Twitter',
     );
+
+    $self->config_slice( 'mb_class' );
 
 }
 
