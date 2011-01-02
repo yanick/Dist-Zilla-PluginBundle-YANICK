@@ -60,6 +60,9 @@ his distributions. It's roughly equivalent to
 
     [UploadToCPAN]
 
+    [InstallRelease]
+    install_command = cpanm .
+
     [Twitter]
 
 =head2 ARGUMENTS
@@ -67,6 +70,10 @@ his distributions. It's roughly equivalent to
 =head3 mb_class
 
 Passed to C<ModuleBuild> plugin.
+
+=head autoprereqs_skip
+
+Passed as C<skip> to AutoPrereqs.
 
 =cut
 
@@ -111,9 +118,9 @@ sub configure {
           ExecDir
           PkgVersion
           ReportVersions
-          Signature
-          AutoPrereqs
-          CheckChangesHasContent
+          Signature /,
+          [ AutoPrereqs => { skip => $arg->{autoprereqs_skip} } ],
+          qw/ CheckChangesHasContent
           TestRelease
           ConfirmRelease
           Git::Check
@@ -122,6 +129,7 @@ sub configure {
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
         [ 'Git::Push' => { push_to    => $upstream } ],
         'UploadToCPAN',
+        [ 'InstallRelease' => { install_command => 'cpanm .' } ],
         'Twitter',
     );
 
