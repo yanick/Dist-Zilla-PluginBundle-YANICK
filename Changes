@@ -3,6 +3,7 @@ Revision history for Dist::Zilla::PluginBundle::YANICK
 {{$NEXT}}
     * Add parameter 'autoprereqs_skip'.
     * Add plugin InstallRelease
+    * Add plugin Authority
 
 0.0.1     2010-12-21 10:19:44 America/Montreal
 

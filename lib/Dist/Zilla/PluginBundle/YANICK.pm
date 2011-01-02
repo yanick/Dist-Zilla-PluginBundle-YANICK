@@ -36,6 +36,7 @@ his distributions. It's roughly equivalent to
     [ExecDir]
 
     [PkgVersion]
+    [Authority]
 
     [ReportVersions]
     [Signature]
@@ -117,6 +118,7 @@ sub configure {
           GatherDir
           ExecDir
           PkgVersion
+          Authority
           ReportVersions
           Signature /,
           [ AutoPrereqs => { skip => $arg->{autoprereqs_skip} } ],
