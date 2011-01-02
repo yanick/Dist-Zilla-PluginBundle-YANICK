@@ -72,7 +72,7 @@ his distributions. It's roughly equivalent to
 
 Passed to C<ModuleBuild> plugin.
 
-=head autoprereqs_skip
+=head3 autoprereqs_skip
 
 Passed as C<skip> to AutoPrereqs.
 
