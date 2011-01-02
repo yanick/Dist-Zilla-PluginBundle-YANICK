@@ -1,6 +1,9 @@
 package Dist::Zilla::PluginBundle::YANICK;
 BEGIN {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.0.1';
+  $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:yanick';
+}
+BEGIN {
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.1.0';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -25,12 +28,16 @@ use Dist::Zilla::Plugin::MetaProvides::Package;
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
 sub configure {
-    my $self = shift;
+    my ( $self ) = @_;
+    my $arg = $self->payload;
 
     my $release_branch = 'releases';
     my $upstream       = 'github';
 
-    $self->add_plugins('ModuleBuild');
+    my %mb_args;
+    $mb_args{mb_class} = $arg->{mb_class} if $arg->{mb_class};
+    $self->add_plugins([ 'ModuleBuild', \%mb_args ]);
+
     $self->add_plugins(
         [ GithubMeta => { remote => $upstream, } ],
         qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
@@ -42,10 +49,11 @@ sub configure {
           GatherDir
           ExecDir
           PkgVersion
+          Authority
           ReportVersions
-          Signature
-          AutoPrereqs
-          CheckChangesHasContent
+          Signature /,
+          [ AutoPrereqs => { skip => $arg->{autoprereqs_skip} } ],
+          qw/ CheckChangesHasContent
           TestRelease
           ConfirmRelease
           Git::Check
@@ -54,8 +62,11 @@ sub configure {
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
         [ 'Git::Push' => { push_to    => $upstream } ],
         'UploadToCPAN',
+        [ 'InstallRelease' => { install_command => 'cpanm .' } ],
         'Twitter',
     );
+
+    $self->config_slice( 'mb_class' );
 
 }
 
@@ -70,7 +81,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.0.1
+version 0.1.0
 
 =head1 DESCRIPTION
 
@@ -106,6 +117,7 @@ his distributions. It's roughly equivalent to
     [ExecDir]
 
     [PkgVersion]
+    [Authority]
 
     [ReportVersions]
     [Signature]
@@ -130,7 +142,20 @@ his distributions. It's roughly equivalent to
 
     [UploadToCPAN]
 
+    [InstallRelease]
+    install_command = cpanm .
+
     [Twitter]
+
+=head2 ARGUMENTS
+
+=head3 mb_class
+
+Passed to C<ModuleBuild> plugin.
+
+=head3 autoprereqs_skip
+
+Passed as C<skip> to AutoPrereqs.
 
 =head1 AUTHOR
 

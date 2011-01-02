@@ -53,7 +53,7 @@
    "provides" : {
       "Dist::Zilla::PluginBundle::YANICK" : {
          "file" : "lib/Dist/Zilla/PluginBundle/YANICK.pm",
-         "version" : "v0.0.1"
+         "version" : "v0.1.0"
       }
    },
    "release_status" : "stable",
@@ -62,8 +62,14 @@
          "mailto" : "bug-dist-zilla-pluginbundle-yanick at rt.cpan.org",
          "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-YANICK"
       },
-      "homepage" : "http://search.cpan.org/dist/Dist-Zilla-PluginBundle-YANICK/"
+      "homepage" : "http://search.cpan.org/dist/Dist-Zilla-PluginBundle-YANICK/",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/yanick/Dist-Zilla-PluginBundle-YANICK.git",
+         "web" : "http://github.com/yanick/Dist-Zilla-PluginBundle-YANICK/tree"
+      }
    },
-   "version" : "0.0.1"
+   "version" : "0.1.0",
+   "x_authority" : "cpan:yanick"
 }
 
