@@ -23,6 +23,7 @@ his distributions. It's roughly equivalent to
     [License]
 
     [ReadmeFromPod]
+    [ReadmeMarkdownFromPod]
 
     [NextRelease]
     time_zone = America/Montreal
@@ -110,7 +111,9 @@ sub configure {
     $self->add_plugins(
         [ GithubMeta => { remote => $upstream, } ],
         qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
-          ReadmeFromPod /,
+          ReadmeFromPod 
+          ReadmeMarkdownFromPod
+          /,
         [ NextRelease => { time_zone => 'America/Montreal' } ],
         'MetaProvides::Package',
         qw/ MatchManifest

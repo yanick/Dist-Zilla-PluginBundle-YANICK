@@ -1,6 +1,7 @@
 Revision history for Dist::Zilla::PluginBundle::YANICK
 
 {{$NEXT}}
+    * Add ReadmeMarkdownFromPod
 
 0.1.0     2011-01-02 14:12:51 America/Montreal
     * Add parameter 'autoprereqs_skip'.
