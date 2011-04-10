@@ -1,14 +1,20 @@
 Revision history for Dist::Zilla::PluginBundle::YANICK
 
 {{$NEXT}}
-    * Add ReadmeMarkdownFromPod
+    [API CHANGES]
 
-0.1.0     2011-01-02 14:12:51 America/Montreal
-    * Add parameter 'autoprereqs_skip'.
-    * Add plugin InstallRelease
-    * Add plugin Authority
+    [ENHANCEMENTS]
+    - Add the NextSemanticVersion plugin
+    - Add ReadmeMarkdownFromPod
+    - Add parameter 'fake_release'
 
-0.0.1     2010-12-21 10:19:44 America/Montreal
+    [BUG FIXES]
 
-    * First release on an unsuspecting world.
+0.1.0     2011-01-02
+    - Add parameter 'autoprereqs_skip'.
+    - Add plugin InstallRelease
+    - Add plugin Authority
+
+0.0.1     2010-12-21
+    - First release on an unsuspecting world.
 

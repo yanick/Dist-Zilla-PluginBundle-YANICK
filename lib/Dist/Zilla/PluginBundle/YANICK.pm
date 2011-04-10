@@ -67,6 +67,8 @@ his distributions. It's roughly equivalent to
 
     [Twitter]
 
+    [Author::YANICK::NextSemanticVersion]
+
 =head2 ARGUMENTS
 
 =head3 mb_class
@@ -123,7 +125,10 @@ sub configure {
           ReadmeFromPod 
           ReadmeMarkdownFromPod
           /,
-        [ NextRelease => { time_zone => 'America/Montreal' } ],
+        [ NextRelease => { 
+                time_zone => 'America/Montreal',
+                format    => '%-9v %{yyyy-MM-dd}d',
+            } ],
         'MetaProvides::Package',
         qw/ MatchManifest
           ManifestSkip
@@ -154,6 +159,10 @@ sub configure {
             'Twitter',
         );
     }
+
+    $self->add_plugins(
+        'Author::YANICK::NextSemanticVersion',
+    );
 
     $self->config_slice( 'mb_class' );
 
