@@ -77,6 +77,15 @@ Passed to C<ModuleBuild> plugin.
 
 Passed as C<skip> to AutoPrereqs.
 
+=head3 fake_release
+
+If given a true value, uses L<Dist::Zilla::Plugin::FakeRelease>
+instead of 
+L<Dist::Zilla::Plugin::Git::Push>,
+L<Dist::Zilla::Plugin::UploadToCPAN>,
+L<Dist::Zilla::Plugin::InstallRelease> and
+L<Dist::Zilla::Plugin::Twitter>.
+
 =cut
 
 use strict;
@@ -132,14 +141,23 @@ sub configure {
           Git::Commit /,
         [ 'Git::CommitBuild' => { release_branch => $release_branch } ],
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
-        [ 'Git::Push' => { push_to    => $upstream } ],
-        'UploadToCPAN',
-        [ 'InstallRelease' => { install_command => 'cpanm .' } ],
-        'Twitter',
     );
+
+    if ( $arg->{fake_release} ) {
+        $self->add_plugins( 'FakeRelease' );
+    }
+    else {
+        $self->add_plugins(
+            [ 'Git::Push' => { push_to    => $upstream } ],
+            'UploadToCPAN',
+            [ 'InstallRelease' => { install_command => 'cpanm .' } ],
+            'Twitter',
+        );
+    }
 
     $self->config_slice( 'mb_class' );
 
+    return;
 }
 
 1;
