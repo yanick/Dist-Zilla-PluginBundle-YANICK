@@ -3,7 +3,7 @@ NAME
     dists
 
 VERSION
-    version 0.1.0
+    version 0.2.0
 
 DESCRIPTION
     This is the plugin bundle that Yanick uses to release his distributions.
@@ -25,6 +25,7 @@ DESCRIPTION
         [License]
 
         [ReadmeFromPod]
+        [ReadmeMarkdownFromPod]
 
         [NextRelease]
         time_zone = America/Montreal
@@ -68,12 +69,19 @@ DESCRIPTION
 
         [Twitter]
 
+        [Author::YANICK::NextSemanticVersion]
+
   ARGUMENTS
    mb_class
     Passed to "ModuleBuild" plugin.
 
    autoprereqs_skip
     Passed as "skip" to AutoPrereqs.
+
+   fake_release
+    If given a true value, uses Dist::Zilla::Plugin::FakeRelease instead of
+    Dist::Zilla::Plugin::Git::Push, Dist::Zilla::Plugin::UploadToCPAN,
+    Dist::Zilla::Plugin::InstallRelease and Dist::Zilla::Plugin::Twitter.
 
 AUTHOR
     Yanick Champoux <yanick@babyl.dyndns.org>

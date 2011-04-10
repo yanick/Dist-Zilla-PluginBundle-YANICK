@@ -21,12 +21,13 @@ my %module_build_args = (
     'Yanick Champoux <yanick@babyl.dyndns.org>'
   ],
   'dist_name' => 'Dist-Zilla-PluginBundle-YANICK',
-  'dist_version' => '0.1.0',
+  'dist_version' => '0.2.0',
   'license' => 'perl',
   'module_name' => 'Dist::Zilla::PluginBundle::YANICK',
   'recommends' => {},
   'recursive_test_files' => 1,
   'requires' => {
+    'CPAN::Changes' => '0',
     'Dist::Zilla::Plugin::Bugtracker' => '0',
     'Dist::Zilla::Plugin::GithubMeta' => '0',
     'Dist::Zilla::Plugin::Homepage' => '0',
@@ -38,8 +39,15 @@ my %module_build_args = (
     'Dist::Zilla::Plugin::NextRelease' => '0',
     'Dist::Zilla::Plugin::PodWeaver' => '0',
     'Dist::Zilla::Plugin::ReadmeFromPod' => '0',
+    'Dist::Zilla::Plugin::ReadmeMarkdownFromPod' => '0',
+    'Dist::Zilla::Role::AfterRelease' => '0',
+    'Dist::Zilla::Role::FileMunger' => '0',
     'Dist::Zilla::Role::PluginBundle::Easy' => '0',
-    'Moose' => '0'
+    'Dist::Zilla::Role::TextTemplate' => '0',
+    'Dist::Zilla::Role::VersionProvider' => '0',
+    'Git::Repository' => '0',
+    'Moose' => '0',
+    'Perl::Version' => '0'
   },
   'script_files' => []
 );

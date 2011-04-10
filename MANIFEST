@@ -5,6 +5,8 @@ MANIFEST
 META.json
 META.yml
 README
+README.mkdn
 SIGNATURE
+lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm
 lib/Dist/Zilla/PluginBundle/YANICK.pm
 t/000-report-versions.t

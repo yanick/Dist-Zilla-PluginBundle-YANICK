@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:yanick';
 }
 BEGIN {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.1.0';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.2.0';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -41,8 +41,13 @@ sub configure {
     $self->add_plugins(
         [ GithubMeta => { remote => $upstream, } ],
         qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
-          ReadmeFromPod /,
-        [ NextRelease => { time_zone => 'America/Montreal' } ],
+          ReadmeFromPod 
+          ReadmeMarkdownFromPod
+          /,
+        [ NextRelease => { 
+                time_zone => 'America/Montreal',
+                format    => '%-9v %{yyyy-MM-dd}d',
+            } ],
         'MetaProvides::Package',
         qw/ MatchManifest
           ManifestSkip
@@ -60,14 +65,27 @@ sub configure {
           Git::Commit /,
         [ 'Git::CommitBuild' => { release_branch => $release_branch } ],
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
-        [ 'Git::Push' => { push_to    => $upstream } ],
-        'UploadToCPAN',
-        [ 'InstallRelease' => { install_command => 'cpanm .' } ],
-        'Twitter',
+    );
+
+    if ( $arg->{fake_release} ) {
+        $self->add_plugins( 'FakeRelease' );
+    }
+    else {
+        $self->add_plugins(
+            [ 'Git::Push' => { push_to    => $upstream } ],
+            'UploadToCPAN',
+            [ 'InstallRelease' => { install_command => 'cpanm .' } ],
+            'Twitter',
+        );
+    }
+
+    $self->add_plugins(
+        'Author::YANICK::NextSemanticVersion',
     );
 
     $self->config_slice( 'mb_class' );
 
+    return;
 }
 
 1;
@@ -81,7 +99,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.1.0
+version 0.2.0
 
 =head1 DESCRIPTION
 
@@ -104,6 +122,7 @@ his distributions. It's roughly equivalent to
     [License]
 
     [ReadmeFromPod]
+    [ReadmeMarkdownFromPod]
 
     [NextRelease]
     time_zone = America/Montreal
@@ -147,6 +166,8 @@ his distributions. It's roughly equivalent to
 
     [Twitter]
 
+    [Author::YANICK::NextSemanticVersion]
+
 =head2 ARGUMENTS
 
 =head3 mb_class
@@ -156,6 +177,15 @@ Passed to C<ModuleBuild> plugin.
 =head3 autoprereqs_skip
 
 Passed as C<skip> to AutoPrereqs.
+
+=head3 fake_release
+
+If given a true value, uses L<Dist::Zilla::Plugin::FakeRelease>
+instead of 
+L<Dist::Zilla::Plugin::Git::Push>,
+L<Dist::Zilla::Plugin::UploadToCPAN>,
+L<Dist::Zilla::Plugin::InstallRelease> and
+L<Dist::Zilla::Plugin::Twitter>.
 
 =head1 AUTHOR
 
