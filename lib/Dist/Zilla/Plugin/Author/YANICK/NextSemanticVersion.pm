@@ -39,7 +39,7 @@ sub after_release {
     <$in_fh>
   };
 
-  my $skel = map { "  [$_]\n\n" }  
+  my $skel = join '', map { "  [$_]\n\n" }  
                  @major_groups, @minor_groups, @revision_groups;
 
   # add the version and date to file content
@@ -47,17 +47,16 @@ sub after_release {
   $content =~ s{( (\Q$delim->[0]\E \s*) \$NEXT (\s* \Q$delim->[1]\E) )}
                {$1\n\n$skel}xs;
 
-  my $update_fn = $self->update_filename;
-  $self->log_debug([ 'updating contents of %s on disk', $update_fn ]);
+  $self->log_debug([ 'updating contents of %s on disk', $filename ]);
 
   # and finally rewrite the changelog on disk
-  open my $out_fh, '>', $update_fn
-    or Carp::croak("can't open $update_fn for writing: $!");
+  open my $out_fh, '>', $filename
+    or Carp::croak("can't open $filename for writing: $!");
 
   # Win32.
   binmode $out_fh, ':raw';
-  print $out_fh $content or Carp::croak("error writing to $update_fn: $!");
-  close $out_fh or Carp::croak("error closing $update_fn: $!");
+  print $out_fh $content or Carp::croak("error writing to $filename: $!");
+  close $out_fh or Carp::croak("error closing $filename: $!");
 }
 
 # stolen and adapted from D::Z::P::Git::NextVersion

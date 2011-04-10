@@ -1,6 +1,8 @@
 Revision history for Dist::Zilla::PluginBundle::YANICK
 
 {{$NEXT}}
+    [BUG FIXES]
+    - bug in NextSemanticVersion's after_release.
 
 0.2.0     2011-04-10
     [API CHANGES]
