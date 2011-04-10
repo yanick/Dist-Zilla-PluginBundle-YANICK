@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::AUTHORITY = 'cpan:yanick';
 }
 BEGIN {
-  $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::VERSION = '0.2.0';
+  $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::VERSION = '0.2.1';
 }
 # ABSTRACT: update the next version, semantic-wise
 
@@ -30,40 +30,54 @@ my @major_groups = ('API CHANGES');
 my @minor_groups = ('ENHANCEMENTS');
 my @revision_groups = ('BUG FIXES');
 
+sub before_release {
+    my $self = shift;
+
+    my ($changes_file) = grep { $_->name eq $self->filename } @{ $self->zilla->files };
+
+  my $changes = CPAN::Changes->load_string( 
+      $changes_file->content, 
+      next_token => qr/{{\$NEXT}}/ 
+  ); 
+
+  my( $next ) = reverse $changes->releases;
+
+  my @changes = values %{ $next->changes };
+
+  $self->log_fatal("change file has no content for next version")
+    unless @changes;
+
+}
+
 sub after_release {
   my ($self) = @_;
   my $filename = $self->filename;
 
-  # read original changelog
-  my $content = do {
-    local $/;
-    open my $in_fh, '<', $filename
-      or Carp::croak("can't open $filename for reading: $!");
+  my $changes = CPAN::Changes->load( 
+      $self->filename, 
+      next_token => qr/{{\$NEXT}}/ 
+  ); 
 
-    # Win32
-    binmode $in_fh, ':raw';
-    <$in_fh>
-  };
+  # remove empty groups
+  for my $r ( $changes->releases ) {
+      for my $g ( $r->groups ) {
+          $r->delete_group($g) unless @{ $r->changes($g) };
+      }
+  }
 
-  my $skel = map { "  [$_]\n\n" }  
-                 @major_groups, @minor_groups, @revision_groups;
+  my ( $next ) = reverse $changes->releases;
 
-  # add the version and date to file content
-  my $delim  = $self->delim;
-  $content =~ s{( (\Q$delim->[0]\E \s*) \$NEXT (\s* \Q$delim->[1]\E) )}
-               {$1\n\n$skel}xs;
+  $next->add_group( @major_groups, @minor_groups, @revision_groups );
 
-  my $update_fn = $self->update_filename;
-  $self->log_debug([ 'updating contents of %s on disk', $update_fn ]);
+  $self->log_debug([ 'updating contents of %s on disk', $filename ]);
 
   # and finally rewrite the changelog on disk
-  open my $out_fh, '>', $update_fn
-    or Carp::croak("can't open $update_fn for writing: $!");
+  open my $out_fh, '>', $filename
+    or Carp::croak("can't open $filename for writing: $!");
 
-  # Win32.
-  binmode $out_fh, ':raw';
-  print $out_fh $content or Carp::croak("error writing to $update_fn: $!");
-  close $out_fh or Carp::croak("error closing $update_fn: $!");
+  print $out_fh $changes->serialize;
+
+  close $out_fh or Carp::croak("error closing $filename: $!");
 }
 
 # stolen and adapted from D::Z::P::Git::NextVersion
@@ -106,7 +120,7 @@ sub next_version {
 
     my $new_ver = $self->inc_version( 
         $last_version, 
-        grep { scalar @{ $next->changes($_) } } $next->groups 
+        grep { scalar @{ $next->changes($_) } } $next->groups
     );
 
     $self->log("Bumping version from $last_version to $new_ver");
@@ -168,7 +182,7 @@ Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion - update the next versi
 
 =head1 VERSION
 
-version 0.2.0
+version 0.2.1
 
 =head1 AUTHOR
 

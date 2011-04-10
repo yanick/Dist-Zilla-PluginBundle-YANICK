@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:yanick';
 }
 BEGIN {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.2.0';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.2.1';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -62,7 +62,7 @@ sub configure {
           TestRelease
           ConfirmRelease
           Git::Check
-          Git::Commit /,
+          /,
         [ 'Git::CommitBuild' => { release_branch => $release_branch } ],
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
     );
@@ -79,9 +79,10 @@ sub configure {
         );
     }
 
-    $self->add_plugins(
-        'Author::YANICK::NextSemanticVersion',
-    );
+    $self->add_plugins(qw/
+        Author::YANICK::NextSemanticVersion
+        Git::Commit 
+    /);
 
     $self->config_slice( 'mb_class' );
 
@@ -99,7 +100,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.2.0
+version 0.2.1
 
 =head1 DESCRIPTION
 

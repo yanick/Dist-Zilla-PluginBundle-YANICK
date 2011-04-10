@@ -1,5 +1,9 @@
 Revision history for Dist::Zilla::PluginBundle::YANICK
 
+0.2.1 2011-04-10 
+ [BUG FIXES]
+ - NextSemanticVersion afterRelease actions work, now.
+
 0.2.0 2011-04-10
  [ENHANCEMENTS]
  - Add the NextSemanticVersion plugin
