@@ -6,8 +6,11 @@ Revision history for Dist::Zilla::PluginBundle::YANICK
  [BUG FIXES]
 
  [ENHANCEMENTS]
- - Add parameter 'authority'
  - Add plugin InstallGuide
+
+0.3.0 2011-04-17 
+ [ENHANCEMENTS]
+ - Add parameter 'authority'
 
 0.2.1 2011-04-10 
  [BUG FIXES]
