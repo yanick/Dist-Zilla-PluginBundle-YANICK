@@ -71,13 +71,13 @@ his distributions. It's roughly equivalent to
 
 =head2 ARGUMENTS
 
-=head3 mb_class
-
-Passed to C<ModuleBuild> plugin.
-
 =head3 autoprereqs_skip
 
 Passed as C<skip> to AutoPrereqs.
+
+=head3 authority
+
+Passed to L<Dist::Zilla::Plugin::Authority>.
 
 =head3 fake_release
 
@@ -87,6 +87,10 @@ L<Dist::Zilla::Plugin::Git::Push>,
 L<Dist::Zilla::Plugin::UploadToCPAN>,
 L<Dist::Zilla::Plugin::InstallRelease> and
 L<Dist::Zilla::Plugin::Twitter>.
+
+=head3 mb_class
+
+Passed to C<ModuleBuild> plugin.
 
 =cut
 
@@ -134,9 +138,11 @@ sub configure {
           ManifestSkip
           GatherDir
           ExecDir
-          PkgVersion
-          Authority
-          ReportVersions
+          PkgVersion /,
+          [ Authority => { 
+            ( authority => $arg->{authority} ) x !!$arg->{authority}  
+          } ],
+          qw/ ReportVersions
           Signature /,
           [ AutoPrereqs => { skip => $arg->{autoprereqs_skip} } ],
           qw/ CheckChangesHasContent
