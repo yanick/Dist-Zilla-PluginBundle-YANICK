@@ -4,7 +4,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 # VERSION
 
-version 0.2.1
+version 0.3.0
 
 # DESCRIPTION
 
@@ -75,13 +75,13 @@ his distributions. It's roughly equivalent to
 
 ## ARGUMENTS
 
-### mb_class
-
-Passed to `ModuleBuild` plugin.
-
 ### autoprereqs_skip
 
 Passed as `skip` to AutoPrereqs.
+
+### authority
+
+Passed to [Dist::Zilla::Plugin::Authority](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::Authority).
 
 ### fake_release
 
@@ -91,6 +91,10 @@ instead of
 [Dist::Zilla::Plugin::UploadToCPAN](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::UploadToCPAN),
 [Dist::Zilla::Plugin::InstallRelease](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::InstallRelease) and
 [Dist::Zilla::Plugin::Twitter](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::Twitter).
+
+### mb_class
+
+Passed to `ModuleBuild` plugin.
 
 # AUTHOR
 

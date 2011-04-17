@@ -1,5 +1,9 @@
 Revision history for Dist::Zilla::PluginBundle::YANICK
 
+0.3.0 2011-04-17 
+ [ENHANCEMENTS]
+ - Add parameter 'authority'
+
 0.2.1 2011-04-10 
  [BUG FIXES]
  - NextSemanticVersion afterRelease actions work, now.

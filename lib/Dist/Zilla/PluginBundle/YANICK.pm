@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:yanick';
 }
 BEGIN {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.2.1';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.3.0';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -53,9 +53,11 @@ sub configure {
           ManifestSkip
           GatherDir
           ExecDir
-          PkgVersion
-          Authority
-          ReportVersions
+          PkgVersion /,
+          [ Authority => { 
+            ( authority => $arg->{authority} ) x !!$arg->{authority}  
+          } ],
+          qw/ ReportVersions
           Signature /,
           [ AutoPrereqs => { skip => $arg->{autoprereqs_skip} } ],
           qw/ CheckChangesHasContent
@@ -100,7 +102,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.2.1
+version 0.3.0
 
 =head1 DESCRIPTION
 
@@ -171,13 +173,13 @@ his distributions. It's roughly equivalent to
 
 =head2 ARGUMENTS
 
-=head3 mb_class
-
-Passed to C<ModuleBuild> plugin.
-
 =head3 autoprereqs_skip
 
 Passed as C<skip> to AutoPrereqs.
+
+=head3 authority
+
+Passed to L<Dist::Zilla::Plugin::Authority>.
 
 =head3 fake_release
 
@@ -187,6 +189,10 @@ L<Dist::Zilla::Plugin::Git::Push>,
 L<Dist::Zilla::Plugin::UploadToCPAN>,
 L<Dist::Zilla::Plugin::InstallRelease> and
 L<Dist::Zilla::Plugin::Twitter>.
+
+=head3 mb_class
+
+Passed to C<ModuleBuild> plugin.
 
 =head1 AUTHOR
 
