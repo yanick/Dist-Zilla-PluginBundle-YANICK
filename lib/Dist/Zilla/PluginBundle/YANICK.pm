@@ -109,6 +109,7 @@ use Dist::Zilla::Plugin::License;
 use Dist::Zilla::Plugin::ReadmeFromPod;
 use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::MetaProvides::Package;
+use Dist::Zilla::Plugin::InstallRelease;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
