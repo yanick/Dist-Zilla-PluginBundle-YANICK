@@ -5,7 +5,7 @@ use strict;
 use warnings;
 
 use Git::Repository;
-use CPAN::Changes;
+use CPAN::Changes 0.17;
 use Perl::Version;
 
 use Moose;
@@ -53,11 +53,7 @@ sub after_release {
   ); 
 
   # remove empty groups
-  for my $r ( $changes->releases ) {
-      for my $g ( $r->groups ) {
-          $r->delete_group($g) unless @{ $r->changes($g) };
-      }
-  }
+  $changes->delete_empty_groups;
 
   my ( $next ) = reverse $changes->releases;
 
