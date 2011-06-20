@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::AUTHORITY = 'cpan:yanick';
 }
 BEGIN {
-  $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::VERSION = '0.3.0';
+  $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::VERSION = '0.4.0';
 }
 # ABSTRACT: update the next version, semantic-wise
 
@@ -11,7 +11,7 @@ use strict;
 use warnings;
 
 use Git::Repository;
-use CPAN::Changes;
+use CPAN::Changes 0.17;
 use Perl::Version;
 
 use Moose;
@@ -59,11 +59,7 @@ sub after_release {
   ); 
 
   # remove empty groups
-  for my $r ( $changes->releases ) {
-      for my $g ( $r->groups ) {
-          $r->delete_group($g) unless @{ $r->changes($g) };
-      }
-  }
+  $changes->delete_empty_groups;
 
   my ( $next ) = reverse $changes->releases;
 
@@ -182,7 +178,7 @@ Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion - update the next versi
 
 =head1 VERSION
 
-version 0.3.0
+version 0.4.0
 
 =head1 AUTHOR
 

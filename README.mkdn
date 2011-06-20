@@ -4,7 +4,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 # VERSION
 
-version 0.3.0
+version 0.4.0
 
 # DESCRIPTION
 
@@ -12,6 +12,8 @@ This is the plugin bundle that Yanick uses to release
 his distributions. It's roughly equivalent to
 
     [ModuleBuild]
+
+    [InstallGuide]
 
     [GithubMeta]
     remote=github

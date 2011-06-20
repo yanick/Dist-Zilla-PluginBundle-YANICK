@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:yanick';
 }
 BEGIN {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.3.0';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.4.0';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -24,6 +24,8 @@ use Dist::Zilla::Plugin::License;
 use Dist::Zilla::Plugin::ReadmeFromPod;
 use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::MetaProvides::Package;
+use Dist::Zilla::Plugin::InstallRelease;
+use Dist::Zilla::Plugin::InstallGuide;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -39,6 +41,7 @@ sub configure {
     $self->add_plugins([ 'ModuleBuild', \%mb_args ]);
 
     $self->add_plugins(
+        'InstallGuide',
         [ GithubMeta => { remote => $upstream, } ],
         qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
           ReadmeFromPod 
@@ -102,7 +105,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.3.0
+version 0.4.0
 
 =head1 DESCRIPTION
 
@@ -110,6 +113,8 @@ This is the plugin bundle that Yanick uses to release
 his distributions. It's roughly equivalent to
 
     [ModuleBuild]
+
+    [InstallGuide]
 
     [GithubMeta]
     remote=github
