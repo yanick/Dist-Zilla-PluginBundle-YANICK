@@ -9,6 +9,8 @@ his distributions. It's roughly equivalent to
 
     [ModuleBuild]
 
+    [InstallGuide]
+
     [GithubMeta]
     remote=github
 
@@ -110,6 +112,7 @@ use Dist::Zilla::Plugin::ReadmeFromPod;
 use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::MetaProvides::Package;
 use Dist::Zilla::Plugin::InstallRelease;
+use Dist::Zilla::Plugin::InstallGuide;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -125,6 +128,7 @@ sub configure {
     $self->add_plugins([ 'ModuleBuild', \%mb_args ]);
 
     $self->add_plugins(
+        'InstallGuide',
         [ GithubMeta => { remote => $upstream, } ],
         qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
           ReadmeFromPod 
