@@ -4,9 +4,12 @@ Revision history for Dist::Zilla::PluginBundle::YANICK
  [API CHANGES]
 
  [BUG FIXES]
- - nameless group was deleted by accident
 
  [ENHANCEMENTS]
+
+0.4.1 2011-08-29
+ [BUG FIXES]
+ - nameless group was deleted by accident
 
 0.4.0 2011-06-20
  [ENHANCEMENTS]
