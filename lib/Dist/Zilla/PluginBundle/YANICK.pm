@@ -59,17 +59,18 @@ his distributions. It's roughly equivalent to
     [Git::Tag]
         tag_format = v%v
         branch     = releases
-    [Git::Push]
-        push_to = github
+
+    [Author::YANICK::NextSemanticVersion]
 
     [UploadToCPAN]
+
+    [Git::Push]
+        push_to = github
 
     [InstallRelease]
     install_command = cpanm .
 
     [Twitter]
-
-    [Author::YANICK::NextSemanticVersion]
 
 =head2 ARGUMENTS
 
@@ -159,6 +160,11 @@ sub configure {
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
     );
 
+    $self->add_plugins(qw/
+        Author::YANICK::NextSemanticVersion
+        Git::Commit 
+    /);
+
     if ( $arg->{fake_release} ) {
         $self->add_plugins( 'FakeRelease' );
     }
@@ -166,15 +172,10 @@ sub configure {
         $self->add_plugins(
             [ 'Git::Push' => { push_to    => $upstream } ],
             'UploadToCPAN',
-            [ 'InstallRelease' => { install_command => 'cpanm .' } ],
             'Twitter',
+            [ 'InstallRelease' => { install_command => 'cpanm .' } ],
         );
     }
-
-    $self->add_plugins(qw/
-        Author::YANICK::NextSemanticVersion
-        Git::Commit 
-    /);
 
     $self->config_slice( 'mb_class' );
 
