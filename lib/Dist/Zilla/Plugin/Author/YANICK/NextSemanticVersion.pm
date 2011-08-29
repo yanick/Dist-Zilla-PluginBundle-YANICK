@@ -149,9 +149,7 @@ sub munge_files {
 
   my ( $next ) = reverse $changes->releases;
 
-    $next->delete_group(
-        grep { !@{$next->changes($_)} } $next->groups 
-    );
+  $next->delete_group($_) for grep { !@{$next->changes($_)} } $next->groups;
 
   $self->log_debug([ 'updating contents of %s in memory', $file->name ]);
   $file->content($changes->serialize);
