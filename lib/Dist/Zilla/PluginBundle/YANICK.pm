@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:yanick';
 }
 BEGIN {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.4.0';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.4.1';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -72,6 +72,11 @@ sub configure {
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
     );
 
+    $self->add_plugins(qw/
+        Author::YANICK::NextSemanticVersion
+        Git::Commit 
+    /);
+
     if ( $arg->{fake_release} ) {
         $self->add_plugins( 'FakeRelease' );
     }
@@ -79,15 +84,10 @@ sub configure {
         $self->add_plugins(
             [ 'Git::Push' => { push_to    => $upstream } ],
             'UploadToCPAN',
-            [ 'InstallRelease' => { install_command => 'cpanm .' } ],
             'Twitter',
+            [ 'InstallRelease' => { install_command => 'cpanm .' } ],
         );
     }
-
-    $self->add_plugins(qw/
-        Author::YANICK::NextSemanticVersion
-        Git::Commit 
-    /);
 
     $self->config_slice( 'mb_class' );
 
@@ -105,7 +105,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.4.0
+version 0.4.1
 
 =head1 DESCRIPTION
 
@@ -164,17 +164,18 @@ his distributions. It's roughly equivalent to
     [Git::Tag]
         tag_format = v%v
         branch     = releases
-    [Git::Push]
-        push_to = github
+
+    [Author::YANICK::NextSemanticVersion]
 
     [UploadToCPAN]
+
+    [Git::Push]
+        push_to = github
 
     [InstallRelease]
     install_command = cpanm .
 
     [Twitter]
-
-    [Author::YANICK::NextSemanticVersion]
 
 =head2 ARGUMENTS
 

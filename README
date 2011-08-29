@@ -3,7 +3,7 @@ NAME
     dists
 
 VERSION
-    version 0.4.0
+    version 0.4.1
 
 DESCRIPTION
     This is the plugin bundle that Yanick uses to release his distributions.
@@ -61,17 +61,18 @@ DESCRIPTION
         [Git::Tag]
             tag_format = v%v
             branch     = releases
-        [Git::Push]
-            push_to = github
+
+        [Author::YANICK::NextSemanticVersion]
 
         [UploadToCPAN]
+
+        [Git::Push]
+            push_to = github
 
         [InstallRelease]
         install_command = cpanm .
 
         [Twitter]
-
-        [Author::YANICK::NextSemanticVersion]
 
   ARGUMENTS
    autoprereqs_skip

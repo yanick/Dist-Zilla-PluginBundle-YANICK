@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::AUTHORITY = 'cpan:yanick';
 }
 BEGIN {
-  $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::VERSION = '0.4.0';
+  $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::VERSION = '0.4.1';
 }
 # ABSTRACT: update the next version, semantic-wise
 
@@ -155,9 +155,7 @@ sub munge_files {
 
   my ( $next ) = reverse $changes->releases;
 
-    $next->delete_group(
-        grep { !@{$next->changes($_)} } $next->groups 
-    );
+  $next->delete_group($_) for grep { !@{$next->changes($_)} } $next->groups;
 
   $self->log_debug([ 'updating contents of %s in memory', $file->name ]);
   $file->content($changes->serialize);
@@ -178,7 +176,7 @@ Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion - update the next versi
 
 =head1 VERSION
 
-version 0.4.0
+version 0.4.1
 
 =head1 AUTHOR
 

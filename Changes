@@ -1,5 +1,9 @@
 Revision history for Dist::Zilla::PluginBundle::YANICK
 
+0.4.1 2011-08-29
+ [BUG FIXES]
+ - nameless group was deleted by accident
+
 0.4.0 2011-06-20
  [ENHANCEMENTS]
  - Add plugin InstallGuide
@@ -19,10 +23,6 @@ Revision history for Dist::Zilla::PluginBundle::YANICK
  - Add parameter 'fake_release'
 
 0.1.0 2011-01-02
- - Add parameter 'autoprereqs_skip'.
- - Add plugin InstallRelease
- - Add plugin Authority
 
 0.0.1 2010-12-21
- - First release on an unsuspecting world.
 
