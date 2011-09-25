@@ -4,9 +4,12 @@ Revision history for Dist::Zilla::PluginBundle::YANICK
  [API CHANGES]
 
  [BUG FIXES]
- - passing undef to AutoPrereq made it unhappy
 
  [ENHANCEMENTS]
+
+0.4.2 2011-09-25
+ [BUG FIXES]
+ - passing undef to AutoPrereq made it unhappy
 
 0.4.1 2011-08-29
  [BUG FIXES]
