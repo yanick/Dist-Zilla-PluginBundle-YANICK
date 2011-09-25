@@ -1,9 +1,9 @@
 package Dist::Zilla::PluginBundle::YANICK;
 BEGIN {
-  $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:yanick';
+  $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:YANICK';
 }
-BEGIN {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.4.1';
+{
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.4.2';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -26,6 +26,7 @@ use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::MetaProvides::Package;
 use Dist::Zilla::Plugin::InstallRelease;
 use Dist::Zilla::Plugin::InstallGuide;
+use Dist::Zilla::Plugin::Twitter;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -62,7 +63,11 @@ sub configure {
           } ],
           qw/ ReportVersions
           Signature /,
-          [ AutoPrereqs => { skip => $arg->{autoprereqs_skip} } ],
+          [ AutoPrereqs => { 
+                  ( skip => $arg->{autoprereqs_skip} ) 
+                            x !!$arg->{autoprereqs_skip}
+            } 
+          ],
           qw/ CheckChangesHasContent
           TestRelease
           ConfirmRelease
@@ -105,7 +110,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.4.1
+version 0.4.2
 
 =head1 DESCRIPTION
 

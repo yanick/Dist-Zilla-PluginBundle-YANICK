@@ -1,9 +1,9 @@
 package Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion;
 BEGIN {
-  $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::AUTHORITY = 'cpan:yanick';
+  $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::AUTHORITY = 'cpan:YANICK';
 }
-BEGIN {
-  $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::VERSION = '0.4.1';
+{
+  $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::VERSION = '0.4.2';
 }
 # ABSTRACT: update the next version, semantic-wise
 
@@ -176,7 +176,7 @@ Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion - update the next versi
 
 =head1 VERSION
 
-version 0.4.1
+version 0.4.2
 
 =head1 AUTHOR
 

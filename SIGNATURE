@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.64.
+signed via the Module::Signature module, version 0.68.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,22 +14,22 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 127db9e48934207091ab4cf91a14f3d26562ff21 Build.PL
-SHA1 80747fd254c1db527b83cd84eb9cc21b0fdac4d3 Changes
+SHA1 45a62bfbfe522bebd6483a83406bb80a9432db3d Build.PL
+SHA1 6c75ac455d85443ae9ff06a87bca3b8e4de44e9d Changes
 SHA1 ae49997c3db8cad20a26a913bfe3eacbe33a67e1 INSTALL
-SHA1 3ee0d276167c367325eebe1d5ec9877ade504d93 LICENSE
+SHA1 ad92db9e4eb447c6fb8ea5018db635fd8a431512 LICENSE
 SHA1 9b0cae17afa5f32e876e34cc4329ff77e2de0f00 MANIFEST
-SHA1 5587574b66bd5269e71258f12cf1a541c57476ba META.json
-SHA1 883fd2513d629e8c8904ab615786a77f80c9e459 META.yml
-SHA1 741a648fa26564f68c4956d70a02091ae794dc14 README
-SHA1 70736138835881c1d68ea1ff874bb05f7f207717 README.mkdn
-SHA1 342d4310d442e5b408ff80b9a81759990897f413 lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm
-SHA1 3ef80bffe61e0d93b2d2067fe369d291629b7411 lib/Dist/Zilla/PluginBundle/YANICK.pm
-SHA1 050aa113e828a52db3c86065c0c0ed50198b7ce8 t/000-report-versions.t
+SHA1 f4236d70cdfcd04d20ed7bc3b287c4e0f20bdbe9 META.json
+SHA1 ee77e5fbbe355fa197aaaf27eefe73377e345321 META.yml
+SHA1 6a04b5b7f2e446a13bba77cdf6d6a850d72f34d0 README
+SHA1 08feb4997b5b20d07ebfbaae3aab971c4a6e4a74 README.mkdn
+SHA1 3319ca6d29fbc79c7e2e0707b50f2db708b53915 lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm
+SHA1 6ff8708d45408aa0d9152866e4fca14a38ed4d72 lib/Dist/Zilla/PluginBundle/YANICK.pm
+SHA1 473906254ecd96009795d4b7fbc82fac48c03ecd t/000-report-versions.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.11 (GNU/Linux)
 
-iEYEARECAAYFAk5cJBwACgkQ34Hwf+GwC4y+DgCgptTN0gGirWzt6YL39F/wQGbB
-Km8An0Im27TQV9qFeK3ByCpB0qDQAHP8
-=S0E1
+iEYEARECAAYFAk5/exYACgkQ34Hwf+GwC4xdRQCeNEFen3pRVzAPGCUaOaBO3k41
+wL8An2PnyIvE84OJS6GIs0bSMm8eOJlG
+=iGxm
 -----END PGP SIGNATURE-----

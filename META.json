@@ -4,7 +4,7 @@
       "Yanick Champoux <yanick@babyl.dyndns.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.102345, CPAN::Meta::Converter version 2.101590",
+   "generated_by" : "Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112621",
    "license" : [
       "perl_5"
    ],
@@ -41,6 +41,7 @@
             "Dist::Zilla::Plugin::PodWeaver" : 0,
             "Dist::Zilla::Plugin::ReadmeFromPod" : 0,
             "Dist::Zilla::Plugin::ReadmeMarkdownFromPod" : 0,
+            "Dist::Zilla::Plugin::Twitter" : 0,
             "Dist::Zilla::Role::AfterRelease" : 0,
             "Dist::Zilla::Role::FileMunger" : 0,
             "Dist::Zilla::Role::PluginBundle::Easy" : 0,
@@ -48,7 +49,9 @@
             "Dist::Zilla::Role::VersionProvider" : 0,
             "Git::Repository" : 0,
             "Moose" : 0,
-            "Perl::Version" : 0
+            "Perl::Version" : 0,
+            "strict" : 0,
+            "warnings" : 0
          }
       },
       "test" : {
@@ -63,11 +66,11 @@
    "provides" : {
       "Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion" : {
          "file" : "lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm",
-         "version" : "v0.4.1"
+         "version" : "v0.4.2"
       },
       "Dist::Zilla::PluginBundle::YANICK" : {
          "file" : "lib/Dist/Zilla/PluginBundle/YANICK.pm",
-         "version" : "v0.4.1"
+         "version" : "v0.4.2"
       }
    },
    "release_status" : "stable",
@@ -79,11 +82,11 @@
       "homepage" : "http://search.cpan.org/dist/Dist-Zilla-PluginBundle-YANICK/",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/yanick/Dist-Zilla-PluginBundle-YANICK.git",
-         "web" : "http://github.com/yanick/Dist-Zilla-PluginBundle-YANICK/tree"
+         "url" : "https://github.com/yanick/Dist-Zilla-PluginBundle-YANICK.git",
+         "web" : "https://github.com/yanick/Dist-Zilla-PluginBundle-YANICK"
       }
    },
-   "version" : "0.4.1",
-   "x_authority" : "cpan:yanick"
+   "version" : "0.4.2",
+   "x_authority" : "cpan:YANICK"
 }
 
