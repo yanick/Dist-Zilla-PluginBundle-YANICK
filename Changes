@@ -4,6 +4,7 @@ Revision history for Dist::Zilla::PluginBundle::YANICK
  [API CHANGES]
 
  [BUG FIXES]
+ - passing undef to AutoPrereq made it unhappy
 
  [ENHANCEMENTS]
 

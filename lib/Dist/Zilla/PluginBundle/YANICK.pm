@@ -114,6 +114,7 @@ use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::MetaProvides::Package;
 use Dist::Zilla::Plugin::InstallRelease;
 use Dist::Zilla::Plugin::InstallGuide;
+use Dist::Zilla::Plugin::Twitter;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -150,7 +151,11 @@ sub configure {
           } ],
           qw/ ReportVersions
           Signature /,
-          [ AutoPrereqs => { skip => $arg->{autoprereqs_skip} } ],
+          [ AutoPrereqs => { 
+                  ( skip => $arg->{autoprereqs_skip} ) 
+                            x !!$arg->{autoprereqs_skip}
+            } 
+          ],
           qw/ CheckChangesHasContent
           TestRelease
           ConfirmRelease
