@@ -1,6 +1,8 @@
 Revision history for Dist::Zilla::PluginBundle::YANICK
 
 {{$NEXT}}
+
+0.4.3     2011-11-14
  [API CHANGES]
 
  [BUG FIXES]
