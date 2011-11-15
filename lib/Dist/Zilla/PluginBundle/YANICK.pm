@@ -160,6 +160,7 @@ sub configure {
           TestRelease
           ConfirmRelease
           Git::Check
+          Git::Commit
           /,
         [ 'Git::CommitBuild' => { release_branch => $release_branch } ],
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
@@ -167,7 +168,6 @@ sub configure {
 
     $self->add_plugins(qw/
         Author::YANICK::NextSemanticVersion
-        Git::Commit 
     /);
 
     if ( $arg->{fake_release} ) {
