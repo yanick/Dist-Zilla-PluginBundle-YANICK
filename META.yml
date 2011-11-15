@@ -11,7 +11,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112621'
+generated_by: 'Dist::Zilla version 4.300002, CPAN::Meta::Converter version 2.112150'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -20,10 +20,10 @@ name: Dist-Zilla-PluginBundle-YANICK
 provides:
   Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion:
     file: lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm
-    version: v0.4.2
+    version: v0.4.3
   Dist::Zilla::PluginBundle::YANICK:
     file: lib/Dist/Zilla/PluginBundle/YANICK.pm
-    version: v0.4.2
+    version: v0.4.3
 requires:
   CPAN::Changes: 0.17
   Dist::Zilla::Plugin::Bugtracker: 0
@@ -55,5 +55,5 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-YANICK
   homepage: http://search.cpan.org/dist/Dist-Zilla-PluginBundle-YANICK/
   repository: https://github.com/yanick/Dist-Zilla-PluginBundle-YANICK.git
-version: 0.4.2
+version: 0.4.3
 x_authority: cpan:YANICK
