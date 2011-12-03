@@ -21,7 +21,7 @@ my %module_build_args = (
     "Yanick Champoux <yanick\@babyl.dyndns.org>"
   ],
   "dist_name" => "Dist-Zilla-PluginBundle-YANICK",
-  "dist_version" => "0.4.3",
+  "dist_version" => "0.5.0",
   "license" => "perl",
   "module_name" => "Dist::Zilla::PluginBundle::YANICK",
   "recommends" => {},
@@ -42,7 +42,7 @@ my %module_build_args = (
     "Dist::Zilla::Plugin::PodWeaver" => 0,
     "Dist::Zilla::Plugin::ReadmeFromPod" => 0,
     "Dist::Zilla::Plugin::ReadmeMarkdownFromPod" => 0,
-    "Dist::Zilla::Plugin::Twitter" => 0,
+    "Dist::Zilla::Plugin::Twitter" => "0.013",
     "Dist::Zilla::Role::AfterRelease" => 0,
     "Dist::Zilla::Role::FileMunger" => 0,
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
