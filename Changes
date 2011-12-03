@@ -1,12 +1,13 @@
 Revision history for Dist::Zilla::PluginBundle::YANICK
 
 {{$NEXT}}
-
-0.5.0     2011-12-03
  [API CHANGES]
 
  [BUG FIXES]
 
+ [ENHANCEMENTS]
+
+0.5.0 2011-12-03
  [ENHANCEMENTS]
  - requires D::Z::P::Twitter v0.013 for metacpan links
 
