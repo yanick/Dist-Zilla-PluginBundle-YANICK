@@ -1,14 +1,16 @@
 Revision history for Dist::Zilla::PluginBundle::YANICK
 
 {{$NEXT}}
-
-0.4.3     2011-11-14
  [API CHANGES]
 
  [BUG FIXES]
- - move Git::Commit before Git::CommitBuild
 
  [ENHANCEMENTS]
+ - requires D::Z::P::Twitter v0.013 for metacpan links
+
+0.4.3 2011-11-14
+ [BUG FIXES]
+ - move Git::Commit before Git::CommitBuild
 
 0.4.2 2011-09-25
  [BUG FIXES]

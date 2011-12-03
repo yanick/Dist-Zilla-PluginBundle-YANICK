@@ -114,7 +114,7 @@ use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::MetaProvides::Package;
 use Dist::Zilla::Plugin::InstallRelease;
 use Dist::Zilla::Plugin::InstallGuide;
-use Dist::Zilla::Plugin::Twitter;
+use Dist::Zilla::Plugin::Twitter 0.013;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -160,13 +160,14 @@ sub configure {
           TestRelease
           ConfirmRelease
           Git::Check
-          Git::Commit
           /,
         [ 'Git::CommitBuild' => { release_branch => $release_branch } ],
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
     );
 
+    # Git::Commit can't be before Git::CommitBuild :-/
     $self->add_plugins(qw/
+        Git::Commit
         Author::YANICK::NextSemanticVersion
     /);
 
