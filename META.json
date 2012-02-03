@@ -28,6 +28,7 @@
          "requires" : {
             "CPAN::Changes" : "0.17",
             "Dist::Zilla::Plugin::Bugtracker" : 0,
+            "Dist::Zilla::Plugin::Git" : 0,
             "Dist::Zilla::Plugin::GithubMeta" : 0,
             "Dist::Zilla::Plugin::Homepage" : 0,
             "Dist::Zilla::Plugin::InstallGuide" : 0,
@@ -41,6 +42,7 @@
             "Dist::Zilla::Plugin::PodWeaver" : 0,
             "Dist::Zilla::Plugin::ReadmeFromPod" : 0,
             "Dist::Zilla::Plugin::ReadmeMarkdownFromPod" : 0,
+            "Dist::Zilla::Plugin::Signature" : 0,
             "Dist::Zilla::Plugin::Twitter" : "0.013",
             "Dist::Zilla::Role::AfterRelease" : 0,
             "Dist::Zilla::Role::FileMunger" : 0,
@@ -66,11 +68,11 @@
    "provides" : {
       "Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion" : {
          "file" : "lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm",
-         "version" : "v0.5.0"
+         "version" : "v0.5.1"
       },
       "Dist::Zilla::PluginBundle::YANICK" : {
          "file" : "lib/Dist/Zilla/PluginBundle/YANICK.pm",
-         "version" : "v0.5.0"
+         "version" : "v0.5.1"
       }
    },
    "release_status" : "stable",
@@ -86,7 +88,7 @@
          "web" : "https://github.com/yanick/Dist-Zilla-PluginBundle-YANICK"
       }
    },
-   "version" : "0.5.0",
+   "version" : "0.5.1",
    "x_authority" : "cpan:YANICK"
 }
 

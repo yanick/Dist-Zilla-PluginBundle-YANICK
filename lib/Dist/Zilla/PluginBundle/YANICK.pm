@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.5.0';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.5.1';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -27,6 +27,8 @@ use Dist::Zilla::Plugin::MetaProvides::Package;
 use Dist::Zilla::Plugin::InstallRelease;
 use Dist::Zilla::Plugin::InstallGuide;
 use Dist::Zilla::Plugin::Twitter 0.013;
+use Dist::Zilla::Plugin::Signature;
+use Dist::Zilla::Plugin::Git;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -111,7 +113,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.5.0
+version 0.5.1
 
 =head1 DESCRIPTION
 
