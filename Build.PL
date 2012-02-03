@@ -1,4 +1,3 @@
-
 use strict;
 use warnings;
 
@@ -43,6 +42,8 @@ my %module_build_args = (
     "Dist::Zilla::Plugin::ReadmeFromPod" => 0,
     "Dist::Zilla::Plugin::ReadmeMarkdownFromPod" => 0,
     "Dist::Zilla::Plugin::Twitter" => "0.013",
+    "Dist::Zilla::Plugin::Signature" => 0,
+    "Dist::Zilla::Plugin::Git" => 0,
     "Dist::Zilla::Role::AfterRelease" => 0,
     "Dist::Zilla::Role::FileMunger" => 0,
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
