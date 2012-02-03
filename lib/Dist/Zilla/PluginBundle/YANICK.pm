@@ -115,6 +115,8 @@ use Dist::Zilla::Plugin::MetaProvides::Package;
 use Dist::Zilla::Plugin::InstallRelease;
 use Dist::Zilla::Plugin::InstallGuide;
 use Dist::Zilla::Plugin::Twitter 0.013;
+use Dist::Zilla::Plugin::Signature;
+use Dist::Zilla::Plugin::Git;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 

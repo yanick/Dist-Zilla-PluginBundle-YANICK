@@ -4,6 +4,7 @@ Revision history for Dist::Zilla::PluginBundle::YANICK
  [API CHANGES]
 
  [BUG FIXES]
+ - add missing deps [GH2] (thanks chorny!)
 
  [ENHANCEMENTS]
 
