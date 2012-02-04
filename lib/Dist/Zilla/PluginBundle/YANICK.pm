@@ -7,6 +7,8 @@ package Dist::Zilla::PluginBundle::YANICK;
 This is the plugin bundle that Yanick uses to release
 his distributions. It's roughly equivalent to
 
+    [CoalescePod]
+
     [ModuleBuild]
 
     [InstallGuide]
@@ -117,6 +119,7 @@ use Dist::Zilla::Plugin::InstallGuide;
 use Dist::Zilla::Plugin::Twitter 0.013;
 use Dist::Zilla::Plugin::Signature;
 use Dist::Zilla::Plugin::Git;
+use Dist::Zilla::Plugin::CoalescePod;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -132,6 +135,7 @@ sub configure {
     $self->add_plugins([ 'ModuleBuild', \%mb_args ]);
 
     $self->add_plugins(
+        'CoalescePod',
         'InstallGuide',
         [ GithubMeta => { remote => $upstream, } ],
         qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
