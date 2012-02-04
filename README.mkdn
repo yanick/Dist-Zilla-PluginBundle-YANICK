@@ -4,12 +4,14 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 # VERSION
 
-version 0.5.1
+version 0.6.0
 
 # DESCRIPTION
 
 This is the plugin bundle that Yanick uses to release
 his distributions. It's roughly equivalent to
+
+    [CoalescePod]
 
     [ModuleBuild]
 

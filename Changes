@@ -1,5 +1,9 @@
 Revision history for Dist::Zilla::PluginBundle::YANICK
 
+0.6.0 2012-02-04
+ [ENHANCEMENTS]
+ - add plugin CoalescePod
+
 0.5.1 2012-02-03
  [BUG FIXES]
  - add missing deps [GH2] (thanks chorny!)
