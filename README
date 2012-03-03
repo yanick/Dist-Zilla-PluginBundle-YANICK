@@ -3,11 +3,13 @@ NAME
     dists
 
 VERSION
-    version 0.6.0
+    version 0.7.0
 
 DESCRIPTION
     This is the plugin bundle that Yanick uses to release his distributions.
     It's roughly equivalent to
+
+        [Test::Compile]
 
         [CoalescePod]
 

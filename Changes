@@ -1,5 +1,9 @@
 Revision history for Dist::Zilla::PluginBundle::YANICK
 
+0.7.0 2012-03-03
+ [ENHANCEMENTS]
+ - add plugin Test::Compile
+
 0.6.0 2012-02-04
  [ENHANCEMENTS]
  - add plugin CoalescePod

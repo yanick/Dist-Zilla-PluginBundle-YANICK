@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.6.0';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.7.0';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -30,6 +30,7 @@ use Dist::Zilla::Plugin::Twitter 0.013;
 use Dist::Zilla::Plugin::Signature;
 use Dist::Zilla::Plugin::Git;
 use Dist::Zilla::Plugin::CoalescePod;
+use Dist::Zilla::Plugin::Test::Compile;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -45,8 +46,11 @@ sub configure {
     $self->add_plugins([ 'ModuleBuild', \%mb_args ]);
 
     $self->add_plugins(
-        'CoalescePod',
-        'InstallGuide',
+        qw/ 
+            Test::Compile
+            CoalescePod
+            InstallGuide
+        /,
         [ GithubMeta => { remote => $upstream, } ],
         qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
           ReadmeFromPod 
@@ -115,12 +119,14 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.6.0
+version 0.7.0
 
 =head1 DESCRIPTION
 
 This is the plugin bundle that Yanick uses to release
 his distributions. It's roughly equivalent to
+
+    [Test::Compile]
 
     [CoalescePod]
 
