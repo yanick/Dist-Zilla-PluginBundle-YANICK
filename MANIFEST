@@ -10,4 +10,5 @@ README.mkdn
 SIGNATURE
 lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm
 lib/Dist/Zilla/PluginBundle/YANICK.pm
+t/00-compile.t
 t/000-report-versions.t
