@@ -1,12 +1,14 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-
-0.8.0     2012-03-19
  [API CHANGES]
 
  [BUG FIXES]
 
+ [ENHANCEMENTS]
+ - add Covenant
+
+0.8.0 2012-03-19
  [ENHANCEMENTS]
  - add NextVersion::Semantic
 

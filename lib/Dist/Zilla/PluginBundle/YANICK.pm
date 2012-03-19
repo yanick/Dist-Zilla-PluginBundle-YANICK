@@ -14,6 +14,7 @@ his distributions. It's roughly equivalent to
     [ModuleBuild]
 
     [InstallGuide]
+    [Covenant]
 
     [GithubMeta]
     remote=github
@@ -124,6 +125,7 @@ use Dist::Zilla::Plugin::Signature;
 use Dist::Zilla::Plugin::Git;
 use Dist::Zilla::Plugin::CoalescePod;
 use Dist::Zilla::Plugin::Test::Compile;
+use Dist::Zilla::Plugin::Covenant;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -143,6 +145,7 @@ sub configure {
             Test::Compile
             CoalescePod
             InstallGuide
+            Covenant
         /,
         [ GithubMeta => { remote => $upstream, } ],
         qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
