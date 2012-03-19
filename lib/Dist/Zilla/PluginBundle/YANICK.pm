@@ -64,12 +64,13 @@ his distributions. It's roughly equivalent to
         tag_format = v%v
         branch     = releases
 
-    [Author::YANICK::NextSemanticVersion]
-
     [UploadToCPAN]
 
     [Git::Push]
         push_to = github
+
+    [PreviousVersion::Changelog]
+    [NextVersion::Semantic]
 
     [InstallRelease]
     install_command = cpanm .
@@ -180,7 +181,6 @@ sub configure {
     # Git::Commit can't be before Git::CommitBuild :-/
     $self->add_plugins(qw/
         Git::Commit
-        Author::YANICK::NextSemanticVersion
     /);
 
     if ( $arg->{fake_release} ) {
@@ -189,8 +189,12 @@ sub configure {
     else {
         $self->add_plugins(
             [ 'Git::Push' => { push_to    => $upstream } ],
-            'UploadToCPAN',
-            'Twitter',
+            qw/
+                PreviousVersion::Changelog
+                NextVersion::Semantic
+                UploadToCPAN
+                Twitter
+            /,
             [ 'InstallRelease' => { install_command => 'cpanm .' } ],
         );
     }
