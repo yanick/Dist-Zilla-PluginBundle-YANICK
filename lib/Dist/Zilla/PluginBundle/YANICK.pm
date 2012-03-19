@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.7.0';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.8.0';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -88,7 +88,6 @@ sub configure {
     # Git::Commit can't be before Git::CommitBuild :-/
     $self->add_plugins(qw/
         Git::Commit
-        Author::YANICK::NextSemanticVersion
     /);
 
     if ( $arg->{fake_release} ) {
@@ -97,8 +96,12 @@ sub configure {
     else {
         $self->add_plugins(
             [ 'Git::Push' => { push_to    => $upstream } ],
-            'UploadToCPAN',
-            'Twitter',
+            qw/
+                PreviousVersion::Changelog
+                NextVersion::Semantic
+                UploadToCPAN
+                Twitter
+            /,
             [ 'InstallRelease' => { install_command => 'cpanm .' } ],
         );
     }
@@ -119,7 +122,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.7.0
+version 0.8.0
 
 =head1 DESCRIPTION
 
@@ -183,12 +186,13 @@ his distributions. It's roughly equivalent to
         tag_format = v%v
         branch     = releases
 
-    [Author::YANICK::NextSemanticVersion]
-
     [UploadToCPAN]
 
     [Git::Push]
         push_to = github
+
+    [PreviousVersion::Changelog]
+    [NextVersion::Semantic]
 
     [InstallRelease]
     install_command = cpanm .
