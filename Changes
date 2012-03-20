@@ -1,5 +1,10 @@
 Revision history for Dist-Zilla-PluginBundle-YANICK
 
+0.9.0 2012-03-19
+ [ENHANCEMENTS]
+ - add Covenant
+ - add SchwartzRatio
+
 0.8.0 2012-03-19
  [ENHANCEMENTS]
  - add NextVersion::Semantic

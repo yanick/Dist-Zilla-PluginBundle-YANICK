@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.8.0';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.9.0';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -31,6 +31,8 @@ use Dist::Zilla::Plugin::Signature;
 use Dist::Zilla::Plugin::Git;
 use Dist::Zilla::Plugin::CoalescePod;
 use Dist::Zilla::Plugin::Test::Compile;
+use Dist::Zilla::Plugin::Covenant;
+use Dist::Zilla::Plugin::SchwartzRatio;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -50,6 +52,7 @@ sub configure {
             Test::Compile
             CoalescePod
             InstallGuide
+            Covenant
         /,
         [ GithubMeta => { remote => $upstream, } ],
         qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
@@ -105,6 +108,8 @@ sub configure {
             [ 'InstallRelease' => { install_command => 'cpanm .' } ],
         );
     }
+    
+    $self->add_plugins( 'SchwartzRatio' );
 
     $self->config_slice( 'mb_class' );
 
@@ -122,7 +127,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.8.0
+version 0.9.0
 
 =head1 DESCRIPTION
 
@@ -136,6 +141,7 @@ his distributions. It's roughly equivalent to
     [ModuleBuild]
 
     [InstallGuide]
+    [Covenant]
 
     [GithubMeta]
     remote=github
@@ -198,6 +204,7 @@ his distributions. It's roughly equivalent to
     install_command = cpanm .
 
     [Twitter]
+    [SchwartzRatio]
 
 =head2 ARGUMENTS
 
