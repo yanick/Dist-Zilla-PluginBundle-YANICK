@@ -77,6 +77,7 @@ his distributions. It's roughly equivalent to
     install_command = cpanm .
 
     [Twitter]
+    [SchwartzRatio]
 
 =head2 ARGUMENTS
 
@@ -126,6 +127,7 @@ use Dist::Zilla::Plugin::Git;
 use Dist::Zilla::Plugin::CoalescePod;
 use Dist::Zilla::Plugin::Test::Compile;
 use Dist::Zilla::Plugin::Covenant;
+use Dist::Zilla::Plugin::SchwartzRatio;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -201,6 +203,8 @@ sub configure {
             [ 'InstallRelease' => { install_command => 'cpanm .' } ],
         );
     }
+    
+    $self->add_plugins( 'SchwartzRatio' );
 
     $self->config_slice( 'mb_class' );
 
