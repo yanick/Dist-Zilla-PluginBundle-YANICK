@@ -102,6 +102,10 @@ L<Dist::Zilla::Plugin::Twitter>.
 
 Passed to C<ModuleBuild> plugin.
 
+=head3 include_dotfiles
+
+For C<GatherDir>. Defaults to false.
+
 =cut
 
 use strict;
@@ -160,9 +164,11 @@ sub configure {
             } ],
         'MetaProvides::Package',
         qw/ MatchManifest
-          ManifestSkip
-          GatherDir
-          ExecDir
+          ManifestSkip /,
+        [ GatherDir => {
+                include_dotfiles => $arg->{include_dotfiles},
+              } ],
+        qw/ ExecDir
           PkgVersion /,
           [ Authority => { 
             ( authority => $arg->{authority} ) x !!$arg->{authority}  

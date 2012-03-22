@@ -1,6 +1,7 @@
 ^dist.ini
 ^MANIFEST.SKIP
-Dist-Zilla-PluginBundle-YANICK.*
+{{ $dist->name }}.*
 ^\.gitignore
 ^\.git
 ^\.build
+

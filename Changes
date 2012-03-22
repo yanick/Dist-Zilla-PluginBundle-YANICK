@@ -1,12 +1,16 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-
-0.9.0     2012-03-19
  [API CHANGES]
 
  [BUG FIXES]
 
+ [DOCUMENTATION]
+
+ [ENHANCEMENTS]
+ - brand new Mint!
+
+0.9.0 2012-03-19
  [ENHANCEMENTS]
  - add Covenant
  - add SchwartzRatio
