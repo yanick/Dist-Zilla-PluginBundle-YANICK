@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.9.0';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.10.0';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -65,9 +65,11 @@ sub configure {
             } ],
         'MetaProvides::Package',
         qw/ MatchManifest
-          ManifestSkip
-          GatherDir
-          ExecDir
+          ManifestSkip /,
+        [ GatherDir => {
+                include_dotfiles => $arg->{include_dotfiles},
+              } ],
+        qw/ ExecDir
           PkgVersion /,
           [ Authority => { 
             ( authority => $arg->{authority} ) x !!$arg->{authority}  
@@ -127,7 +129,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.9.0
+version 0.10.0
 
 =head1 DESCRIPTION
 
@@ -228,6 +230,10 @@ L<Dist::Zilla::Plugin::Twitter>.
 =head3 mb_class
 
 Passed to C<ModuleBuild> plugin.
+
+=head3 include_dotfiles
+
+For C<GatherDir>. Defaults to false.
 
 =head1 AUTHOR
 

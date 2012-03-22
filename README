@@ -3,7 +3,7 @@ NAME
     dists
 
 VERSION
-    version 0.9.0
+    version 0.10.0
 
 DESCRIPTION
     This is the plugin bundle that Yanick uses to release his distributions.
@@ -95,6 +95,9 @@ DESCRIPTION
 
    mb_class
     Passed to "ModuleBuild" plugin.
+
+   include_dotfiles
+    For "GatherDir". Defaults to false.
 
 AUTHOR
     Yanick Champoux <yanick@babyl.dyndns.org>

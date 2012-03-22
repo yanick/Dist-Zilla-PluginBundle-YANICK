@@ -4,7 +4,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 # VERSION
 
-version 0.9.0
+version 0.10.0
 
 # DESCRIPTION
 
@@ -105,6 +105,10 @@ instead of
 ### mb_class
 
 Passed to `ModuleBuild` plugin.
+
+### include_dotfiles
+
+For `GatherDir`. Defaults to false.
 
 # AUTHOR
 

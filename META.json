@@ -50,6 +50,7 @@
             "Dist::Zilla::Plugin::Twitter" : "0.013",
             "Dist::Zilla::Role::AfterRelease" : "0",
             "Dist::Zilla::Role::FileMunger" : "0",
+            "Dist::Zilla::Role::MintingProfile::ShareDir" : "0",
             "Dist::Zilla::Role::PluginBundle::Easy" : "0",
             "Dist::Zilla::Role::TextTemplate" : "0",
             "Dist::Zilla::Role::VersionProvider" : "0",
@@ -72,13 +73,17 @@
       }
    },
    "provides" : {
+      "Dist::Zilla::MintingProfile::Author::YANICK" : {
+         "file" : "lib/Dist/Zilla/MintingProfile/Author/YANICK.pm",
+         "version" : "v0.10.0"
+      },
       "Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion" : {
          "file" : "lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm",
-         "version" : "v0.9.0"
+         "version" : "v0.10.0"
       },
       "Dist::Zilla::PluginBundle::YANICK" : {
          "file" : "lib/Dist/Zilla/PluginBundle/YANICK.pm",
-         "version" : "v0.9.0"
+         "version" : "v0.10.0"
       }
    },
    "release_status" : "stable",
@@ -94,7 +99,7 @@
          "web" : "https://github.com/yanick/Dist-Zilla-PluginBundle-YANICK"
       }
    },
-   "version" : "0.9.0",
+   "version" : "0.10.0",
    "x_author_pledge" : {
       "version" : 1
    },

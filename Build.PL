@@ -23,7 +23,7 @@ my %module_build_args = (
     "Yanick Champoux <yanick\@babyl.dyndns.org>"
   ],
   "dist_name" => "Dist-Zilla-PluginBundle-YANICK",
-  "dist_version" => "0.9.0",
+  "dist_version" => "0.10.0",
   "license" => "perl",
   "module_name" => "Dist::Zilla::PluginBundle::YANICK",
   "recommends" => {},
@@ -53,6 +53,7 @@ my %module_build_args = (
     "Dist::Zilla::Plugin::Twitter" => "0.013",
     "Dist::Zilla::Role::AfterRelease" => 0,
     "Dist::Zilla::Role::FileMunger" => 0,
+    "Dist::Zilla::Role::MintingProfile::ShareDir" => 0,
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
     "Dist::Zilla::Role::TextTemplate" => 0,
     "Dist::Zilla::Role::VersionProvider" => 0,
@@ -62,7 +63,12 @@ my %module_build_args = (
     "strict" => 0,
     "warnings" => 0
   },
-  "script_files" => []
+  "script_files" => [],
+  "share_dir" => {
+    "module" => {
+      "Dist::Zilla::MintingProfile::Author::YANICK" => "share/profiles"
+    }
+  }
 );
 
 
