@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.10.0';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.11.0';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -26,7 +26,7 @@ use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::MetaProvides::Package;
 use Dist::Zilla::Plugin::InstallRelease;
 use Dist::Zilla::Plugin::InstallGuide;
-use Dist::Zilla::Plugin::Twitter 0.013;
+use Dist::Zilla::Plugin::Twitter 0.016;
 use Dist::Zilla::Plugin::Signature;
 use Dist::Zilla::Plugin::Git;
 use Dist::Zilla::Plugin::CoalescePod;
@@ -102,8 +102,6 @@ sub configure {
         $self->add_plugins(
             [ 'Git::Push' => { push_to    => $upstream } ],
             qw/
-                PreviousVersion::Changelog
-                NextVersion::Semantic
                 UploadToCPAN
                 Twitter
             /,
@@ -111,7 +109,12 @@ sub configure {
         );
     }
     
-    $self->add_plugins( 'SchwartzRatio' );
+    $self->add_plugins(qw/
+        PreviousVersion::Changelog
+        NextVersion::Semantic
+        SchwartzRatio 
+        ChangeStats::Git
+    /);
 
     $self->config_slice( 'mb_class' );
 
@@ -129,7 +132,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.10.0
+version 0.11.0
 
 =head1 DESCRIPTION
 
@@ -207,6 +210,9 @@ his distributions. It's roughly equivalent to
 
     [Twitter]
     [SchwartzRatio]
+
+    [ChangeStats::Git]
+    group=STATISTICS
 
 =head2 ARGUMENTS
 

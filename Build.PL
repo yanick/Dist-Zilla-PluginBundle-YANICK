@@ -23,7 +23,7 @@ my %module_build_args = (
     "Yanick Champoux <yanick\@babyl.dyndns.org>"
   ],
   "dist_name" => "Dist-Zilla-PluginBundle-YANICK",
-  "dist_version" => "0.10.0",
+  "dist_version" => "0.11.0",
   "license" => "perl",
   "module_name" => "Dist::Zilla::PluginBundle::YANICK",
   "recommends" => {},
@@ -50,7 +50,7 @@ my %module_build_args = (
     "Dist::Zilla::Plugin::SchwartzRatio" => 0,
     "Dist::Zilla::Plugin::Signature" => 0,
     "Dist::Zilla::Plugin::Test::Compile" => 0,
-    "Dist::Zilla::Plugin::Twitter" => "0.013",
+    "Dist::Zilla::Plugin::Twitter" => "0.016",
     "Dist::Zilla::Role::AfterRelease" => 0,
     "Dist::Zilla::Role::FileMunger" => 0,
     "Dist::Zilla::Role::MintingProfile::ShareDir" => 0,

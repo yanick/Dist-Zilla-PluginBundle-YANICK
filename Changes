@@ -1,5 +1,9 @@
 Revision history for Dist-Zilla-PluginBundle-YANICK
 
+0.11.0 2012-05-22
+ [ENHANCEMENTS]
+ - add ChangeStats::Git
+
 0.10.0 2012-03-21
  [ENHANCEMENTS]
  - brand new Mint!

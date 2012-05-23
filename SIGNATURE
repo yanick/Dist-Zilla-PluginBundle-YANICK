@@ -15,18 +15,18 @@ not run its Makefile.PL or Build.PL.
 Hash: SHA1
 
 SHA1 5c38beecc70e65067ac46aec9a027ce028d3be03 AUTHOR_PLEDGE
-SHA1 e7ced44d35375633aef82cb569446ee560ae7ed1 Build.PL
-SHA1 94332358956122552889e02b42c9f3c779c81be7 Changes
+SHA1 ce1326e04c7b1455bcaabb3ed702f2426dcf2c7b Build.PL
+SHA1 c19fd12d5b6a9d08506dbeff92dc3d74c88e2858 Changes
 SHA1 ae49997c3db8cad20a26a913bfe3eacbe33a67e1 INSTALL
 SHA1 ad92db9e4eb447c6fb8ea5018db635fd8a431512 LICENSE
 SHA1 f6ac84cb2d3a0548b3c8f6d419b1abc63d084892 MANIFEST
-SHA1 556dc303c412c377a64833f1c5b5ac15f351b915 META.json
-SHA1 ee5b96bc3f06a2c326046081f8b960d272a7400f META.yml
-SHA1 d3a3515dfe2a43a606d0bc7682f72fc5eb0f89e1 README
-SHA1 98a3f9d1e6d1e4b6e7434b0a8b86f21dfbcd529c README.mkdn
-SHA1 d6d892ce001127ee4274942f9fb703f2c12a131e lib/Dist/Zilla/MintingProfile/Author/YANICK.pm
-SHA1 dc453ad999862b8a0877ee95e1e16347e9a3723f lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm
-SHA1 4eb5136be425667d07392246ae1f38e717bdf805 lib/Dist/Zilla/PluginBundle/YANICK.pm
+SHA1 d6b13dba43b71318c1c0a8ef99e1ec77d267f2ec META.json
+SHA1 65e6832c81a7fb39eeb382f0703915b2bed49bc6 META.yml
+SHA1 099afcab8b762ec552458dc497ce4762f2cb8b0e README
+SHA1 ce465ab741180a2309bce5a5bb17c8756a434ca0 README.mkdn
+SHA1 e88420d1bec5f35106fc4bcc3d76f5ade227d9e6 lib/Dist/Zilla/MintingProfile/Author/YANICK.pm
+SHA1 d52e2306190d367097cacd87f990446e2d5d05a2 lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm
+SHA1 7360e4e8b2acfe410b80b8c9c2d0e651e57fffc5 lib/Dist/Zilla/PluginBundle/YANICK.pm
 SHA1 0b51825e173f2e8c9ffee75e0d734c9705b701e2 share/profiles/default/Module.pm
 SHA1 ef4562036fe1014c7929c0d7a887d7236bd8a088 share/profiles/default/profile.ini
 SHA1 a70ae04ccaab747a11514bc7878f224993314fac share/profiles/default/skel/.gitignore
@@ -38,7 +38,7 @@ SHA1 473906254ecd96009795d4b7fbc82fac48c03ecd t/000-report-versions.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.11 (GNU/Linux)
 
-iEYEARECAAYFAk9qiEIACgkQ34Hwf+GwC4xmtQCfTmKVIC2scP4vJ61hlzxWRwgd
-mRYAn0Bf3htyLmgCBgNPAWmMbMnnj+Sc
-=AUf0
+iEYEARECAAYFAk+8TCwACgkQ34Hwf+GwC4zUbACeNU2LGESHXhmg8u1BuIFnq74+
+di8Aniu30jTbH/q4QLUPO5IvKNNCIDhN
+=7DGk
 -----END PGP SIGNATURE-----
