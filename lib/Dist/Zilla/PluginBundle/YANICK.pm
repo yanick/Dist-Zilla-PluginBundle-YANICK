@@ -79,6 +79,9 @@ his distributions. It's roughly equivalent to
     [Twitter]
     [SchwartzRatio]
 
+    [ChangeStats::Git]
+    group=STATISTICS
+
 =head2 ARGUMENTS
 
 =head3 autoprereqs_skip
@@ -125,7 +128,7 @@ use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::MetaProvides::Package;
 use Dist::Zilla::Plugin::InstallRelease;
 use Dist::Zilla::Plugin::InstallGuide;
-use Dist::Zilla::Plugin::Twitter 0.013;
+use Dist::Zilla::Plugin::Twitter 0.016;
 use Dist::Zilla::Plugin::Signature;
 use Dist::Zilla::Plugin::Git;
 use Dist::Zilla::Plugin::CoalescePod;
@@ -201,8 +204,6 @@ sub configure {
         $self->add_plugins(
             [ 'Git::Push' => { push_to    => $upstream } ],
             qw/
-                PreviousVersion::Changelog
-                NextVersion::Semantic
                 UploadToCPAN
                 Twitter
             /,
@@ -210,7 +211,12 @@ sub configure {
         );
     }
     
-    $self->add_plugins( 'SchwartzRatio' );
+    $self->add_plugins(qw/
+        PreviousVersion::Changelog
+        NextVersion::Semantic
+        SchwartzRatio 
+        ChangeStats::Git
+    /);
 
     $self->config_slice( 'mb_class' );
 
