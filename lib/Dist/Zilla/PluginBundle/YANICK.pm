@@ -135,6 +135,8 @@ use Dist::Zilla::Plugin::CoalescePod;
 use Dist::Zilla::Plugin::Test::Compile;
 use Dist::Zilla::Plugin::Covenant;
 use Dist::Zilla::Plugin::SchwartzRatio;
+use Dist::Zilla::Plugin::PreviousVersion::Changelog;
+use Dist::Zilla::Plugin::ChangeStats::Git;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
