@@ -214,11 +214,17 @@ sub configure {
     }
     
     $self->add_plugins(qw/
-        PreviousVersion::Changelog
-        NextVersion::Semantic
+        PreviousVersion::Changelog /,
+        [ 'NextVersion::Semantic' => {
+            major => 'API CHANGES',
+            minor => 'NEW FEATURES, ENHANCEMENTS',
+            revision => 'BUG FIXES, DOCUMENTATION, STATISTICS',
+        } ],
+    qw/
         SchwartzRatio 
-        ChangeStats::Git
-    /);
+    /,
+        [ 'ChangeStats::Git' => { group => 'STATISTICS' } ]
+    );
 
     $self->config_slice( 'mb_class' );
 
