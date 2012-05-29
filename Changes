@@ -4,13 +4,7 @@ Revision history for {{$dist->name}}
  [BUG FIXES]
  - add explicit depencencies
 
-0.11.0    2012-05-22
- [API CHANGES]
-
- [BUG FIXES]
-
- [DOCUMENTATION]
-
+0.11.0 2012-05-22
  [ENHANCEMENTS]
  - add ChangeStats::Git
 
