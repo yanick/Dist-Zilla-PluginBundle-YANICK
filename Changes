@@ -1,8 +1,15 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+ [API CHANGES]
 
-0.11.1    2012-05-28
+ [BUG FIXES]
+
+ [DOCUMENTATION]
+
+ [ENHANCEMENTS]
+
+0.11.1 2012-05-28
  [BUG FIXES]
  - add explicit depencencies
 

@@ -82,6 +82,9 @@ his distributions. It's roughly equivalent to
     [ChangeStats::Git]
     group=STATISTICS
 
+    [RunExtraTests]
+    [Test::UnusedVars]
+
 =head2 ARGUMENTS
 
 =head3 autoprereqs_skip
@@ -127,7 +130,7 @@ use Dist::Zilla::Plugin::ReadmeFromPod;
 use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::MetaProvides::Package;
 use Dist::Zilla::Plugin::InstallRelease;
-use Dist::Zilla::Plugin::InstallGuide;
+use Dist::Zilla::Plugin::InstallGuide 1.200000;
 use Dist::Zilla::Plugin::Twitter 0.016;
 use Dist::Zilla::Plugin::Signature;
 use Dist::Zilla::Plugin::Git;
@@ -137,6 +140,8 @@ use Dist::Zilla::Plugin::Covenant;
 use Dist::Zilla::Plugin::SchwartzRatio;
 use Dist::Zilla::Plugin::PreviousVersion::Changelog;
 use Dist::Zilla::Plugin::ChangeStats::Git;
+use Dist::Zilla::Plugin::Test::UnusedVars;
+use Dist::Zilla::Plugin::RunExtraTests;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -223,7 +228,9 @@ sub configure {
     qw/
         SchwartzRatio 
     /,
-        [ 'ChangeStats::Git' => { group => 'STATISTICS' } ]
+        [ 'ChangeStats::Git' => { group => 'STATISTICS' } ],
+        'Test::UnusedVars',
+        'RunExtraTests',
     );
 
     $self->config_slice( 'mb_class' );
