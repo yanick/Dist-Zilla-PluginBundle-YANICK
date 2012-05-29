@@ -22,16 +22,17 @@ name: Dist-Zilla-PluginBundle-YANICK
 provides:
   Dist::Zilla::MintingProfile::Author::YANICK:
     file: lib/Dist/Zilla/MintingProfile/Author/YANICK.pm
-    version: v0.11.0
+    version: v0.11.1
   Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion:
     file: lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm
-    version: v0.11.0
+    version: v0.11.1
   Dist::Zilla::PluginBundle::YANICK:
     file: lib/Dist/Zilla/PluginBundle/YANICK.pm
-    version: v0.11.0
+    version: v0.11.1
 requires:
   CPAN::Changes: 0.17
   Dist::Zilla::Plugin::Bugtracker: 0
+  Dist::Zilla::Plugin::ChangeStats::Git: 0
   Dist::Zilla::Plugin::CoalescePod: 0
   Dist::Zilla::Plugin::Covenant: 0
   Dist::Zilla::Plugin::Git: 0
@@ -46,6 +47,7 @@ requires:
   Dist::Zilla::Plugin::ModuleBuild: 0
   Dist::Zilla::Plugin::NextRelease: 0
   Dist::Zilla::Plugin::PodWeaver: 0
+  Dist::Zilla::Plugin::PreviousVersion::Changelog: 0
   Dist::Zilla::Plugin::ReadmeFromPod: 0
   Dist::Zilla::Plugin::ReadmeMarkdownFromPod: 0
   Dist::Zilla::Plugin::SchwartzRatio: 0
@@ -67,7 +69,7 @@ resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-PluginBundle-YANICK
   homepage: http://search.cpan.org/dist/Dist-Zilla-PluginBundle-YANICK/
   repository: https://github.com/yanick/Dist-Zilla-PluginBundle-YANICK.git
-version: 0.11.0
+version: 0.11.1
 x_author_pledge:
   version: 1
 x_authority: cpan:YANICK

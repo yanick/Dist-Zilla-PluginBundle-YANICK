@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.11.0';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.11.1';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -33,6 +33,8 @@ use Dist::Zilla::Plugin::CoalescePod;
 use Dist::Zilla::Plugin::Test::Compile;
 use Dist::Zilla::Plugin::Covenant;
 use Dist::Zilla::Plugin::SchwartzRatio;
+use Dist::Zilla::Plugin::PreviousVersion::Changelog;
+use Dist::Zilla::Plugin::ChangeStats::Git;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -110,11 +112,17 @@ sub configure {
     }
     
     $self->add_plugins(qw/
-        PreviousVersion::Changelog
-        NextVersion::Semantic
+        PreviousVersion::Changelog /,
+        [ 'NextVersion::Semantic' => {
+            major => 'API CHANGES',
+            minor => 'NEW FEATURES, ENHANCEMENTS',
+            revision => 'BUG FIXES, DOCUMENTATION, STATISTICS',
+        } ],
+    qw/
         SchwartzRatio 
-        ChangeStats::Git
-    /);
+    /,
+        [ 'ChangeStats::Git' => { group => 'STATISTICS' } ]
+    );
 
     $self->config_slice( 'mb_class' );
 
@@ -132,7 +140,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.11.0
+version 0.11.1
 
 =head1 DESCRIPTION
 

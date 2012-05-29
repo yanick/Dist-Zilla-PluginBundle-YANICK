@@ -3,7 +3,7 @@ NAME
     dists
 
 VERSION
-    version 0.11.0
+    version 0.11.1
 
 DESCRIPTION
     This is the plugin bundle that Yanick uses to release his distributions.

@@ -23,7 +23,7 @@ my %module_build_args = (
     "Yanick Champoux <yanick\@babyl.dyndns.org>"
   ],
   "dist_name" => "Dist-Zilla-PluginBundle-YANICK",
-  "dist_version" => "0.11.0",
+  "dist_version" => "0.11.1",
   "license" => "perl",
   "module_name" => "Dist::Zilla::PluginBundle::YANICK",
   "recommends" => {},
@@ -31,6 +31,7 @@ my %module_build_args = (
   "requires" => {
     "CPAN::Changes" => "0.17",
     "Dist::Zilla::Plugin::Bugtracker" => 0,
+    "Dist::Zilla::Plugin::ChangeStats::Git" => 0,
     "Dist::Zilla::Plugin::CoalescePod" => 0,
     "Dist::Zilla::Plugin::Covenant" => 0,
     "Dist::Zilla::Plugin::Git" => 0,
@@ -45,6 +46,7 @@ my %module_build_args = (
     "Dist::Zilla::Plugin::ModuleBuild" => 0,
     "Dist::Zilla::Plugin::NextRelease" => 0,
     "Dist::Zilla::Plugin::PodWeaver" => 0,
+    "Dist::Zilla::Plugin::PreviousVersion::Changelog" => 0,
     "Dist::Zilla::Plugin::ReadmeFromPod" => 0,
     "Dist::Zilla::Plugin::ReadmeMarkdownFromPod" => 0,
     "Dist::Zilla::Plugin::SchwartzRatio" => 0,
