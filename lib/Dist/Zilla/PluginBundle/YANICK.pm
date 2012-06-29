@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.11.1';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.12.0';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -25,7 +25,7 @@ use Dist::Zilla::Plugin::ReadmeFromPod;
 use Dist::Zilla::Plugin::NextRelease;
 use Dist::Zilla::Plugin::MetaProvides::Package;
 use Dist::Zilla::Plugin::InstallRelease;
-use Dist::Zilla::Plugin::InstallGuide;
+use Dist::Zilla::Plugin::InstallGuide 1.200000;
 use Dist::Zilla::Plugin::Twitter 0.016;
 use Dist::Zilla::Plugin::Signature;
 use Dist::Zilla::Plugin::Git;
@@ -35,6 +35,9 @@ use Dist::Zilla::Plugin::Covenant;
 use Dist::Zilla::Plugin::SchwartzRatio;
 use Dist::Zilla::Plugin::PreviousVersion::Changelog;
 use Dist::Zilla::Plugin::ChangeStats::Git;
+use Dist::Zilla::Plugin::Test::UnusedVars;
+use Dist::Zilla::Plugin::RunExtraTests;
+use Dist::Zilla::Plugin::HelpWanted;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -121,8 +124,18 @@ sub configure {
     qw/
         SchwartzRatio 
     /,
-        [ 'ChangeStats::Git' => { group => 'STATISTICS' } ]
+        [ 'ChangeStats::Git' => { group => 'STATISTICS' } ],
+        'Test::UnusedVars',
+        'RunExtraTests',
     );
+
+    if ( my $help_wanted = $arg->{help_wanted} ) {
+        $self->add_plugins([
+            'HelpWanted' => {
+                map { $_ => 1 } split ' ', $help_wanted
+            },
+        ]);
+    }
 
     $self->config_slice( 'mb_class' );
 
@@ -140,7 +153,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.11.1
+version 0.12.0
 
 =head1 DESCRIPTION
 
@@ -168,6 +181,7 @@ his distributions. It's roughly equivalent to
     [PodWeaver]
 
     [License]
+    [HelpWanted]
 
     [ReadmeFromPod]
     [ReadmeMarkdownFromPod]
@@ -221,6 +235,9 @@ his distributions. It's roughly equivalent to
 
     [ChangeStats::Git]
     group=STATISTICS
+
+    [RunExtraTests]
+    [Test::UnusedVars]
 
 =head2 ARGUMENTS
 

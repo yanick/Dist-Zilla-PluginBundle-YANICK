@@ -3,7 +3,7 @@ NAME
     dists
 
 VERSION
-    version 0.11.1
+    version 0.12.0
 
 DESCRIPTION
     This is the plugin bundle that Yanick uses to release his distributions.
@@ -30,6 +30,7 @@ DESCRIPTION
         [PodWeaver]
 
         [License]
+        [HelpWanted]
 
         [ReadmeFromPod]
         [ReadmeMarkdownFromPod]
@@ -83,6 +84,9 @@ DESCRIPTION
 
         [ChangeStats::Git]
         group=STATISTICS
+
+        [RunExtraTests]
+        [Test::UnusedVars]
 
   ARGUMENTS
    autoprereqs_skip

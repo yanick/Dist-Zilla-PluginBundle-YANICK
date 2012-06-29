@@ -1,8 +1,13 @@
 Revision history for Dist-Zilla-PluginBundle-YANICK
 
-0.11.1 2012-05-28
- - code churn: 1 files changed, 2 insertions(+), 0 deletions(-)
+0.12.0 2012-06-28
+ [ENHANCEMENTS]
+ - add HelpWanted
 
+ [STATISTICS]
+ - code churn: 3 files changed, 30 insertions(+), 2 deletions(-)
+
+0.11.1 2012-05-28
  [BUG FIXES]
  - add explicit depencencies
 
