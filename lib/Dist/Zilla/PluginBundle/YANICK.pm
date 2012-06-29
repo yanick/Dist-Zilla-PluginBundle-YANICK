@@ -28,6 +28,7 @@ his distributions. It's roughly equivalent to
     [PodWeaver]
 
     [License]
+    [HelpWanted]
 
     [ReadmeFromPod]
     [ReadmeMarkdownFromPod]
@@ -142,6 +143,7 @@ use Dist::Zilla::Plugin::PreviousVersion::Changelog;
 use Dist::Zilla::Plugin::ChangeStats::Git;
 use Dist::Zilla::Plugin::Test::UnusedVars;
 use Dist::Zilla::Plugin::RunExtraTests;
+use Dist::Zilla::Plugin::HelpWanted;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -232,6 +234,14 @@ sub configure {
         'Test::UnusedVars',
         'RunExtraTests',
     );
+
+    if ( my $help_wanted = $arg->{help_wanted} ) {
+        $self->add_plugins([
+            'HelpWanted' => {
+                map { $_ => 1 } split ' ', $help_wanted
+            },
+        ]);
+    }
 
     $self->config_slice( 'mb_class' );
 
