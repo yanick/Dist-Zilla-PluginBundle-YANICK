@@ -33,6 +33,9 @@ his distributions. It's roughly equivalent to
     [ReadmeFromPod]
     [ReadmeMarkdownFromPod]
 
+    [CoderwallEndorse]
+    users = yanick:Yanick
+
     [NextRelease]
     time_zone = America/Montreal
 
@@ -144,6 +147,7 @@ use Dist::Zilla::Plugin::ChangeStats::Git;
 use Dist::Zilla::Plugin::Test::UnusedVars;
 use Dist::Zilla::Plugin::RunExtraTests;
 use Dist::Zilla::Plugin::HelpWanted;
+use Dist::Zilla::Plugin::CoderwallEndorse;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -170,6 +174,7 @@ sub configure {
           ReadmeFromPod 
           ReadmeMarkdownFromPod
           /,
+        [ CoderwallEndorse => { users => 'yanick:Yanick' } ],
         [ NextRelease => { 
                 time_zone => 'America/Montreal',
                 format    => '%-9v %{yyyy-MM-dd}d',
