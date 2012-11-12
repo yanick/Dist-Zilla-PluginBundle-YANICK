@@ -1,18 +1,11 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
- [API CHANGES]
-
- [BUG FIXES]
-
- [DOCUMENTATION]
-
+0.13.0 2012-11-11
  [ENHANCEMENTS]
  - add CoderwallEndorse
 
- [NEW FEATURES]
-
  [STATISTICS]
+ - code churn: 3 files changed, 17 insertions(+)
 
 0.12.0 2012-06-28
  [ENHANCEMENTS]
