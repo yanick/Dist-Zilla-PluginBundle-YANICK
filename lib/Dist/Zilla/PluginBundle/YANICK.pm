@@ -1,122 +1,13 @@
 package Dist::Zilla::PluginBundle::YANICK;
+BEGIN {
+  $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:YANICK';
+}
+{
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.14.0';
+}
 
 # ABSTRACT: Be like Yanick when you build your dists
 
-=head1 DESCRIPTION
-
-This is the plugin bundle that Yanick uses to release
-his distributions. It's roughly equivalent to
-
-    [Test::Compile]
-
-    [CoalescePod]
-
-    [ModuleBuild]
-
-    [InstallGuide]
-    [Covenant]
-
-    [GithubMeta]
-    remote=github
-
-    [Homepage]
-    [Bugtracker]
-
-    [MetaYAML]
-    [MetaJSON]
-
-    [PodWeaver]
-
-    [License]
-    [HelpWanted]
-
-    [ReadmeFromPod]
-    [ReadmeMarkdownFromPod]
-
-    [CoderwallEndorse]
-    users = yanick:Yanick
-
-    [NextRelease]
-    time_zone = America/Montreal
-
-    [MetaProvides::Package]
-
-    [MatchManifest]
-    [ManifestSkip]
-
-    [GatherDir]
-    [ExecDir]
-
-    [PkgVersion]
-    [Authority]
-
-    [ReportVersions::Tiny]
-    [Signature]
-
-    [AutoPrereqs]
-
-    [CheckChangesHasContent]
-
-    [TestRelease]
-
-    [ConfirmRelease]
-
-    [Git::Check]
-    [Git::Commit]
-    [Git::CommitBuild]
-        release_branch = releases
-    [Git::Tag]
-        tag_format = v%v
-        branch     = releases
-
-    [UploadToCPAN]
-
-    [Git::Push]
-        push_to = github
-
-    [PreviousVersion::Changelog]
-    [NextVersion::Semantic]
-
-    [InstallRelease]
-    install_command = cpanm .
-
-    [Twitter]
-    [SchwartzRatio]
-
-    [ChangeStats::Git]
-    group=STATISTICS
-
-    [RunExtraTests]
-    [Test::UnusedVars]
-
-=head2 ARGUMENTS
-
-=head3 autoprereqs_skip
-
-Passed as C<skip> to AutoPrereqs.
-
-=head3 authority
-
-Passed to L<Dist::Zilla::Plugin::Authority>.
-
-=head3 fake_release
-
-If given a true value, uses L<Dist::Zilla::Plugin::FakeRelease>
-instead of 
-L<Dist::Zilla::Plugin::Git::Push>,
-L<Dist::Zilla::Plugin::UploadToCPAN>,
-L<Dist::Zilla::Plugin::InstallRelease> and
-L<Dist::Zilla::Plugin::Twitter>.
-
-=head3 mb_class
-
-Passed to C<ModuleBuild> plugin.
-
-=head3 include_dotfiles
-
-For C<GatherDir>. Defaults to false.
-
-=cut
 
 use strict;
 
@@ -254,3 +145,142 @@ sub configure {
 }
 
 1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
+
+=head1 VERSION
+
+version 0.14.0
+
+=head1 DESCRIPTION
+
+This is the plugin bundle that Yanick uses to release
+his distributions. It's roughly equivalent to
+
+    [Test::Compile]
+
+    [CoalescePod]
+
+    [ModuleBuild]
+
+    [InstallGuide]
+    [Covenant]
+
+    [GithubMeta]
+    remote=github
+
+    [Homepage]
+    [Bugtracker]
+
+    [MetaYAML]
+    [MetaJSON]
+
+    [PodWeaver]
+
+    [License]
+    [HelpWanted]
+
+    [ReadmeFromPod]
+    [ReadmeMarkdownFromPod]
+
+    [CoderwallEndorse]
+    users = yanick:Yanick
+
+    [NextRelease]
+    time_zone = America/Montreal
+
+    [MetaProvides::Package]
+
+    [MatchManifest]
+    [ManifestSkip]
+
+    [GatherDir]
+    [ExecDir]
+
+    [PkgVersion]
+    [Authority]
+
+    [ReportVersions::Tiny]
+    [Signature]
+
+    [AutoPrereqs]
+
+    [CheckChangesHasContent]
+
+    [TestRelease]
+
+    [ConfirmRelease]
+
+    [Git::Check]
+    [Git::Commit]
+    [Git::CommitBuild]
+        release_branch = releases
+    [Git::Tag]
+        tag_format = v%v
+        branch     = releases
+
+    [UploadToCPAN]
+
+    [Git::Push]
+        push_to = github
+
+    [PreviousVersion::Changelog]
+    [NextVersion::Semantic]
+
+    [InstallRelease]
+    install_command = cpanm .
+
+    [Twitter]
+    [SchwartzRatio]
+
+    [ChangeStats::Git]
+    group=STATISTICS
+
+    [RunExtraTests]
+    [Test::UnusedVars]
+
+=head2 ARGUMENTS
+
+=head3 autoprereqs_skip
+
+Passed as C<skip> to AutoPrereqs.
+
+=head3 authority
+
+Passed to L<Dist::Zilla::Plugin::Authority>.
+
+=head3 fake_release
+
+If given a true value, uses L<Dist::Zilla::Plugin::FakeRelease>
+instead of 
+L<Dist::Zilla::Plugin::Git::Push>,
+L<Dist::Zilla::Plugin::UploadToCPAN>,
+L<Dist::Zilla::Plugin::InstallRelease> and
+L<Dist::Zilla::Plugin::Twitter>.
+
+=head3 mb_class
+
+Passed to C<ModuleBuild> plugin.
+
+=head3 include_dotfiles
+
+For C<GatherDir>. Defaults to false.
+
+=head1 AUTHOR
+
+Yanick Champoux <yanick@babyl.dyndns.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Yanick Champoux.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

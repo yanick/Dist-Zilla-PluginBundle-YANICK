@@ -1,18 +1,11 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
- [API CHANGES]
-
- [BUG FIXES]
-
- [DOCUMENTATION]
-
+0.14.0 2012-12-12
  [ENHANCEMENTS]
  - use ReportVersions::Tiny
 
- [NEW FEATURES]
-
  [STATISTICS]
+ - code churn: 3 files changed, 13 insertions(+), 4 deletions(-)
 
 0.13.0 2012-11-11
  [ENHANCEMENTS]
@@ -27,6 +20,7 @@ Revision history for {{$dist->name}}
 
  [STATISTICS]
  - code churn: 3 files changed, 30 insertions(+), 2 deletions(-)
+
 0.11.1 2012-05-28
  [BUG FIXES]
  - add explicit depencencies
