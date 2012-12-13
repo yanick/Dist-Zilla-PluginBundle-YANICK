@@ -50,7 +50,7 @@ his distributions. It's roughly equivalent to
     [PkgVersion]
     [Authority]
 
-    [ReportVersions]
+    [ReportVersions::Tiny]
     [Signature]
 
     [AutoPrereqs]
@@ -190,7 +190,7 @@ sub configure {
           [ Authority => { 
             ( authority => $arg->{authority} ) x !!$arg->{authority}  
           } ],
-          qw/ ReportVersions
+          qw/ ReportVersions::Tiny
           Signature /,
           [ AutoPrereqs => { 
                   ( skip => $arg->{autoprereqs_skip} ) 
