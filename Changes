@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.14.0    2012-12-12
  [API CHANGES]
 
  [BUG FIXES]
