@@ -1,8 +1,6 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-
-0.14.0    2012-12-12
  [API CHANGES]
 
  [BUG FIXES]
@@ -10,11 +8,15 @@ Revision history for {{$dist->name}}
  [DOCUMENTATION]
 
  [ENHANCEMENTS]
- - use ReportVersions::Tiny
+ - Use DZ::P::Twitter version 0.019 (now with twitter cards!)
 
  [NEW FEATURES]
 
  [STATISTICS]
+
+0.14.0 2012-12-12
+ [ENHANCEMENTS]
+ - use ReportVersions::Tiny
 
 0.13.0 2012-11-11
  [ENHANCEMENTS]
@@ -29,6 +31,7 @@ Revision history for {{$dist->name}}
 
  [STATISTICS]
  - code churn: 3 files changed, 30 insertions(+), 2 deletions(-)
+
 0.11.1 2012-05-28
  [BUG FIXES]
  - add explicit depencencies
