@@ -1,18 +1,11 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
- [API CHANGES]
-
- [BUG FIXES]
-
- [DOCUMENTATION]
-
+0.15.0 2013-02-02
  [ENHANCEMENTS]
  - Use DZ::P::Twitter version 0.019 (now with twitter cards!)
 
- [NEW FEATURES]
-
  [STATISTICS]
+ - code churn: 2 files changed, 14 insertions(+), 3 deletions(-)
 
 0.14.0 2012-12-12
  [ENHANCEMENTS]

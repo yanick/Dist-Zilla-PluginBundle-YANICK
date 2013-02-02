@@ -1,0 +1,45 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.68.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 5c38beecc70e65067ac46aec9a027ce028d3be03 AUTHOR_PLEDGE
+SHA1 422903da26d3694cb07e9f734ed2487da4285e35 Build.PL
+SHA1 2039a8a6d376202ac7be38875e2ea8fe35604233 Changes
+SHA1 ae49997c3db8cad20a26a913bfe3eacbe33a67e1 INSTALL
+SHA1 96a4607ca40d1b9b1add2be7af82b58850074258 LICENSE
+SHA1 622eff54baa45867c5e64522fdb958680fc61bd6 MANIFEST
+SHA1 15860481e5e2d0ab204f3023bf1d8313e5957bd1 META.json
+SHA1 3a1718d8bd4ae0a6c948ce96f22deb01e5343729 META.yml
+SHA1 48cd18b8c4b3ca58b05bf12ace660892afd2230b README
+SHA1 c860678be551d29c6261fe05e978c1c1ff8c2877 README.mkdn
+SHA1 c51d7b67277a1f2fc2077232e7e492435fc795f6 lib/Dist/Zilla/MintingProfile/Author/YANICK.pm
+SHA1 0547a88c094f2cc3e9a26824b7862359b379f223 lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm
+SHA1 e07517e9fe8d5b6a59cce2f2673a8f14851e4078 lib/Dist/Zilla/PluginBundle/YANICK.pm
+SHA1 0b51825e173f2e8c9ffee75e0d734c9705b701e2 share/profiles/default/Module.pm
+SHA1 ef4562036fe1014c7929c0d7a887d7236bd8a088 share/profiles/default/profile.ini
+SHA1 a70ae04ccaab747a11514bc7878f224993314fac share/profiles/default/skel/.gitignore
+SHA1 bf443072d48f2cafe3428b3936b108c95bff1bc6 share/profiles/default/skel/Changes
+SHA1 c8f95def5b8c0cc669a967ac2b0b89998d69a1df share/profiles/default/skel/MANIFEST.SKIP
+SHA1 e423a7053031e1df727b6132f68e2aa15ee08a41 share/profiles/default/skel/dist.ini
+SHA1 3cbe905b92fbc69d59a06031d5ce6c837b352aa2 t/00-compile.t
+SHA1 b8f3a54314ad8e819292da0a36187abe9e717e99 t/000-report-versions-tiny.t
+SHA1 ec3f84bfd7a9ce3246e7592f4134100c6b5ce02b xt/release/unused-vars.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iEYEARECAAYFAlENQNIACgkQ34Hwf+GwC4w16ACdG3Kg/4nElUsrvXgM3TthU2GQ
+VhgAoOvzNEWxjwR6MN4tN9IjTTMKZ9FJ
+=zke3
+-----END PGP SIGNATURE-----

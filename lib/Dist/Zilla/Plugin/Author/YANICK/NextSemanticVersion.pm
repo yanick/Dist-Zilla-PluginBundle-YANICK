@@ -1,4 +1,10 @@
 package Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion;
+BEGIN {
+  $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::AUTHORITY = 'cpan:YANICK';
+}
+{
+  $Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion::VERSION = '0.15.0';
+}
 # ABSTRACT: update the next version, semantic-wise
 
 use strict;
@@ -160,3 +166,27 @@ __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
 
+__END__
+
+=pod
+
+=head1 NAME
+
+Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion - update the next version, semantic-wise
+
+=head1 VERSION
+
+version 0.15.0
+
+=head1 AUTHOR
+
+Yanick Champoux <yanick@babyl.dyndns.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Yanick Champoux.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
