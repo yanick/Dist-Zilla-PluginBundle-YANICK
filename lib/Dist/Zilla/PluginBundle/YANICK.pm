@@ -7,6 +7,9 @@ package Dist::Zilla::PluginBundle::YANICK;
 This is the plugin bundle that Yanick uses to release
 his distributions. It's roughly equivalent to
 
+    [ContributorsFromGit]
+    [ContributorsFile]
+
     [Test::Compile]
 
     [CoalescePod]
@@ -122,6 +125,8 @@ use strict;
 
 use Moose;
 
+use Dist::Zilla::Plugin::ContributorsFile;
+use Dist::Zilla::Plugin::ContributorsFromGit;
 use Dist::Zilla::Plugin::ModuleBuild;
 use Dist::Zilla::Plugin::GithubMeta;
 use Dist::Zilla::Plugin::Homepage;
@@ -164,6 +169,8 @@ sub configure {
 
     $self->add_plugins(
         qw/ 
+            ContributorsFromGit
+            ContributorsFile
             Test::Compile
             CoalescePod
             InstallGuide
