@@ -1,18 +1,11 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
- [API CHANGES]
-
- [BUG FIXES]
-
- [DOCUMENTATION]
-
+0.16.0 2013-03-18
  [ENHANCEMENTS]
  - Add DZP::ContributorsFromGit and DZP::ContributorsFile
 
- [NEW FEATURES]
-
  [STATISTICS]
+ - code churn: 5 files changed, 18 insertions(+), 4 deletions(-)
 
 0.15.0 2013-02-02
  [ENHANCEMENTS]
