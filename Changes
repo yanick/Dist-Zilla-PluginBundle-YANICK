@@ -4,6 +4,8 @@ Revision history for {{$dist->name}}
  [API CHANGES]
 
  [BUG FIXES]
+ - Push version dependencies out of the main module to allow 
+    for bootstrapping.
 
  [DOCUMENTATION]
 
