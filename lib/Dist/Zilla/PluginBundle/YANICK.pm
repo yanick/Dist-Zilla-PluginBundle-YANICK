@@ -113,6 +113,8 @@ L<Dist::Zilla::Plugin::UploadToCPAN>,
 L<Dist::Zilla::Plugin::InstallRelease> and
 L<Dist::Zilla::Plugin::Twitter>.
 
+Can also be triggered via the I<FAKE> environment variable.
+
 =head3 mb_class
 
 Passed to C<ModuleBuild> plugin.
@@ -228,7 +230,7 @@ sub configure {
         'Git::Commit',
     );
 
-    if ( $arg->{fake_release} ) {
+    if ( $ENV{FAKE} or $arg->{fake_release} ) {
         $self->add_plugins( 'FakeRelease' );
     }
     else {
