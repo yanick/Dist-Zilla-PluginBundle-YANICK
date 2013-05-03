@@ -11,8 +11,6 @@ Revision history for {{$dist->name}}
 
  [NEW FEATURES]
 
- [STATISTICS]
- - code churn: 2 files changed, 32 insertions(+), 19 deletions(-)
 
 0.17.0 2013-05-02
  [ENHANCEMENTS]
@@ -20,6 +18,9 @@ Revision history for {{$dist->name}}
    release.
  - Up NextVersion::Semantic dependency to v0.1.2
  - Up ChangeStats::Git dependency
+
+ [STATISTICS]
+ - code churn: 2 files changed, 32 insertions(+), 19 deletions(-)
 
 0.16.0 2013-03-18
  [ENHANCEMENTS]
