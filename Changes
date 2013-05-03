@@ -1,8 +1,6 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-
-0.16.0    2013-03-18
  [API CHANGES]
 
  [BUG FIXES]
@@ -10,11 +8,15 @@ Revision history for {{$dist->name}}
  [DOCUMENTATION]
 
  [ENHANCEMENTS]
- - Add DZP::ContributorsFromGit and DZP::ContributorsFile
+ - Up NextVersion::Semantic dependency to v0.1.2
 
  [NEW FEATURES]
 
  [STATISTICS]
+
+0.16.0 2013-03-18
+ [ENHANCEMENTS]
+ - Add DZP::ContributorsFromGit and DZP::ContributorsFile
 
 0.15.0 2013-02-02
  [ENHANCEMENTS]

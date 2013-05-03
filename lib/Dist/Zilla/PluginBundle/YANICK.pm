@@ -153,6 +153,7 @@ use Dist::Zilla::Plugin::Test::UnusedVars;
 use Dist::Zilla::Plugin::RunExtraTests;
 use Dist::Zilla::Plugin::HelpWanted;
 use Dist::Zilla::Plugin::CoderwallEndorse;
+use Dist::Zilla::Plugin::NextVersion::Semantic 0.1.2;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
