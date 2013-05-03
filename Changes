@@ -1,19 +1,15 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
- [API CHANGES]
-
+0.18.0 2013-05-02
  [BUG FIXES]
- - Push version dependencies out of the main module to allow 
-    for bootstrapping.
-
- [DOCUMENTATION]
+ - Push version dependencies out of the main module to allow  for
+   bootstrapping.
 
  [ENHANCEMENTS]
  - Bump D::Z::P::ChangeStats::Git to v0.2.1.
 
- [NEW FEATURES]
-
+ [STATISTICS]
+ - code churn: 3 files changed, 16 insertions(+), 6 deletions(-)
 
 0.17.0 2013-05-02
  [ENHANCEMENTS]
