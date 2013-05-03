@@ -8,6 +8,7 @@ Revision history for {{$dist->name}}
  [DOCUMENTATION]
 
  [ENHANCEMENTS]
+ - Bump D::Z::P::ChangeStats::Git to v0.2.1.
 
  [NEW FEATURES]
 
