@@ -65,6 +65,13 @@ his distributions. It's roughly equivalent to
     [ConfirmRelease]
 
     [Git::Check]
+
+    [PreviousVersion::Changelog]
+    [NextVersion::Semantic]
+
+    [ChangeStats::Git]
+    group=STATISTICS
+
     [Git::Commit]
     [Git::CommitBuild]
         release_branch = releases
@@ -77,17 +84,12 @@ his distributions. It's roughly equivalent to
     [Git::Push]
         push_to = github
 
-    [PreviousVersion::Changelog]
-    [NextVersion::Semantic]
-
     [InstallRelease]
     install_command = cpanm .
 
     [Twitter]
     [SchwartzRatio]
 
-    [ChangeStats::Git]
-    group=STATISTICS
 
     [RunExtraTests]
     [Test::UnusedVars]
@@ -215,9 +217,16 @@ sub configure {
     );
 
     # Git::Commit can't be before Git::CommitBuild :-/
-    $self->add_plugins(qw/
-        Git::Commit
-    /);
+    $self->add_plugins(
+        'PreviousVersion::Changelog',
+        [ 'NextVersion::Semantic' => {
+            major => 'API CHANGES',
+            minor => 'NEW FEATURES, ENHANCEMENTS',
+            revision => 'BUG FIXES, DOCUMENTATION, STATISTICS',
+        } ],
+        [ 'ChangeStats::Git' => { group => 'STATISTICS' } ],
+        'Git::Commit',
+    );
 
     if ( $arg->{fake_release} ) {
         $self->add_plugins( 'FakeRelease' );
@@ -239,17 +248,10 @@ sub configure {
         );
     }
     
-    $self->add_plugins(qw/
-        PreviousVersion::Changelog /,
-        [ 'NextVersion::Semantic' => {
-            major => 'API CHANGES',
-            minor => 'NEW FEATURES, ENHANCEMENTS',
-            revision => 'BUG FIXES, DOCUMENTATION, STATISTICS',
-        } ],
+    $self->add_plugins(
     qw/
         SchwartzRatio 
     /,
-        [ 'ChangeStats::Git' => { group => 'STATISTICS' } ],
         'Test::UnusedVars',
         'RunExtraTests',
     );
