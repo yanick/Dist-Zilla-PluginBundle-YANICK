@@ -5,3 +5,4 @@ Dist-Zilla-PluginBundle-YANICK.*
 ^\.git
 ^\.build
 .mailmap
+\..*\.un~

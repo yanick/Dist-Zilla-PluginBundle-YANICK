@@ -11,6 +11,9 @@ Revision history for {{$dist->name}}
 
  [NEW FEATURES]
 
+ [MISC]
+ - Bump the dependency of Dist::Zilla::Plugin::Test::Compile to 2.033.
+
  [STATISTICS]
 
 0.18.0 2013-05-02

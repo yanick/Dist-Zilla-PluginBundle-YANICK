@@ -148,7 +148,7 @@ use Dist::Zilla::Plugin::Twitter 0.019;
 use Dist::Zilla::Plugin::Signature;
 use Dist::Zilla::Plugin::Git;
 use Dist::Zilla::Plugin::CoalescePod;
-use Dist::Zilla::Plugin::Test::Compile;
+use Dist::Zilla::Plugin::Test::Compile 2.033;
 use Dist::Zilla::Plugin::Covenant;
 use Dist::Zilla::Plugin::SchwartzRatio;
 use Dist::Zilla::Plugin::PreviousVersion::Changelog;

@@ -1,2 +1,3 @@
 Dist-Zilla-PluginBundle*
 .build
+.*.un~
