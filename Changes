@@ -1,18 +1,11 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
- [API CHANGES]
-
+0.18.3 2013-09-25
  [BUG FIXES]
  - Add 'multiple_inheritance' flag for dz::p::git::commitbuild.
 
- [DOCUMENTATION]
-
- [ENHANCEMENTS]
-
- [NEW FEATURES]
-
  [STATISTICS]
+ - code churn: 4 files changed, 37 insertions(+), 7 deletions(-)
 
 0.18.2 2013-09-25
  [BUG FIXES]
