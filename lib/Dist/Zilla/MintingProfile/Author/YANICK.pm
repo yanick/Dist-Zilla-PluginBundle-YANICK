@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::MintingProfile::Author::YANICK::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::MintingProfile::Author::YANICK::VERSION = '0.18.1';
+  $Dist::Zilla::MintingProfile::Author::YANICK::VERSION = '0.18.2';
 }
 # ABSTRACT: create distributions like YANICK
 
@@ -28,7 +28,7 @@ Dist::Zilla::MintingProfile::Author::YANICK - create distributions like YANICK
 
 =head1 VERSION
 
-version 0.18.1
+version 0.18.2
 
 =head1 AUTHOR
 

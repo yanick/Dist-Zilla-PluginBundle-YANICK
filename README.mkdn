@@ -4,7 +4,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 # VERSION
 
-version 0.18.1
+version 0.18.2
 
 # DESCRIPTION
 
@@ -86,7 +86,7 @@ his distributions. It's roughly equivalent to
     [UploadToCPAN]
 
     [Git::Push]
-        push_to = github
+        push_to = github master releases
 
     [InstallRelease]
     install_command = cpanm .

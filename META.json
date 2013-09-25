@@ -87,15 +87,15 @@
    "provides" : {
       "Dist::Zilla::MintingProfile::Author::YANICK" : {
          "file" : "lib/Dist/Zilla/MintingProfile/Author/YANICK.pm",
-         "version" : "v0.18.1"
+         "version" : "v0.18.2"
       },
       "Dist::Zilla::Plugin::Author::YANICK::NextSemanticVersion" : {
          "file" : "lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm",
-         "version" : "v0.18.1"
+         "version" : "v0.18.2"
       },
       "Dist::Zilla::PluginBundle::YANICK" : {
          "file" : "lib/Dist/Zilla/PluginBundle/YANICK.pm",
-         "version" : "v0.18.1"
+         "version" : "v0.18.2"
       }
    },
    "release_status" : "stable",
@@ -111,7 +111,7 @@
          "web" : "https://github.com/yanick/Dist-Zilla-PluginBundle-YANICK"
       }
    },
-   "version" : "0.18.1",
+   "version" : "0.18.2",
    "x_author_pledge" : {
       "version" : 1
    },

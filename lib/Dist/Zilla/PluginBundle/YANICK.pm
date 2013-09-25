@@ -3,7 +3,7 @@ BEGIN {
   $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:YANICK';
 }
 {
-  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.18.1';
+  $Dist::Zilla::PluginBundle::YANICK::VERSION = '0.18.2';
 }
 
 # ABSTRACT: Be like Yanick when you build your dists
@@ -119,7 +119,7 @@ sub configure {
     }
     else {
         $self->add_plugins(
-            [ 'Git::Push' => { push_to    => $upstream } ],
+            [ 'Git::Push' => { push_to    => $upstream . ' master releases' } ],
             qw/
                 UploadToCPAN
             /,
@@ -167,7 +167,7 @@ Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
 
 =head1 VERSION
 
-version 0.18.1
+version 0.18.2
 
 =head1 DESCRIPTION
 
@@ -249,7 +249,7 @@ his distributions. It's roughly equivalent to
     [UploadToCPAN]
 
     [Git::Push]
-        push_to = github
+        push_to = github master releases
 
     [InstallRelease]
     install_command = cpanm .
