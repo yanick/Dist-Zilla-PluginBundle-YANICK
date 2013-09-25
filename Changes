@@ -4,6 +4,7 @@ Revision history for {{$dist->name}}
  [API CHANGES]
 
  [BUG FIXES]
+ - Push both branches master and releases upon release.
 
  [DOCUMENTATION]
 

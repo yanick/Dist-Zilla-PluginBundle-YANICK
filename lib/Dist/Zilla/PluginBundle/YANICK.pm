@@ -82,7 +82,7 @@ his distributions. It's roughly equivalent to
     [UploadToCPAN]
 
     [Git::Push]
-        push_to = github
+        push_to = github master releases
 
     [InstallRelease]
     install_command = cpanm .
@@ -235,7 +235,7 @@ sub configure {
     }
     else {
         $self->add_plugins(
-            [ 'Git::Push' => { push_to    => $upstream } ],
+            [ 'Git::Push' => { push_to    => $upstream . ' master releases' } ],
             qw/
                 UploadToCPAN
             /,
