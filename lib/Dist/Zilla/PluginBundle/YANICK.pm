@@ -75,6 +75,7 @@ his distributions. It's roughly equivalent to
     [Git::Commit]
     [Git::CommitBuild]
         release_branch = releases
+        multiple_inheritance = 1
     [Git::Tag]
         tag_format = v%v
         branch     = releases
@@ -214,7 +215,10 @@ sub configure {
           ConfirmRelease
           Git::Check
           /,
-        [ 'Git::CommitBuild' => { release_branch => $release_branch } ],
+        [ 'Git::CommitBuild' => { 
+                release_branch => $release_branch ,
+                multiple_inheritance => 1,
+        } ],
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
     );
 
