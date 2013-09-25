@@ -4,7 +4,6 @@ Revision history for {{$dist->name}}
  [API CHANGES]
 
  [BUG FIXES]
- - Add 'multiple_inheritance' flag for dz::p::git::commitbuild.
 
  [DOCUMENTATION]
 
@@ -13,6 +12,13 @@ Revision history for {{$dist->name}}
  [NEW FEATURES]
 
  [STATISTICS]
+
+0.18.3 2013-09-25
+ [BUG FIXES]
+ - Add 'multiple_inheritance' flag for dz::p::git::commitbuild.
+
+ [STATISTICS]
+ - code churn: 4 files changed, 37 insertions(+), 7 deletions(-)
 
 0.18.2 2013-09-25
  [BUG FIXES]
