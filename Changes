@@ -4,7 +4,6 @@ Revision history for {{$dist->name}}
  [API CHANGES]
 
  [BUG FIXES]
- - Push both branches master and releases upon release.
 
  [DOCUMENTATION]
 
@@ -13,6 +12,13 @@ Revision history for {{$dist->name}}
  [NEW FEATURES]
 
  [STATISTICS]
+
+0.18.2 2013-09-25
+ [BUG FIXES]
+ - Push both branches master and releases upon release.
+
+ [STATISTICS]
+ - code churn: 4 files changed, 25 insertions(+), 6 deletions(-)
 
 0.18.1 2013-09-22
  [MISC]
