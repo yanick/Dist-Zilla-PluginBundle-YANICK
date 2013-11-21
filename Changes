@@ -4,6 +4,7 @@ Revision history for {{$dist->name}}
  [API CHANGES]
 
  [BUG FIXES]
+ - Add a few forgotten dependencies.
 
  [DOCUMENTATION]
 

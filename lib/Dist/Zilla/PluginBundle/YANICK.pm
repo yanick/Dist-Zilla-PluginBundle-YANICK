@@ -159,6 +159,10 @@ use Dist::Zilla::Plugin::RunExtraTests;
 use Dist::Zilla::Plugin::HelpWanted;
 use Dist::Zilla::Plugin::CoderwallEndorse;
 use Dist::Zilla::Plugin::NextVersion::Semantic;
+use Dist::Zilla::Plugin::MatchManifest;
+use Dist::Zilla::Plugin::Authority;
+use Dist::Zilla::Plugin::ReportVersions::Tiny;
+use Dist::Zilla::Plugin::CheckChangesHasContent;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
