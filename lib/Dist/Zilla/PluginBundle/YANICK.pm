@@ -1,6 +1,147 @@
 package Dist::Zilla::PluginBundle::YANICK;
-
+BEGIN {
+  $Dist::Zilla::PluginBundle::YANICK::AUTHORITY = 'cpan:YANICK';
+}
+$Dist::Zilla::PluginBundle::YANICK::VERSION = '0.19.0';
 # ABSTRACT: Be like Yanick when you build your dists
+
+
+use strict;
+
+use Moose;
+
+with 'Dist::Zilla::Role::PluginBundle::Easy';
+
+sub configure {
+    my ( $self ) = @_;
+    my $arg = $self->payload;
+
+    my $release_branch = 'releases';
+    my $upstream       = 'github';
+
+    my %mb_args;
+    $mb_args{mb_class} = $arg->{mb_class} if $arg->{mb_class};
+    $self->add_plugins([ 'ModuleBuild', \%mb_args ]);
+
+    $self->add_plugins(
+        qw/ 
+            ContributorsFromGit
+            ContributorsFile
+            Test::Compile
+            CoalescePod
+            InstallGuide
+            Covenant
+        /,
+        [ GithubMeta => { remote => $upstream, } ],
+        qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
+          ReadmeFromPod 
+          ReadmeMarkdownFromPod
+          /,
+        [ CoderwallEndorse => { users => 'yanick:Yanick' } ],
+        [ NextRelease => { 
+                time_zone => 'America/Montreal',
+                format    => '%-9v %{yyyy-MM-dd}d',
+            } ],
+        'MetaProvides::Package',
+        qw/ MatchManifest
+          ManifestSkip /,
+        [ GatherDir => {
+                include_dotfiles => $arg->{include_dotfiles},
+              } ],
+        qw/ ExecDir
+          PkgVersion /,
+          [ Authority => { 
+            ( authority => $arg->{authority} ) x !!$arg->{authority}  
+          } ],
+          qw/ ReportVersions::Tiny
+          Signature /,
+          [ AutoPrereqs => { 
+                  ( skip => $arg->{autoprereqs_skip} ) 
+                            x !!$arg->{autoprereqs_skip}
+            } 
+          ],
+          qw/ CheckChangesHasContent
+          TestRelease
+          ConfirmRelease
+          Git::Check
+          /,
+        [ 'Git::CommitBuild' => { 
+                release_branch => $release_branch ,
+                multiple_inheritance => 1,
+        } ],
+        [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
+    );
+
+    # Git::Commit can't be before Git::CommitBuild :-/
+    $self->add_plugins(
+        'PreviousVersion::Changelog',
+        [ 'NextVersion::Semantic' => {
+            major => 'API CHANGES',
+            minor => 'NEW FEATURES, ENHANCEMENTS',
+            revision => 'BUG FIXES, DOCUMENTATION, STATISTICS',
+        } ],
+        [ 'ChangeStats::Git' => { group => 'STATISTICS' } ],
+        'Git::Commit',
+    );
+
+    if ( $ENV{FAKE} or $arg->{fake_release} ) {
+        $self->add_plugins( 'FakeRelease' );
+    }
+    else {
+        $self->add_plugins(
+            [ 'Git::Push' => { push_to    => $upstream . ' master releases' } ],
+            qw/ UploadToCPAN /, 
+        );
+
+        $self->add_plugins(
+            [ Twitter => {
+                tweet_url =>
+                    'https://metacpan.org/release/{{$AUTHOR_UC}}/{{$DIST}}-{{$VERSION}}/',
+                tweet => 
+                    'Released {{$DIST}}-{{$VERSION}}{{$TRIAL}} {{$URL}} !META{resources}{repository}{web}',
+                url_shortener => 'none',
+            } ],
+        ) if not defined $arg->{tweet} or $arg->{tweet};
+
+        $self->add_plugins(
+            [ 'InstallRelease' => { install_command => 'cpanm .' } ],
+        );
+    }
+    
+    $self->add_plugins(
+    qw/
+        SchwartzRatio 
+    /,
+        'Test::UnusedVars',
+        'RunExtraTests',
+    );
+
+    if ( my $help_wanted = $arg->{help_wanted} ) {
+        $self->add_plugins([
+            'HelpWanted' => {
+                map { $_ => 1 } split ' ', $help_wanted
+            },
+        ]);
+    }
+
+    $self->config_slice( 'mb_class' );
+
+    return;
+}
+
+1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
+
+=head1 VERSION
+
+version 0.19.0
 
 =head1 DESCRIPTION
 
@@ -128,129 +269,15 @@ For C<GatherDir>. Defaults to false.
 
 If a tweet should be sent. Defaults to C<true>.
 
+=head1 AUTHOR
+
+Yanick Champoux <yanick@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Yanick Champoux.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
-
-use strict;
-
-use Moose;
-
-with 'Dist::Zilla::Role::PluginBundle::Easy';
-
-sub configure {
-    my ( $self ) = @_;
-    my $arg = $self->payload;
-
-    my $release_branch = 'releases';
-    my $upstream       = 'github';
-
-    my %mb_args;
-    $mb_args{mb_class} = $arg->{mb_class} if $arg->{mb_class};
-    $self->add_plugins([ 'ModuleBuild', \%mb_args ]);
-
-    $self->add_plugins(
-        qw/ 
-            ContributorsFromGit
-            ContributorsFile
-            Test::Compile
-            CoalescePod
-            InstallGuide
-            Covenant
-        /,
-        [ GithubMeta => { remote => $upstream, } ],
-        qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
-          ReadmeFromPod 
-          ReadmeMarkdownFromPod
-          /,
-        [ CoderwallEndorse => { users => 'yanick:Yanick' } ],
-        [ NextRelease => { 
-                time_zone => 'America/Montreal',
-                format    => '%-9v %{yyyy-MM-dd}d',
-            } ],
-        'MetaProvides::Package',
-        qw/ MatchManifest
-          ManifestSkip /,
-        [ GatherDir => {
-                include_dotfiles => $arg->{include_dotfiles},
-              } ],
-        qw/ ExecDir
-          PkgVersion /,
-          [ Authority => { 
-            ( authority => $arg->{authority} ) x !!$arg->{authority}  
-          } ],
-          qw/ ReportVersions::Tiny
-          Signature /,
-          [ AutoPrereqs => { 
-                  ( skip => $arg->{autoprereqs_skip} ) 
-                            x !!$arg->{autoprereqs_skip}
-            } 
-          ],
-          qw/ CheckChangesHasContent
-          TestRelease
-          ConfirmRelease
-          Git::Check
-          /,
-        [ 'Git::CommitBuild' => { 
-                release_branch => $release_branch ,
-                multiple_inheritance => 1,
-        } ],
-        [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
-    );
-
-    # Git::Commit can't be before Git::CommitBuild :-/
-    $self->add_plugins(
-        'PreviousVersion::Changelog',
-        [ 'NextVersion::Semantic' => {
-            major => 'API CHANGES',
-            minor => 'NEW FEATURES, ENHANCEMENTS',
-            revision => 'BUG FIXES, DOCUMENTATION, STATISTICS',
-        } ],
-        [ 'ChangeStats::Git' => { group => 'STATISTICS' } ],
-        'Git::Commit',
-    );
-
-    if ( $ENV{FAKE} or $arg->{fake_release} ) {
-        $self->add_plugins( 'FakeRelease' );
-    }
-    else {
-        $self->add_plugins(
-            [ 'Git::Push' => { push_to    => $upstream . ' master releases' } ],
-            qw/ UploadToCPAN /, 
-        );
-
-        $self->add_plugins(
-            [ Twitter => {
-                tweet_url =>
-                    'https://metacpan.org/release/{{$AUTHOR_UC}}/{{$DIST}}-{{$VERSION}}/',
-                tweet => 
-                    'Released {{$DIST}}-{{$VERSION}}{{$TRIAL}} {{$URL}} !META{resources}{repository}{web}',
-                url_shortener => 'none',
-            } ],
-        ) if not defined $arg->{tweet} or $arg->{tweet};
-
-        $self->add_plugins(
-            [ 'InstallRelease' => { install_command => 'cpanm .' } ],
-        );
-    }
-    
-    $self->add_plugins(
-    qw/
-        SchwartzRatio 
-    /,
-        'Test::UnusedVars',
-        'RunExtraTests',
-    );
-
-    if ( my $help_wanted = $arg->{help_wanted} ) {
-        $self->add_plugins([
-            'HelpWanted' => {
-                map { $_ => 1 } split ' ', $help_wanted
-            },
-        ]);
-    }
-
-    $self->config_slice( 'mb_class' );
-
-    return;
-}
-
-1;

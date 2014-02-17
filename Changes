@@ -1,20 +1,15 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
- [API CHANGES]
-
+0.19.0 2014-02-17
  [BUG FIXES]
  - Add a few forgotten dependencies.
  - Bump dependency for D::Z::P::Twitter.
-
- [DOCUMENTATION]
-
- [ENHANCEMENTS]
 
  [NEW FEATURES]
  - Add 'tweet' flag.
 
  [STATISTICS]
+ - code churn: 3 files changed, 59 insertions(+), 34 deletions(-)
 
 0.18.3 2013-09-25
  [BUG FIXES]
