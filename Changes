@@ -5,12 +5,14 @@ Revision history for {{$dist->name}}
 
  [BUG FIXES]
  - Add a few forgotten dependencies.
+ - Bump dependency for D::Z::P::Twitter.
 
  [DOCUMENTATION]
 
  [ENHANCEMENTS]
 
  [NEW FEATURES]
+ - Add 'tweet' flag.
 
  [STATISTICS]
 
