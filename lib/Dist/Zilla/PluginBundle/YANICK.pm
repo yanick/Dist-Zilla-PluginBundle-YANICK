@@ -124,45 +124,15 @@ Passed to C<ModuleBuild> plugin.
 
 For C<GatherDir>. Defaults to false.
 
+=head3 tweet
+
+If a tweet should be sent. Defaults to C<true>.
+
 =cut
 
 use strict;
 
 use Moose;
-
-use Dist::Zilla::Plugin::ContributorsFile;
-use Dist::Zilla::Plugin::ContributorsFromGit;
-use Dist::Zilla::Plugin::ModuleBuild;
-use Dist::Zilla::Plugin::GithubMeta;
-use Dist::Zilla::Plugin::Homepage;
-use Dist::Zilla::Plugin::Bugtracker;
-use Dist::Zilla::Plugin::MetaYAML;
-use Dist::Zilla::Plugin::MetaJSON;
-use Dist::Zilla::Plugin::PodWeaver;
-use Dist::Zilla::Plugin::License;
-use Dist::Zilla::Plugin::ReadmeFromPod;
-use Dist::Zilla::Plugin::NextRelease;
-use Dist::Zilla::Plugin::MetaProvides::Package;
-use Dist::Zilla::Plugin::InstallRelease;
-use Dist::Zilla::Plugin::InstallGuide 1.200000;
-use Dist::Zilla::Plugin::Twitter 0.019;
-use Dist::Zilla::Plugin::Signature;
-use Dist::Zilla::Plugin::Git;
-use Dist::Zilla::Plugin::CoalescePod;
-use Dist::Zilla::Plugin::Test::Compile 2.033;
-use Dist::Zilla::Plugin::Covenant;
-use Dist::Zilla::Plugin::SchwartzRatio;
-use Dist::Zilla::Plugin::PreviousVersion::Changelog;
-use Dist::Zilla::Plugin::ChangeStats::Git;
-use Dist::Zilla::Plugin::Test::UnusedVars;
-use Dist::Zilla::Plugin::RunExtraTests;
-use Dist::Zilla::Plugin::HelpWanted;
-use Dist::Zilla::Plugin::CoderwallEndorse;
-use Dist::Zilla::Plugin::NextVersion::Semantic;
-use Dist::Zilla::Plugin::MatchManifest;
-use Dist::Zilla::Plugin::Authority;
-use Dist::Zilla::Plugin::ReportVersions::Tiny;
-use Dist::Zilla::Plugin::CheckChangesHasContent;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
@@ -244,9 +214,10 @@ sub configure {
     else {
         $self->add_plugins(
             [ 'Git::Push' => { push_to    => $upstream . ' master releases' } ],
-            qw/
-                UploadToCPAN
-            /,
+            qw/ UploadToCPAN /, 
+        );
+
+        $self->add_plugins(
             [ Twitter => {
                 tweet_url =>
                     'https://metacpan.org/release/{{$AUTHOR_UC}}/{{$DIST}}-{{$VERSION}}/',
@@ -254,6 +225,9 @@ sub configure {
                     'Released {{$DIST}}-{{$VERSION}}{{$TRIAL}} {{$URL}} !META{resources}{repository}{web}',
                 url_shortener => 'none',
             } ],
+        ) if not defined $arg->{tweet} or $arg->{tweet};
+
+        $self->add_plugins(
             [ 'InstallRelease' => { install_command => 'cpanm .' } ],
         );
     }
