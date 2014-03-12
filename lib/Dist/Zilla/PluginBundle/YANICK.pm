@@ -23,7 +23,6 @@ his distributions. It's roughly equivalent to
     remote=github
 
     [Homepage]
-    [Bugtracker]
 
     [MetaYAML]
     [MetaJSON]
@@ -156,8 +155,11 @@ sub configure {
             InstallGuide
             Covenant
         /,
-        [ GithubMeta => { remote => $upstream, } ],
-        qw/ Homepage Bugtracker MetaYAML MetaJSON PodWeaver License
+        [ GithubMeta => { 
+            remote => $upstream, 
+            issues => 1,
+        } ],
+        qw/ Homepage MetaYAML MetaJSON PodWeaver License
           ReadmeFromPod 
           ReadmeMarkdownFromPod
           /,
