@@ -1,18 +1,11 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
- [API CHANGES]
-
- [BUG FIXES]
-
- [DOCUMENTATION]
-
+0.20.0 2014-03-11
  [ENHANCEMENTS]
  - GitHub is now the default bug tracker.
 
- [NEW FEATURES]
-
  [STATISTICS]
+ - code churn: 4 files changed, 20 insertions(+), 15 deletions(-)
 
 0.19.0 2014-02-17
  [BUG FIXES]
