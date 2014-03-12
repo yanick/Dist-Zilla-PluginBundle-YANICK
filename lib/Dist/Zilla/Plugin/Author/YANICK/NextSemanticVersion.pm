@@ -122,13 +122,13 @@ sub inc_version {
 
     $last_version = Perl::Version->new( $last_version );
 
-    for ( @major_groups ) {
-        next unless $_ ~~ @groups;
+    for my $g ( @major_groups ) {
+        next unless grep { $_ eq $g } @groups;
         $last_version->inc_revision;
         return $last_version
     }
-    for ( @minor_groups ) {
-        next unless $_ ~~ @groups;
+    for my $g ( @minor_groups ) {
+        next unless grep { $_ eq $g } @groups;
         $last_version->inc_version;
         return $last_version
     }
