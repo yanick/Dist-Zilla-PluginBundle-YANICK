@@ -46,7 +46,7 @@ his distributions. It's roughly equivalent to
     [MatchManifest]
     [ManifestSkip]
 
-    [GatherDir]
+    [Git::GatherDir]
     [ExecDir]
 
     [PkgVersion]
@@ -124,7 +124,7 @@ Passed to C<ModuleBuild> plugin.
 
 =head3 include_dotfiles
 
-For C<GatherDir>. Defaults to false.
+For C<Git::GatherDir>. Defaults to false.
 
 =head3 tweet
 
@@ -190,7 +190,7 @@ sub configure {
         'MetaProvides::Package',
         qw/ MatchManifest
           ManifestSkip /,
-        [ GatherDir => {
+        [ 'Git::GatherDir' => {
                 include_dotfiles => $arg->{include_dotfiles},
               } ],
         qw/ ExecDir
