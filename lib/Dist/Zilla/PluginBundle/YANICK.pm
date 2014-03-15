@@ -97,6 +97,8 @@ his distributions. It's roughly equivalent to
     [DOAP]
     process_changes = 1
 
+    [CPANFile]
+
 =head2 ARGUMENTS
 
 =head3 autoprereqs_skip
@@ -274,6 +276,7 @@ sub configure {
             process_changes => $self->doap_changelog,
 #            ttl_filename => 'project.ttl',
         } ],
+        [ 'CPANFile' ],
     );
 
     $self->config_slice( 'mb_class' );

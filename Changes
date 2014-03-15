@@ -8,6 +8,9 @@ Revision history for {{$dist->name}}
  [DOCUMENTATION]
 
  [ENHANCEMENTS]
+ - Added CPANFile
+ - Added DOAP
+ - Switch GatherDir for Git::GatherDir
 
  [NEW FEATURES]
 
