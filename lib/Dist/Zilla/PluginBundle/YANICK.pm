@@ -2,6 +2,8 @@ package Dist::Zilla::PluginBundle::YANICK;
 
 # ABSTRACT: Be like Yanick when you build your dists
 
+# [TODO] add CONTRIBUTING file
+
 =head1 DESCRIPTION
 
 This is the plugin bundle that Yanick uses to release
