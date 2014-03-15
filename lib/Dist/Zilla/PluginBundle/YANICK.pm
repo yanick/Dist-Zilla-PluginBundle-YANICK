@@ -94,6 +94,9 @@ his distributions. It's roughly equivalent to
     [RunExtraTests]
     [Test::UnusedVars]
 
+    [DOAP]
+    process_changes = 1
+
 =head2 ARGUMENTS
 
 =head3 autoprereqs_skip
@@ -127,6 +130,11 @@ For C<GatherDir>. Defaults to false.
 
 If a tweet should be sent. Defaults to C<true>.
 
+=head3 doap_changelog
+
+If the DOAP plugin should generate the project history
+off the changelog. Defaults to I<true>.
+
 =cut
 
 use strict;
@@ -134,6 +142,17 @@ use strict;
 use Moose;
 
 with 'Dist::Zilla::Role::PluginBundle::Easy';
+
+has "doap_changelog" => (
+    isa => 'Bool',
+    is => 'ro',
+    lazy => 1,
+    default => sub {
+        my $self = shift;
+
+        $self->payload->{doap_changelog} //= 1;
+    },
+);
 
 sub configure {
     my ( $self ) = @_;
@@ -249,6 +268,13 @@ sub configure {
             },
         ]);
     }
+
+    $self->add_plugins( 
+        [ DOAP => { 
+            process_changes => $self->doap_changelog,
+#            ttl_filename => 'project.ttl',
+        } ],
+    );
 
     $self->config_slice( 'mb_class' );
 

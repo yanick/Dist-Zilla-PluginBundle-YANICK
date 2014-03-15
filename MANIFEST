@@ -9,6 +9,7 @@ META.yml
 README
 README.mkdn
 SIGNATURE
+doap.xml
 lib/Dist/Zilla/MintingProfile/Author/YANICK.pm
 lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm
 lib/Dist/Zilla/PluginBundle/YANICK.pm
