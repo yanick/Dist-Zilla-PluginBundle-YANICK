@@ -11,6 +11,7 @@ Revision history for {{$dist->name}}
  - Added CPANFile
  - Added DOAP
  - Switch GatherDir for Git::GatherDir
+ - Now uses Dist::Zilla::Role::pluginBundle::ConfigSlicer.
 
  [NEW FEATURES]
 
