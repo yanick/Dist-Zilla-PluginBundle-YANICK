@@ -1,21 +1,14 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
- [API CHANGES]
-
- [BUG FIXES]
-
- [DOCUMENTATION]
-
+0.21.0 2014-08-31
  [ENHANCEMENTS]
  - Added CPANFile
  - Added DOAP
  - Switch GatherDir for Git::GatherDir
  - Now uses Dist::Zilla::Role::pluginBundle::ConfigSlicer.
 
- [NEW FEATURES]
-
  [STATISTICS]
+ - code churn: 4 files changed, 54 insertions(+), 5 deletions(-)
 
 0.20.0 2014-03-11
  [ENHANCEMENTS]
