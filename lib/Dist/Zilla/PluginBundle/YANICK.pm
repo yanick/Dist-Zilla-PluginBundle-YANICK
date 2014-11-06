@@ -24,8 +24,6 @@ his distributions. It's roughly equivalent to
     [GithubMeta]
     remote=github
 
-    [Homepage]
-
     [MetaYAML]
     [MetaJSON]
 
@@ -185,7 +183,7 @@ sub configure {
             remote => $upstream, 
             issues => 1,
         } ],
-        qw/ Homepage MetaYAML MetaJSON PodWeaver License
+        qw/ MetaYAML MetaJSON PodWeaver License
           ReadmeFromPod 
           ReadmeMarkdownFromPod
           /,

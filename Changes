@@ -4,6 +4,7 @@ Revision history for {{$dist->name}}
  [API CHANGES]
 
  [BUG FIXES]
+ - Remove redundance DZ::P::Homepage (it now comes from the GitHub plugins).
 
  [DOCUMENTATION]
 
