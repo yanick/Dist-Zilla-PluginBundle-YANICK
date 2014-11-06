@@ -1,18 +1,12 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
- [API CHANGES]
-
+0.21.1 2014-11-06
  [BUG FIXES]
- - Remove redundance DZ::P::Homepage (it now comes from the GitHub plugins).
-
- [DOCUMENTATION]
-
- [ENHANCEMENTS]
-
- [NEW FEATURES]
+ - Remove redundance DZ::P::Homepage (it now comes from the GitHub
+   plugins).
 
  [STATISTICS]
+ - code churn: 3 files changed, 10 insertions(+), 6 deletions(-)
 
 0.21.0 2014-08-31
  [ENHANCEMENTS]
