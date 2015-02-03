@@ -8,12 +8,18 @@ Revision history for {{$dist->name}}
  [DOCUMENTATION]
 
  [ENHANCEMENTS]
- - Add VerifyPhase.
- - Add a few config params.
 
  [NEW FEATURES]
 
  [STATISTICS]
+
+0.22.0 2015-02-03
+ [ENHANCEMENTS]
+ - Add VerifyPhase.
+ - Add a few config params.
+
+ [STATISTICS]
+ - code churn: 4 files changed, 59 insertions(+), 8 deletions(-)
 
 0.21.1 2014-11-06
  [BUG FIXES]
