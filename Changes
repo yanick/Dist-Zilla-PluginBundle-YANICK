@@ -9,6 +9,7 @@ Revision history for {{$dist->name}}
 
  [ENHANCEMENTS]
  - Add VerifyPhase.
+ - Add a few config params.
 
  [NEW FEATURES]
 

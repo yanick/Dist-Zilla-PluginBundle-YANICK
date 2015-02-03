@@ -16,7 +16,7 @@ his distributions. It's roughly equivalent to
 
     [CoalescePod]
 
-    [ModuleBuild]
+    [MakeMaker]
 
     [InstallGuide]
     [Covenant]
@@ -120,6 +120,10 @@ L<Dist::Zilla::Plugin::Twitter>.
 
 Can also be triggered via the I<FAKE> environment variable.
 
+=head3 builder 
+
+C<ModuleBuild> or C<MakeMaker>. Defaults to C<MakeMaker>.
+
 =head3 mb_class
 
 Passed to C<ModuleBuild> plugin.
@@ -143,6 +147,8 @@ use strict;
 
 use Moose;
 
+use Dist::Zilla;
+
 with qw/
     Dist::Zilla::Role::PluginBundle::Easy
     Dist::Zilla::Role::PluginBundle::Config::Slicer
@@ -159,16 +165,46 @@ has "doap_changelog" => (
     },
 );
 
+=head3 dev_branch
+
+Master development branch.
+
+Defaults to C<master>.
+
+=cut
+
+=head3 release_branch
+
+Branch on which the CPAN images are commited.
+
+Defaults to C<releases>.
+
+=cut
+
+
+=head3 upstream
+
+The name of the upstream repo.
+
+Defaults to C<github>.
+
+=cut
+
+
 sub configure {
     my ( $self ) = @_;
     my $arg = $self->payload;
 
-    my $release_branch = 'releases';
-    my $upstream       = 'github';
+    my $release_branch = $arg->{release_branch} || 'releases';
+    my $dev_branch     = $arg->{dev_branch}     || 'master';
+    my $upstream       = $arg->{upstream}       || 'github';
 
     my %mb_args;
     $mb_args{mb_class} = $arg->{mb_class} if $arg->{mb_class};
-    $self->add_plugins([ 'ModuleBuild', \%mb_args ]);
+
+    my $builder = $arg->{builder} || 'MakeMaker';
+
+    $self->add_plugins([ $builder, ( \%mb_args ) x ($builder eq 'ModuleBuild' ) ]);
 
     $self->add_plugins(
         qw/ 
@@ -230,7 +266,11 @@ sub configure {
             minor => 'NEW FEATURES, ENHANCEMENTS',
             revision => 'BUG FIXES, DOCUMENTATION, STATISTICS',
         } ],
-        [ 'ChangeStats::Git' => { group => 'STATISTICS' } ],
+        [ 'ChangeStats::Git' => { 
+                group => 'STATISTICS',
+                develop_branch => $dev_branch,
+                release_branch => $release_branch,
+            } ],
         'Git::Commit',
     );
 
@@ -239,7 +279,7 @@ sub configure {
     }
     else {
         $self->add_plugins(
-            [ 'Git::Push' => { push_to    => $upstream . ' master releases' } ],
+            [ 'Git::Push' => { push_to    => join ' ', $upstream, $dev_branch, $release_branch} ],
             qw/ UploadToCPAN /, 
         );
 
