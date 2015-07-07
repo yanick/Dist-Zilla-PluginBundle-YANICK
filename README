@@ -1,0 +1,152 @@
+DESCRIPTION
+
+    This is the plugin bundle that Yanick uses to release his
+    distributions. It's roughly equivalent to
+
+        [Git::Contributors]
+        [ContributorsFile]
+    
+        [Test::Compile]
+    
+        [CoalescePod]
+    
+        [MakeMaker]
+    
+        [InstallGuide]
+        [Covenant]
+    
+        [GithubMeta]
+        remote=github
+    
+        [MetaYAML]
+        [MetaJSON]
+    
+        [PodWeaver]
+    
+        [License]
+        [HelpWanted]
+    
+        [ReadmeFromPod]
+        [ReadmeMarkdownFromPod]
+    
+        [CoderwallEndorse]
+        users = yanick:Yanick
+    
+        [NextRelease]
+        time_zone = America/Montreal
+    
+        [MetaProvides::Package]
+    
+        [MatchManifest]
+        [ManifestSkip]
+    
+        [Git::GatherDir]
+        [ExecDir]
+    
+        [PkgVersion]
+        [Authority]
+    
+        [Test::ReportPrereqs]
+        [Signature]
+    
+        [AutoPrereqs]
+    
+        [CheckChangesHasContent]
+    
+        [TestRelease]
+    
+        [ConfirmRelease]
+    
+        [Git::Check]
+    
+        [PreviousVersion::Changelog]
+        [NextVersion::Semantic]
+    
+        [ChangeStats::Git]
+        group=STATISTICS
+    
+        [Git::Commit]
+        [Git::CommitBuild]
+            release_branch = releases
+            multiple_inheritance = 1
+        [Git::Tag]
+            tag_format = v%v
+            branch     = releases
+    
+        [UploadToCPAN]
+    
+        [Git::Push]
+            push_to = github master releases
+    
+        [InstallRelease]
+        install_command = cpanm .
+    
+        [Twitter]
+        [SchwartzRatio]
+    
+    
+        [RunExtraTests]
+        [Test::UnusedVars]
+    
+        [DOAP]
+        process_changes = 1
+    
+        [CPANFile]
+
+ ARGUMENTS
+
+  autoprereqs_skip
+
+    Passed as skip to AutoPrereqs.
+
+  authority
+
+    Passed to Dist::Zilla::Plugin::Authority.
+
+  fake_release
+
+    If given a true value, uses Dist::Zilla::Plugin::FakeRelease instead of
+    Dist::Zilla::Plugin::Git::Push, Dist::Zilla::Plugin::UploadToCPAN,
+    Dist::Zilla::Plugin::InstallRelease and Dist::Zilla::Plugin::Twitter.
+
+    Can also be triggered via the FAKE environment variable.
+
+  builder
+
+    ModuleBuild or MakeMaker. Defaults to MakeMaker.
+
+  mb_class
+
+    Passed to ModuleBuild plugin.
+
+  include_dotfiles
+
+    For Git::GatherDir. Defaults to false.
+
+  tweet
+
+    If a tweet should be sent. Defaults to true.
+
+  doap_changelog
+
+    If the DOAP plugin should generate the project history off the
+    changelog. Defaults to true.
+
+  dev_branch
+
+    Master development branch.
+
+    Defaults to master.
+
+  release_branch
+
+    Branch on which the CPAN images are commited.
+
+    Defaults to releases.
+
+  upstream
+
+    The name of the upstream repo.
+
+    Defaults to github.
+
