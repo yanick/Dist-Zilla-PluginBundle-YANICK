@@ -8,12 +8,18 @@ Revision history for {{$dist->name}}
   [ DOCUMENTATION ]
 
   [ ENHANCEMENTS ]
-  - More to DZP::Git::Contributor. (GH#4, Karen Etheridge)
-  - Remove deprecated private nextVersion plugin. (GH#1-ish)
 
   [ NEW FEATURES ]
 
   [ STATISTICS ]
+
+0.24.0 2015-07-07
+  [ ENHANCEMENTS ]
+    - More to DZP::Git::Contributor. (GH#4, Karen Etheridge)
+    - Remove deprecated private nextVersion plugin. (GH#1-ish)
+
+  [ STATISTICS ]
+    - code churn: 5 files changed, 129 insertions(+), 284 deletions(-)
 
 0.23.0 2015-05-28
   [ ENHANCEMENTS ]
