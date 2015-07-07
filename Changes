@@ -8,6 +8,8 @@ Revision history for {{$dist->name}}
   [ DOCUMENTATION ]
 
   [ ENHANCEMENTS ]
+  - More to DZP::Git::Contributor. (GH#4, Karen Etheridge)
+  - Remove deprecated private nextVersion plugin. (GH#1-ish)
 
   [ NEW FEATURES ]
 

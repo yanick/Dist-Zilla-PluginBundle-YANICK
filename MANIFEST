@@ -13,7 +13,6 @@ SIGNATURE
 cpanfile
 doap.xml
 lib/Dist/Zilla/MintingProfile/Author/YANICK.pm
-lib/Dist/Zilla/Plugin/Author/YANICK/NextSemanticVersion.pm
 lib/Dist/Zilla/PluginBundle/YANICK.pm
 share/profiles/default/Module.pm
 share/profiles/default/profile.ini
