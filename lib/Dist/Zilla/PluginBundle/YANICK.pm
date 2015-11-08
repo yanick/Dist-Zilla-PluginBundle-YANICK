@@ -93,6 +93,7 @@ his distributions. It's roughly equivalent to
 
     [RunExtraTests]
     [Test::UnusedVars]
+    [Test::PAUSE::Permisions]
 
     [DOAP]
     process_changes = 1
@@ -301,9 +302,10 @@ sub configure {
     $self->add_plugins(
     qw/
         SchwartzRatio 
-    /,
-        'Test::UnusedVars',
-        'RunExtraTests',
+        Test::UnusedVars
+        Test::PAUSE::Permissions
+        RunExtraTests
+    /
     );
 
     if ( my $help_wanted = $arg->{help_wanted} ) {

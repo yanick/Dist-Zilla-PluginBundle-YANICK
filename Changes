@@ -8,6 +8,7 @@ Revision history for {{$dist->name}}
   [ DOCUMENTATION ]
 
   [ ENHANCEMENTS ]
+  - Add Test::Pause::Permissions.
 
   [ NEW FEATURES ]
 
