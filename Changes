@@ -1,18 +1,11 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
-  [ API CHANGES ]
-
-  [ BUG FIXES ]
-
-  [ DOCUMENTATION ]
-
+0.25.0 2015-11-08
   [ ENHANCEMENTS ]
-  - Add Test::Pause::Permissions.
-
-  [ NEW FEATURES ]
+    - Add Test::Pause::Permissions.
 
   [ STATISTICS ]
+    - code churn: 4 files changed, 16 insertions(+), 5 deletions(-)
 
 0.24.0 2015-07-07
   [ ENHANCEMENTS ]
