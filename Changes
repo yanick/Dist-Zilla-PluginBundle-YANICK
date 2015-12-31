@@ -1,18 +1,11 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
-  [ API CHANGES ]
-
-  [ BUG FIXES ]
-
+0.25.1 2015-12-31
   [ DOCUMENTATION ]
-  - Fix typo in SYNOPSIS. (GH#5, dams)
-
-  [ ENHANCEMENTS ]
-
-  [ NEW FEATURES ]
+    - Fix typo in SYNOPSIS. (GH#5, dams)
 
   [ STATISTICS ]
+    - code churn: 2 files changed, 9 insertions(+), 2 deletions(-)
 
 0.25.0 2015-11-08
   [ ENHANCEMENTS ]
