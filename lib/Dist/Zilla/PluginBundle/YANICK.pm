@@ -275,7 +275,7 @@ his distributions. It's roughly equivalent to
 
     [RunExtraTests]
     [Test::UnusedVars]
-    [Test::PAUSE::Permisions]
+    [Test::PAUSE::Permissions]
 
     [DOAP]
     process_changes = 1
