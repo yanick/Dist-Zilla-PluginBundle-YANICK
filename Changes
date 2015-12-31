@@ -6,6 +6,7 @@ Revision history for {{$dist->name}}
   [ BUG FIXES ]
 
   [ DOCUMENTATION ]
+  - Fix typo in SYNOPSIS. (GH#5, dams)
 
   [ ENHANCEMENTS ]
 
