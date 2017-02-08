@@ -93,7 +93,6 @@ his distributions. It's roughly equivalent to
 
     [RunExtraTests]
     [Test::UnusedVars]
-    [Test::PAUSE::Permissions]
 
     [DOAP]
     process_changes = 1
@@ -303,7 +302,6 @@ sub configure {
     qw/
         SchwartzRatio 
         Test::UnusedVars
-        Test::PAUSE::Permissions
         RunExtraTests
     /
     );
