@@ -32,7 +32,6 @@ his distributions. It's roughly equivalent to
     [License]
     [HelpWanted]
 
-    [ReadmeFromPod]
     [ReadmeMarkdownFromPod]
 
     [CoderwallEndorse]
@@ -220,9 +219,8 @@ sub configure {
             issues => 1,
         } ],
         qw/ MetaYAML MetaJSON PodWeaver License
-          ReadmeFromPod 
-          ReadmeMarkdownFromPod
           /,
+        [ ReadmeAnyFromPod => { type => 'gfm', filename => 'README.mkdn' } ],
         [ CoderwallEndorse => { users => 'yanick:Yanick' } ],
         [ NextRelease => { 
                 time_zone => 'America/Montreal',
