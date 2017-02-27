@@ -32,7 +32,6 @@ his distributions. It's roughly equivalent to
     [License]
     [HelpWanted]
 
-    [ReadmeFromPod]
     [ReadmeMarkdownFromPod]
 
     [CoderwallEndorse]
@@ -93,7 +92,6 @@ his distributions. It's roughly equivalent to
 
     [RunExtraTests]
     [Test::UnusedVars]
-    [Test::PAUSE::Permissions]
 
     [DOAP]
     process_changes = 1
@@ -221,9 +219,8 @@ sub configure {
             issues => 1,
         } ],
         qw/ MetaYAML MetaJSON PodWeaver License
-          ReadmeFromPod 
-          ReadmeMarkdownFromPod
           /,
+        [ ReadmeAnyFromPod => { type => 'gfm', filename => 'README.mkdn' } ],
         [ CoderwallEndorse => { users => 'yanick:Yanick' } ],
         [ NextRelease => { 
                 time_zone => 'America/Montreal',
@@ -303,7 +300,6 @@ sub configure {
     qw/
         SchwartzRatio 
         Test::UnusedVars
-        Test::PAUSE::Permissions
         RunExtraTests
     /
     );
