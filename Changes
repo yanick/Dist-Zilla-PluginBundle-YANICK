@@ -8,12 +8,18 @@ Revision history for {{$dist->name}}
   [ DOCUMENTATION ]
 
   [ ENHANCEMENTS ]
-    - Remove Test::Pause::Permissions.
-    - Use ReadmeAnyFrom Pod.
 
   [ NEW FEATURES ]
 
   [ STATISTICS ]
+
+0.26.0 2017-02-26
+  [ ENHANCEMENTS ]
+    - Remove Test::Pause::Permissions.
+    - Use ReadmeAnyFrom Pod.
+
+  [ STATISTICS ]
+    - code churn: 4 files changed, 11 insertions(+), 11 deletions(-)
 
 0.25.1 2015-12-31
   [ DOCUMENTATION ]
