@@ -9,6 +9,7 @@ Revision history for {{$dist->name}}
 
   [ ENHANCEMENTS ]
     - Remove Test::Pause::Permissions.
+    - Use ReadmeAnyFrom Pod.
 
   [ NEW FEATURES ]
 
