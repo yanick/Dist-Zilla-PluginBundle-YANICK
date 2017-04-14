@@ -19,6 +19,7 @@ before_install:
   - build-perl
   - perl -V
   - cpanm -n  Dist::Zilla::Plugin::Test::ReportPrereqs
+  - cpan-install Dist::Zilla::Plugin::Test::ReportPrereqs
   - build-dist
   - cd $BUILD_DIR             # $BUILD_DIR is set by the build-dist command
 install:
