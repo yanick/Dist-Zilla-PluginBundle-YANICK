@@ -1,3 +1,4 @@
+.travis.yml
 AUTHOR_PLEDGE
 CONTRIBUTORS
 Changes
@@ -21,5 +22,7 @@ share/profiles/default/skel/MANIFEST.SKIP
 share/profiles/default/skel/dist.ini
 t/00-compile.t
 t/00-report-prereqs.dd
+t/00-report-prereqs.dd
+t/00-report-prereqs.t
 t/00-report-prereqs.t
 xt/release/unused-vars.t
