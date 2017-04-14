@@ -164,6 +164,10 @@ has "doap_changelog" => (
     },
 );
 
+sub not_for_travis {
+    return $ENV{TRAVIS} ? () : @_;
+}
+
 =head3 dev_branch
 
 Master development branch.
@@ -227,8 +231,8 @@ sub configure {
                 format    => '%-9v %{yyyy-MM-dd}d',
             } ],
         'MetaProvides::Package',
-        qw/ MatchManifest
-          ManifestSkip /,
+        not_for_travis( 'MatchManifest' ),
+        qw/  ManifestSkip /,
         [ 'Git::GatherDir' => {
                 include_dotfiles => $arg->{include_dotfiles},
               } ],

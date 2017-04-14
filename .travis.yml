@@ -1,4 +1,6 @@
 language: perl
+env:
+    TRAVIS: 1
 #perl:
     #  - "5.8"
     #  - "5.18"
