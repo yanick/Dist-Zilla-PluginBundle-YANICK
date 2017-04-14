@@ -16,7 +16,7 @@ before_install:
   - source ~/travis-perl-helpers/init
   - build-perl
   - perl -V
-  - cpanm -n Dist::Zilla::Plugin::Test::ReportPrereqs
+  - dzil listdeps | cpanm -n
   - build-dist
   - cd $BUILD_DIR             # $BUILD_DIR is set by the build-dist command
 install:
