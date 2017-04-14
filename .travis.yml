@@ -1,7 +1,7 @@
 language: perl
-perl:
+#perl:
     #  - "5.8"
-  - "5.20"
+    #  - "5.18"
     #  - "dev"
     #  - "blead"
 matrix:
