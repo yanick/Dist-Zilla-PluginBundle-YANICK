@@ -1,6 +1,4 @@
 language: perl
-env:
-    TRAVIS: 1
 #perl:
     #  - "5.8"
     #  - "5.18"
@@ -9,7 +7,9 @@ env:
 matrix:
   include:
     - perl: 5.18
-      env: COVERAGE=1
+      env: 
+          COVERAGE: 1
+          TRAVIS: 1
   allow_failures:
     - perl: "blead"
 sudo: false
@@ -18,7 +18,7 @@ before_install:
   - source ~/travis-perl-helpers/init
   - build-perl
   - perl -V
-  - dzil listdeps | cpanm -n
+  - cpanm -n  Dist::Zilla::Plugin::Test::ReportPrereqs
   - build-dist
   - cd $BUILD_DIR             # $BUILD_DIR is set by the build-dist command
 install:
