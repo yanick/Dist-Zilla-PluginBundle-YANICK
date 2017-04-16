@@ -8,6 +8,9 @@ Revision history for {{$dist->name}}
   [ DOCUMENTATION ]
 
   [ ENHANCEMENTS ]
+  - YANICK is the default Authority.
+  - some plugins skipped if env variable TRAVIS is present
+  - add dependency for Test::Prereqs
 
   [ NEW FEATURES ]
 
