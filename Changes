@@ -8,13 +8,19 @@ Revision history for {{$dist->name}}
   [ DOCUMENTATION ]
 
   [ ENHANCEMENTS ]
-  - YANICK is the default Authority.
-  - some plugins skipped if env variable TRAVIS is present
-  - add dependency for Test::Prereqs
 
   [ NEW FEATURES ]
 
   [ STATISTICS ]
+
+0.27.0 2017-04-16
+  [ ENHANCEMENTS ]
+    - YANICK is the default Authority.
+    - some plugins skipped if env variable TRAVIS is present
+    - add dependency for Test::Prereqs
+
+  [ STATISTICS ]
+    - code churn: 3 files changed, 19 insertions(+), 5 deletions(-)
 
 0.26.0 2017-02-26
   [ ENHANCEMENTS ]
