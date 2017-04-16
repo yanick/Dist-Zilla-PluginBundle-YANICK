@@ -235,7 +235,7 @@ sub configure {
         qw/ ExecDir
           PkgVersion /,
           [ Authority => { 
-            ( authority => $arg->{authority} ) x !!$arg->{authority}  
+            authority => $arg->{authority} // 'cpan:YANICK'
           } ],
           qw/ Test::ReportPrereqs
           Signature /,
