@@ -103,7 +103,7 @@ his distributions. It's roughly equivalent to
     process_changes = 1
 
     [TravisCI]
-    verbose = 1
+    verbose = 0
 
     [CPANFile]
 
@@ -313,7 +313,7 @@ sub configure {
         } ],
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
         [ TravisCI => [
-            verbose => 1,
+            verbose => 0,
             map { ( perl_version => $_ ) } $self->travis_perl_versions->@*
         ]  ]
     );
