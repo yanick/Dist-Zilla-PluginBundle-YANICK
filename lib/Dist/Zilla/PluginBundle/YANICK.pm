@@ -98,6 +98,8 @@ his distributions. It's roughly equivalent to
 
     [CPANFile]
 
+    [CopyrightYearFromGit]
+
 =head2 ARGUMENTS
 
 =head3 autoprereqs_skip
@@ -252,6 +254,7 @@ sub configure {
           TestRelease
           ConfirmRelease
           Git::Check
+          CopyrightYearFromGit
           /,
         [ 'Git::CommitBuild' => { 
                 release_branch => $release_branch ,
