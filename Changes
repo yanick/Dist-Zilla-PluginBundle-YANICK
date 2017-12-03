@@ -8,11 +8,17 @@ Revision history for {{$dist->name}}
   [ DOCUMENTATION ]
 
   [ ENHANCEMENTS ]
-  - Travis tweaks.
 
   [ NEW FEATURES ]
 
   [ STATISTICS ]
+
+0.28.0 2017-12-03
+  [ ENHANCEMENTS ]
+    - Travis tweaks.
+
+  [ STATISTICS ]
+    - code churn: 6 files changed, 169 insertions(+), 6 deletions(-)
 
 0.27.0 2017-04-16
   [ ENHANCEMENTS ]
