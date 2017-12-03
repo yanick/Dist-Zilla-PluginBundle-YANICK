@@ -1,157 +1,10 @@
 package Dist::Zilla::PluginBundle::YANICK;
-
+our $AUTHORITY = 'cpan:YANICK';
+$Dist::Zilla::PluginBundle::YANICK::VERSION = '0.28.0';
 # ABSTRACT: Be like Yanick when you build your dists
 
 # [TODO] add CONTRIBUTING file
 
-=head1 DESCRIPTION
-
-This is the plugin bundle that Yanick uses to release
-his distributions. It's roughly equivalent to
-
-    [Git::Contributors]
-    [ContributorsFile]
-
-    [Test::Compile]
-
-    [CoalescePod]
-
-    [MakeMaker]
-
-    [InstallGuide]
-    [Covenant]
-
-    [GithubMeta]
-    remote=github
-
-    [MetaYAML]
-    [MetaJSON]
-
-    [PodWeaver]
-
-    [License]
-    [HelpWanted]
-
-    [ReadmeMarkdownFromPod]
-
-    [CoderwallEndorse]
-    users = yanick:Yanick
-
-    [NextRelease]
-    time_zone = America/Montreal
-
-    [MetaProvides::Package]
-
-    [MatchManifest]
-    [ManifestSkip]
-
-    [Git::GatherDir]
-    exclude_filename = cpanfile
-
-    [CopyFilesFromBuild]
-    copy = cpanfile
-
-
-    [ExecDir]
-
-    [PkgVersion]
-    [Authority]
-
-    [Test::ReportPrereqs]
-    [Signature]
-
-    [AutoPrereqs]
-
-    [CheckChangesHasContent]
-
-    [TestRelease]
-
-    [ConfirmRelease]
-
-    [Git::Check]
-
-    [PreviousVersion::Changelog]
-    [NextVersion::Semantic]
-
-    [ChangeStats::Git]
-    group=STATISTICS
-
-    [Git::Commit]
-    [Git::CommitBuild]
-        release_branch = releases
-        multiple_inheritance = 1
-    [Git::Tag]
-        tag_format = v%v
-        branch     = releases
-
-    [UploadToCPAN]
-
-    [Git::Push]
-        push_to = github master releases
-
-    [InstallRelease]
-    install_command = cpanm .
-
-    [Twitter]
-    [SchwartzRatio]
-
-
-    [RunExtraTests]
-    [Test::UnusedVars]
-
-    [DOAP]
-    process_changes = 1
-
-    [TravisCI]
-    verbose = 0
-
-    [CPANFile]
-
-    [CopyrightYearFromGit]
-
-=head2 ARGUMENTS
-
-=head3 autoprereqs_skip
-
-Passed as C<skip> to AutoPrereqs.
-
-=head3 authority
-
-Passed to L<Dist::Zilla::Plugin::Authority>.
-
-=head3 fake_release
-
-If given a true value, uses L<Dist::Zilla::Plugin::FakeRelease>
-instead of 
-L<Dist::Zilla::Plugin::Git::Push>,
-L<Dist::Zilla::Plugin::UploadToCPAN>,
-L<Dist::Zilla::Plugin::InstallRelease> and
-L<Dist::Zilla::Plugin::Twitter>.
-
-Can also be triggered via the I<FAKE> environment variable.
-
-=head3 builder 
-
-C<ModuleBuild> or C<MakeMaker>. Defaults to C<MakeMaker>.
-
-=head3 mb_class
-
-Passed to C<ModuleBuild> plugin.
-
-=head3 include_dotfiles
-
-For C<Git::GatherDir>. Defaults to false.
-
-=head3 tweet
-
-If a tweet should be sent. Defaults to C<true>.
-
-=head3 doap_changelog
-
-If the DOAP plugin should generate the project history
-off the changelog. Defaults to I<true>.
-
-=cut
 
 use strict;
 
@@ -181,42 +34,10 @@ sub not_for_travis {
     return $ENV{TRAVIS} ? () : @_;
 }
 
-=head3 dev_branch
-
-Master development branch.
-
-Defaults to C<master>.
-
-=cut
-
-=head3 release_branch
-
-Branch on which the CPAN images are commited.
-
-Defaults to C<releases>.
-
-=cut
 
 
-=head3 upstream
 
-The name of the upstream repo.
 
-Defaults to C<github>.
-
-=cut
-
-=head3 travis_perl_versions
-
-    travis_perl_versions = 14,16,18,20,22,24,26
-
-Comma-separated list of perl versions (without the leading '5') that
-travis should test. Ranges can be given (C<14..16>), for which the
-odd numbers will be skipped. So C<14..26> will result in C<14,16,18,...>.
-
-Defaults to C<14..26>.
-
-=cut
 
 use Type::Tiny;
 use Types::Standard qw/ Str ArrayRef /;
@@ -391,3 +212,205 @@ sub configure {
 }
 
 1;
+
+__END__
+
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+Dist::Zilla::PluginBundle::YANICK - Be like Yanick when you build your dists
+
+=head1 VERSION
+
+version 0.28.0
+
+=head1 DESCRIPTION
+
+This is the plugin bundle that Yanick uses to release
+his distributions. It's roughly equivalent to
+
+    [Git::Contributors]
+    [ContributorsFile]
+
+    [Test::Compile]
+
+    [CoalescePod]
+
+    [MakeMaker]
+
+    [InstallGuide]
+    [Covenant]
+
+    [GithubMeta]
+    remote=github
+
+    [MetaYAML]
+    [MetaJSON]
+
+    [PodWeaver]
+
+    [License]
+    [HelpWanted]
+
+    [ReadmeMarkdownFromPod]
+
+    [CoderwallEndorse]
+    users = yanick:Yanick
+
+    [NextRelease]
+    time_zone = America/Montreal
+
+    [MetaProvides::Package]
+
+    [MatchManifest]
+    [ManifestSkip]
+
+    [Git::GatherDir]
+    exclude_filename = cpanfile
+
+    [CopyFilesFromBuild]
+    copy = cpanfile
+
+
+    [ExecDir]
+
+    [PkgVersion]
+    [Authority]
+
+    [Test::ReportPrereqs]
+    [Signature]
+
+    [AutoPrereqs]
+
+    [CheckChangesHasContent]
+
+    [TestRelease]
+
+    [ConfirmRelease]
+
+    [Git::Check]
+
+    [PreviousVersion::Changelog]
+    [NextVersion::Semantic]
+
+    [ChangeStats::Git]
+    group=STATISTICS
+
+    [Git::Commit]
+    [Git::CommitBuild]
+        release_branch = releases
+        multiple_inheritance = 1
+    [Git::Tag]
+        tag_format = v%v
+        branch     = releases
+
+    [UploadToCPAN]
+
+    [Git::Push]
+        push_to = github master releases
+
+    [InstallRelease]
+    install_command = cpanm .
+
+    [Twitter]
+    [SchwartzRatio]
+
+
+    [RunExtraTests]
+    [Test::UnusedVars]
+
+    [DOAP]
+    process_changes = 1
+
+    [TravisCI]
+    verbose = 0
+
+    [CPANFile]
+
+    [CopyrightYearFromGit]
+
+=head2 ARGUMENTS
+
+=head3 autoprereqs_skip
+
+Passed as C<skip> to AutoPrereqs.
+
+=head3 authority
+
+Passed to L<Dist::Zilla::Plugin::Authority>.
+
+=head3 fake_release
+
+If given a true value, uses L<Dist::Zilla::Plugin::FakeRelease>
+instead of 
+L<Dist::Zilla::Plugin::Git::Push>,
+L<Dist::Zilla::Plugin::UploadToCPAN>,
+L<Dist::Zilla::Plugin::InstallRelease> and
+L<Dist::Zilla::Plugin::Twitter>.
+
+Can also be triggered via the I<FAKE> environment variable.
+
+=head3 builder 
+
+C<ModuleBuild> or C<MakeMaker>. Defaults to C<MakeMaker>.
+
+=head3 mb_class
+
+Passed to C<ModuleBuild> plugin.
+
+=head3 include_dotfiles
+
+For C<Git::GatherDir>. Defaults to false.
+
+=head3 tweet
+
+If a tweet should be sent. Defaults to C<true>.
+
+=head3 doap_changelog
+
+If the DOAP plugin should generate the project history
+off the changelog. Defaults to I<true>.
+
+=head3 dev_branch
+
+Master development branch.
+
+Defaults to C<master>.
+
+=head3 release_branch
+
+Branch on which the CPAN images are commited.
+
+Defaults to C<releases>.
+
+=head3 upstream
+
+The name of the upstream repo.
+
+Defaults to C<github>.
+
+=head3 travis_perl_versions
+
+    travis_perl_versions = 14,16,18,20,22,24,26
+
+Comma-separated list of perl versions (without the leading '5') that
+travis should test. Ranges can be given (C<14..16>), for which the
+odd numbers will be skipped. So C<14..26> will result in C<14,16,18,...>.
+
+Defaults to C<14..26>.
+
+=head1 AUTHOR
+
+Yanick Champoux <yanick@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2017, 2015, 2014, 2013, 2012, 2011, 2010 by Yanick Champoux.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
