@@ -46,6 +46,12 @@ his distributions. It's roughly equivalent to
     [ManifestSkip]
 
     [Git::GatherDir]
+    exclude_filename = cpanfile
+
+    [CopyFilesFromBuild]
+    copy = cpanfile
+
+
     [ExecDir]
 
     [PkgVersion]
@@ -96,7 +102,12 @@ his distributions. It's roughly equivalent to
     [DOAP]
     process_changes = 1
 
+    [TravisCI]
+    verbose = 0
+
     [CPANFile]
+
+    [CopyrightYearFromGit]
 
 =head2 ARGUMENTS
 
@@ -148,6 +159,8 @@ use Moose;
 
 use Dist::Zilla;
 
+use experimental 'postderef';
+
 with qw/
     Dist::Zilla::Role::PluginBundle::Easy
     Dist::Zilla::Role::PluginBundle::Config::Slicer
@@ -193,6 +206,44 @@ Defaults to C<github>.
 
 =cut
 
+=head3 travis_perl_versions
+
+    travis_perl_versions = 14,16,18,20,22,24,26
+
+Comma-separated list of perl versions (without the leading '5') that
+travis should test. Ranges can be given (C<14..16>), for which the
+odd numbers will be skipped. So C<14..26> will result in C<14,16,18,...>.
+
+Defaults to C<14..26>.
+
+=cut
+
+use Type::Tiny;
+use Types::Standard qw/ Str ArrayRef /;
+
+sub version_range {
+    my( $from, $to ) = @_;
+    return join ',', grep { not $_ % 2 } $from..$to;
+}
+
+my $TravisPerlVersions = Type::Tiny->new(
+    name => 'TravisPerlVersions',
+    parent => ArrayRef,
+)->plus_coercions(
+    Str ,=> sub {
+        my $vre = qr/([\d.]+)/;
+        s/$vre\.\.$vre/version_range($1,$2)/eg;
+        return [ map { '5.' . $_ } split /\s*,\s*/, $_ ];
+    },
+);
+
+has travis_perl_versions => (
+    is => 'ro',
+    isa => $TravisPerlVersions,
+    coerce => 1,
+    default => '14..26' 
+);
+
 
 sub configure {
     my ( $self ) = @_;
@@ -234,8 +285,10 @@ sub configure {
         not_for_travis( 'MatchManifest' ),
         qw/  ManifestSkip /,
         [ 'Git::GatherDir' => {
-                include_dotfiles => $arg->{include_dotfiles},
-              } ],
+            include_dotfiles => $arg->{include_dotfiles},
+            exclude_filename => 'cpanfile',
+        } ],
+        [ CopyFilesFromBuild => { copy => 'cpanfile' } ],
         qw/ ExecDir
           PkgVersion /,
           [ Authority => { 
@@ -252,12 +305,20 @@ sub configure {
           TestRelease
           ConfirmRelease
           Git::Check
+          CopyrightYearFromGit
           /,
         [ 'Git::CommitBuild' => { 
                 release_branch => $release_branch ,
                 multiple_inheritance => 1,
         } ],
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
+        [ TravisCI => [
+            verbose => 0,
+            install => 'cpanm --installdeps -n .',
+            script => 'prove -l t',
+            
+            map { ( perl_version => $_ ) } $self->travis_perl_versions->@*
+        ]  ]
     );
 
     # Git::Commit can't be before Git::CommitBuild :-/
