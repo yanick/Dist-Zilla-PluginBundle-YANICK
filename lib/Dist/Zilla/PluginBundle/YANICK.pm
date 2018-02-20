@@ -109,6 +109,9 @@ his distributions. It's roughly equivalent to
 
     [CopyrightYearFromGit]
 
+    [GitHubREADME::Badge]
+
+
 =head2 ARGUMENTS
 
 =head3 autoprereqs_skip
@@ -150,6 +153,10 @@ If a tweet should be sent. Defaults to C<true>.
 
 If the DOAP plugin should generate the project history
 off the changelog. Defaults to I<true>.
+
+=head3 badge
+
+A badge for L<Dist::Zilla::Plugin::GitHubREADME::Badge>.
 
 =cut
 
@@ -244,6 +251,11 @@ has travis_perl_versions => (
     default => '14..26' 
 );
 
+has badge => (
+    isa => 'ArrayRef',
+    is => 'ro',
+    default => sub { [] },
+);
 
 sub configure {
     my ( $self ) = @_;
@@ -318,8 +330,12 @@ sub configure {
             script => 'prove -l t',
             
             map { ( perl_version => $_ ) } $self->travis_perl_versions->@*
-        ]  ]
+        ]  ],
     );
+
+    $self->add_plugins(
+        [ 'GitHubREADME::Badge' => [ phase => 'filemunge', map { ( badges => $_ )  } $self->badge->@* ] ]
+    ) if $self->badge->@*;
 
     # Git::Commit can't be before Git::CommitBuild :-/
     $self->add_plugins(
