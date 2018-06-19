@@ -9,6 +9,7 @@ Revision history for {{$dist->name}}
 
   [ ENHANCEMENTS ]
   - added GitHubREADME::Badge plugin.
+  - added ContributorCovenant plugin.
 
   [ NEW FEATURES ]
 
