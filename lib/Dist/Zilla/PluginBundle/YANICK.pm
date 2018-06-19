@@ -20,6 +20,7 @@ his distributions. It's roughly equivalent to
 
     [InstallGuide]
     [Covenant]
+    [ContributorCovenant]
 
     [GithubMeta]
     remote=github
@@ -280,6 +281,7 @@ sub configure {
             CoalescePod
             InstallGuide
             Covenant
+            ContributorCovenant
         /,
         [ GithubMeta => { 
             remote => $upstream, 
