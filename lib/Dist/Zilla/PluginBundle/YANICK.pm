@@ -126,7 +126,7 @@ Passed to L<Dist::Zilla::Plugin::Authority>.
 =head3 fake_release
 
 If given a true value, uses L<Dist::Zilla::Plugin::FakeRelease>
-instead of 
+instead of
 L<Dist::Zilla::Plugin::Git::Push>,
 L<Dist::Zilla::Plugin::UploadToCPAN>,
 L<Dist::Zilla::Plugin::InstallRelease> and
@@ -134,7 +134,7 @@ L<Dist::Zilla::Plugin::Twitter>.
 
 Can also be triggered via the I<FAKE> environment variable.
 
-=head3 builder 
+=head3 builder
 
 C<ModuleBuild> or C<MakeMaker>. Defaults to C<MakeMaker>.
 
@@ -245,7 +245,7 @@ has travis_perl_versions => (
     is => 'ro',
     isa => $TravisPerlVersions,
     coerce => 1,
-    default => '14..26' 
+    default => '14..28'
 );
 
 has badge => (
@@ -270,7 +270,7 @@ sub configure {
     $self->add_plugins([ $builder, ( \%mb_args ) x ($builder eq 'ModuleBuild' ) ]);
 
     $self->add_plugins(
-        qw/ 
+        qw/
             Git::Contributors
             ContributorsFile
             Test::Compile
@@ -279,15 +279,15 @@ sub configure {
             Covenant
             ContributorCovenant
         /,
-        [ GithubMeta => { 
-            remote => $upstream, 
+        [ GithubMeta => {
+            remote => $upstream,
             issues => 1,
         } ],
         qw/ MetaYAML MetaJSON PodWeaver License
           /,
         [ ReadmeAnyFromPod => { type => 'gfm', filename => 'README.mkdn' } ],
         [ CoderwallEndorse => { users => 'yanick:Yanick' } ],
-        [ NextRelease => { 
+        [ NextRelease => {
                 time_zone => 'America/Montreal',
                 format    => '%-9v %{yyyy-MM-dd}d',
             } ],
@@ -301,15 +301,15 @@ sub configure {
         [ CopyFilesFromBuild => { copy => 'cpanfile' } ],
         qw/ ExecDir
           PkgVersion /,
-          [ Authority => { 
+          [ Authority => {
             authority => $arg->{authority} // 'cpan:YANICK'
           } ],
           qw/ Test::ReportPrereqs
           Signature /,
-          [ AutoPrereqs => { 
-                  ( skip => $arg->{autoprereqs_skip} ) 
+          [ AutoPrereqs => {
+                  ( skip => $arg->{autoprereqs_skip} )
                             x !!$arg->{autoprereqs_skip}
-            } 
+            }
           ],
           qw/ CheckChangesHasContent
           TestRelease
@@ -317,7 +317,7 @@ sub configure {
           Git::Check
           CopyrightYearFromGit
           /,
-        [ 'Git::CommitBuild' => { 
+        [ 'Git::CommitBuild' => {
                 release_branch => $release_branch ,
                 multiple_inheritance => 1,
         } ],
@@ -326,7 +326,7 @@ sub configure {
             verbose => 0,
             install => 'cpanm --installdeps -n .',
             script => 'prove -l t',
-            
+
             map { ( perl_version => $_ ) } $self->travis_perl_versions->@*
         ]  ],
     );
@@ -340,7 +340,7 @@ sub configure {
             minor => 'NEW FEATURES, ENHANCEMENTS',
             revision => 'BUG FIXES, DOCUMENTATION, STATISTICS',
         } ],
-        [ 'ChangeStats::Git' => { 
+        [ 'ChangeStats::Git' => {
                 group => 'STATISTICS',
                 develop_branch => $dev_branch,
                 release_branch => $release_branch,
@@ -354,14 +354,14 @@ sub configure {
     else {
         $self->add_plugins(
             [ 'Git::Push' => { push_to    => join ' ', $upstream, $dev_branch, $release_branch} ],
-            qw/ UploadToCPAN /, 
+            qw/ UploadToCPAN /,
         );
 
         $self->add_plugins(
             [ Twitter => {
                 tweet_url =>
                     'https://metacpan.org/release/{{$AUTHOR_UC}}/{{$DIST}}-{{$VERSION}}/',
-                tweet => 
+                tweet =>
                     'Released {{$DIST}}-{{$VERSION}}{{$TRIAL}} {{$URL}} !META{resources}{repository}{web}',
                 url_shortener => 'none',
             } ],
@@ -371,10 +371,10 @@ sub configure {
             [ 'InstallRelease' => { install_command => 'cpanm .' } ],
         );
     }
-    
+
     $self->add_plugins(
     qw/
-        SchwartzRatio 
+        SchwartzRatio
         Test::UnusedVars
         RunExtraTests
     /
@@ -388,8 +388,8 @@ sub configure {
         ]);
     }
 
-    $self->add_plugins( 
-        [ DOAP => { 
+    $self->add_plugins(
+        [ DOAP => {
             process_changes => $self->doap_changelog,
 #            ttl_filename => 'project.ttl',
         } ],
