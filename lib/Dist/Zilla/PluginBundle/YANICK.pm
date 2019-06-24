@@ -324,7 +324,7 @@ sub configure {
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
         [ TravisCI => [
             verbose => 0,
-            install => 'cpanm --installdeps -n .',
+            install => 'cpanm --with-recommends --installdeps -n .',
             script => 'prove -l t',
 
             map { ( perl_version => $_ ) } $self->travis_perl_versions->@*
