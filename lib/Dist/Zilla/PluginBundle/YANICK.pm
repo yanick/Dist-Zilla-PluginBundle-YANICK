@@ -48,6 +48,8 @@ his distributions. It's roughly equivalent to
 
     [Git::GatherDir]
     exclude_filename = cpanfile
+    exclude_filename = AUTHOR_PLEDGE
+    exclude_filename = CODE_OF_CONDUCT.md
 
     [CopyFilesFromBuild]
     copy = cpanfile
@@ -212,13 +214,13 @@ Defaults to C<github>.
 
 =head3 travis_perl_versions
 
-    travis_perl_versions = 14,16,18,20,22,24,26
+    travis_perl_versions = 22,24,26,28,30
 
 Comma-separated list of perl versions (without the leading '5') that
 travis should test. Ranges can be given (C<14..16>), for which the
 odd numbers will be skipped. So C<14..26> will result in C<14,16,18,...>.
 
-Defaults to C<14..26>.
+Defaults to C<22..30>.
 
 =cut
 
@@ -245,7 +247,7 @@ has travis_perl_versions => (
     is => 'ro',
     isa => $TravisPerlVersions,
     coerce => 1,
-    default => '14..28'
+    default => '22..30'
 );
 
 has badge => (
@@ -296,9 +298,9 @@ sub configure {
         qw/  ManifestSkip /,
         [ 'Git::GatherDir' => {
             include_dotfiles => $arg->{include_dotfiles},
-            exclude_filename => 'cpanfile',
+            exclude_filename => [ qw/ cpanfile AUTHOR_PLEDGE CODE_OF_CONDUCT.md /],
         } ],
-        [ CopyFilesFromBuild => { copy => 'cpanfile' } ],
+        [ CopyFilesFromBuild => { copy => [ qw/ cpanfile AUTHOR_PLEDGE CODE_OF_CONDUCT.md / ] } ],
         qw/ ExecDir
           PkgVersion /,
           [ Authority => {
@@ -324,7 +326,7 @@ sub configure {
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
         [ TravisCI => [
             verbose => 0,
-            install => 'cpanm --installdeps -n .',
+            install => 'cpanm --with-recommends --installdeps -n .',
             script => 'prove -l t',
 
             map { ( perl_version => $_ ) } $self->travis_perl_versions->@*

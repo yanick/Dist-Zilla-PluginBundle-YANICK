@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  [ MISC ]
+  * bring the code of conduct and the covenant files into master.
+  * officially supported perls are 22..30.
+
   [ API CHANGES ]
 
   [ BUG FIXES ]
