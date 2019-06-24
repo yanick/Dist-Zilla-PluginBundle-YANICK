@@ -114,6 +114,8 @@ his distributions. It's roughly equivalent to
 
     [GitHubREADME::Badge]
 
+    [MinimumPerlFast]
+
 
 =head2 ARGUMENTS
 
@@ -395,8 +397,9 @@ sub configure {
             process_changes => $self->doap_changelog,
 #            ttl_filename => 'project.ttl',
         } ],
-        [ 'CPANFile' ],
+        [ 'CPANFile', 'MinimumPerlFast' ],
     );
+
 
     $self->config_slice( 'mb_class' );
 
