@@ -1,10 +1,6 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-  [ MISC ]
-  * bring the code of conduct and the covenant files into master.
-  * officially supported perls are 22..30.
-
   [ API CHANGES ]
 
   [ BUG FIXES ]
@@ -16,6 +12,14 @@ Revision history for {{$dist->name}}
   [ NEW FEATURES ]
 
   [ STATISTICS ]
+
+0.29.1 2019-06-24
+  [ MISC ]
+    - bring the code of conduct and the covenant files into master.
+    - officially supported perls are 22..30.
+
+  [ STATISTICS ]
+    - code churn: 7 files changed, 131 insertions(+), 32 deletions(-)
 
 0.29.0 2018-06-20
   [ ENHANCEMENTS ]
