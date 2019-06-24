@@ -48,6 +48,8 @@ his distributions. It's roughly equivalent to
 
     [Git::GatherDir]
     exclude_filename = cpanfile
+    exclude_filename = AUTHOR_PLEDGE
+    exclude_filename = CODE_OF_CONDUCT.md
 
     [CopyFilesFromBuild]
     copy = cpanfile
@@ -296,7 +298,7 @@ sub configure {
         qw/  ManifestSkip /,
         [ 'Git::GatherDir' => {
             include_dotfiles => $arg->{include_dotfiles},
-            exclude_filename => 'cpanfile',
+            exclude_filename => [ qw/ cpanfile AUTHOR_PLEDGE CODE_OF_CONDUCT.md /],
         } ],
         [ CopyFilesFromBuild => { copy => [ qw/ cpanfile AUTHOR_PLEDGE CODE_OF_CONDUCT.md / ] } ],
         qw/ ExecDir
