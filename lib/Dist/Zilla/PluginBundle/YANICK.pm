@@ -298,7 +298,7 @@ sub configure {
             include_dotfiles => $arg->{include_dotfiles},
             exclude_filename => 'cpanfile',
         } ],
-        [ CopyFilesFromBuild => { copy => 'cpanfile' } ],
+        [ CopyFilesFromBuild => { copy => [ qw/ cpanfile AUTHOR_PLEDGE CODE_OF_CONDUCT.md / ] } ],
         qw/ ExecDir
           PkgVersion /,
           [ Authority => {
