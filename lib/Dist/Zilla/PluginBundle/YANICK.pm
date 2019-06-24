@@ -212,13 +212,13 @@ Defaults to C<github>.
 
 =head3 travis_perl_versions
 
-    travis_perl_versions = 14,16,18,20,22,24,26
+    travis_perl_versions = 22,24,26,28,30
 
 Comma-separated list of perl versions (without the leading '5') that
 travis should test. Ranges can be given (C<14..16>), for which the
 odd numbers will be skipped. So C<14..26> will result in C<14,16,18,...>.
 
-Defaults to C<14..26>.
+Defaults to C<22..30>.
 
 =cut
 
@@ -245,7 +245,7 @@ has travis_perl_versions => (
     is => 'ro',
     isa => $TravisPerlVersions,
     coerce => 1,
-    default => '14..28'
+    default => '22..30'
 );
 
 has badge => (
