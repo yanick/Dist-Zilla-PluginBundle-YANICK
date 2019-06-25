@@ -1,18 +1,11 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
-  [ API CHANGES ]
-
-  [ BUG FIXES ]
-
-  [ DOCUMENTATION ]
-
+0.30.0 2019-06-24
   [ ENHANCEMENTS ]
-  - add Dist::Zilla::Plugin::MinimalPerlFast
-
-  [ NEW FEATURES ]
+    - add Dist::Zilla::Plugin::MinimalPerlFast
 
   [ STATISTICS ]
+    - code churn: 2 files changed, 13 insertions(+), 5 deletions(-)
 
 0.29.1 2019-06-24
   [ MISC ]
