@@ -1,4 +1,3 @@
-.travis.yml
 ^dist.ini
 ^MANIFEST.SKIP
 Dist-Zilla-PluginBundle-YANICK.*

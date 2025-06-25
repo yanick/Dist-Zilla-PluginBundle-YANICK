@@ -8,6 +8,7 @@ Revision history for {{$dist->name}}
   [ DOCUMENTATION ]
 
   [ ENHANCEMENTS ]
+  - Remove Twitter and Travis.
 
   [ NEW FEATURES ]
 

@@ -95,7 +95,6 @@ his distributions. It's roughly equivalent to
     [InstallRelease]
     install_command = cpanm .
 
-    [Twitter]
     [SchwartzRatio]
 
 
@@ -105,16 +104,11 @@ his distributions. It's roughly equivalent to
     [DOAP]
     process_changes = 1
 
-    [TravisCI]
-    verbose = 0
-
     [CPANFile]
 
     [CopyrightYearFromGit]
 
     [GitHubREADME::Badge]
-
-    [MinimumPerlFast]
 
 
 =head2 ARGUMENTS
@@ -133,8 +127,7 @@ If given a true value, uses L<Dist::Zilla::Plugin::FakeRelease>
 instead of
 L<Dist::Zilla::Plugin::Git::Push>,
 L<Dist::Zilla::Plugin::UploadToCPAN>,
-L<Dist::Zilla::Plugin::InstallRelease> and
-L<Dist::Zilla::Plugin::Twitter>.
+and L<Dist::Zilla::Plugin::InstallRelease>.
 
 Can also be triggered via the I<FAKE> environment variable.
 
@@ -185,10 +178,6 @@ has "doap_changelog" => (
     },
 );
 
-sub not_for_travis {
-    return $ENV{TRAVIS} ? () : @_;
-}
-
 =head3 dev_branch
 
 Master development branch.
@@ -214,43 +203,25 @@ Defaults to C<github>.
 
 =cut
 
-=head3 travis_perl_versions
+=head3 import_from_build
 
-    travis_perl_versions = 22,24,26,28,30
+    import_from_build = cpanfile,AUTHOR_PLEDGE,CODE_OF_CONDUCT.md
 
-Comma-separated list of perl versions (without the leading '5') that
-travis should test. Ranges can be given (C<14..16>), for which the
-odd numbers will be skipped. So C<14..26> will result in C<14,16,18,...>.
+Comma-separated list of files to import in the checked out
+repo from the build.
 
-Defaults to C<22..30>.
+Defaults to C<cpanfile,AUTHOR_PLEDGE,CODE_OF_CONDUCT.md>
 
 =cut
 
 use Type::Tiny;
 use Types::Standard qw/ Str ArrayRef /;
 
+
 sub version_range {
     my( $from, $to ) = @_;
     return join ',', grep { not $_ % 2 } $from..$to;
 }
-
-my $TravisPerlVersions = Type::Tiny->new(
-    name => 'TravisPerlVersions',
-    parent => ArrayRef,
-)->plus_coercions(
-    Str ,=> sub {
-        my $vre = qr/([\d.]+)/;
-        s/$vre\.\.$vre/version_range($1,$2)/eg;
-        return [ map { '5.' . $_ } split /\s*,\s*/, $_ ];
-    },
-);
-
-has travis_perl_versions => (
-    is => 'ro',
-    isa => $TravisPerlVersions,
-    coerce => 1,
-    default => '22..30'
-);
 
 has badge => (
     isa => 'ArrayRef',
@@ -265,6 +236,9 @@ sub configure {
     my $release_branch = $arg->{release_branch} || 'releases';
     my $dev_branch     = $arg->{dev_branch}     || 'master';
     my $upstream       = $arg->{upstream}       || 'github';
+
+    my @import_from_build = $arg->{import_from_build} ? split( ',', $arg->{import_from_build} ) :
+        qw/ cpanfile AUTHOR_PLEDGE CODE_OF_CONDUCT.md /;
 
     my %mb_args;
     $mb_args{mb_class} = $arg->{mb_class} if $arg->{mb_class};
@@ -296,13 +270,13 @@ sub configure {
                 format    => '%-9v %{yyyy-MM-dd}d',
             } ],
         'MetaProvides::Package',
-        not_for_travis( 'MatchManifest' ),
+        'MatchManifest',
         qw/  ManifestSkip /,
         [ 'Git::GatherDir' => {
             include_dotfiles => $arg->{include_dotfiles},
-            exclude_filename => [ qw/ cpanfile AUTHOR_PLEDGE CODE_OF_CONDUCT.md /],
+            exclude_filename => [ @import_from_build ],
         } ],
-        [ CopyFilesFromBuild => { copy => [ qw/ cpanfile AUTHOR_PLEDGE CODE_OF_CONDUCT.md / ] } ],
+        [ CopyFilesFromBuild => { copy => [ @import_from_build ] } ],
         qw/ ExecDir
           PkgVersion /,
           [ Authority => {
@@ -326,13 +300,6 @@ sub configure {
                 multiple_inheritance => 1,
         } ],
         [ 'Git::Tag'  => { tag_format => 'v%v', branch => $release_branch } ],
-        [ TravisCI => [
-            verbose => 0,
-            install => 'cpanm --with-recommends --installdeps -n .',
-            script => 'prove -l t',
-
-            map { ( perl_version => $_ ) } $self->travis_perl_versions->@*
-        ]  ],
     );
 
 
@@ -362,16 +329,6 @@ sub configure {
         );
 
         $self->add_plugins(
-            [ Twitter => {
-                tweet_url =>
-                    'https://metacpan.org/release/{{$AUTHOR_UC}}/{{$DIST}}-{{$VERSION}}/',
-                tweet =>
-                    'Released {{$DIST}}-{{$VERSION}}{{$TRIAL}} {{$URL}} !META{resources}{repository}{web}',
-                url_shortener => 'none',
-            } ],
-        ) if not defined $arg->{tweet} or $arg->{tweet};
-
-        $self->add_plugins(
             [ 'InstallRelease' => { install_command => 'cpanm .' } ],
         );
     }
@@ -397,7 +354,7 @@ sub configure {
             process_changes => $self->doap_changelog,
 #            ttl_filename => 'project.ttl',
         } ],
-        [ 'CPANFile', 'MinimumPerlFast' ],
+        'CPANFile',
     );
 
 
