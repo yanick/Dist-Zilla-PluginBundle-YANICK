@@ -1,18 +1,11 @@
-Revision history for {{$dist->name}}
+Revision history for Dist-Zilla-PluginBundle-YANICK
 
-{{$NEXT}}
- [API CHANGES]
-
- [BUG FIXES]
-
- [DOCUMENTATION]
-
+0.32.0 2025-06-25
  [ENHANCEMENTS]
  - Default development branch is now 'main'.
 
- [NEW FEATURES]
-
  [STATISTICS]
+ - code churn: 2 files changed, 174 insertions(+), 167 deletions(-)
 
 0.31.0 2025-06-25
  [ENHANCEMENTS]
