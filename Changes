@@ -8,6 +8,7 @@ Revision history for {{$dist->name}}
  [DOCUMENTATION]
 
  [ENHANCEMENTS]
+ - Default development branch is now 'main'.
 
  [NEW FEATURES]
 

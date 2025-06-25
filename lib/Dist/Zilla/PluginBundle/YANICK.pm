@@ -90,7 +90,7 @@ his distributions. It's roughly equivalent to
     [UploadToCPAN]
 
     [Git::Push]
-        push_to = github master releases
+        push_to = github main releases
 
     [InstallRelease]
     install_command = cpanm .
@@ -180,9 +180,9 @@ has "doap_changelog" => (
 
 =head3 dev_branch
 
-Master development branch.
+Main development branch.
 
-Defaults to C<master>.
+Defaults to C<main>.
 
 =cut
 
@@ -234,7 +234,7 @@ sub configure {
     my $arg = $self->payload;
 
     my $release_branch = $arg->{release_branch} || 'releases';
-    my $dev_branch     = $arg->{dev_branch}     || 'master';
+    my $dev_branch     = $arg->{dev_branch}     || 'main';
     my $upstream       = $arg->{upstream}       || 'github';
 
     my @import_from_build = $arg->{import_from_build} ? split( ',', $arg->{import_from_build} ) :
