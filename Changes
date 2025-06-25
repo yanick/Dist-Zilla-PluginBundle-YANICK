@@ -8,11 +8,17 @@ Revision history for {{$dist->name}}
  [DOCUMENTATION]
 
  [ENHANCEMENTS]
- - Default development branch is now 'main'.
 
  [NEW FEATURES]
 
  [STATISTICS]
+
+0.32.0 2025-06-25
+ [ENHANCEMENTS]
+ - Default development branch is now 'main'.
+
+ [STATISTICS]
+ - code churn: 2 files changed, 174 insertions(+), 167 deletions(-)
 
 0.31.0 2025-06-25
  [ENHANCEMENTS]
