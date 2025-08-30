@@ -6,6 +6,8 @@ Revision history for {{$dist->name}}
  [BUG FIXES]
 
  [DOCUMENTATION]
+ - add a SECURITY.md policy.
+ - add a CONTRIBUTING.md policy to the repo.
 
  [ENHANCEMENTS]
 
