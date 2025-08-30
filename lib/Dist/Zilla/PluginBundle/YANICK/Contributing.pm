@@ -1,19 +1,7 @@
 package Dist::Zilla::PluginBundle::YANICK::Contributing;
+our $AUTHORITY = 'cpan:YANICK';
 # ABSTRACT: add a CONTRIBUTING.md file to the package
-
-=head1 SYNOPSIS
-
-In dist.ini:
-
-    [PluginBundle::YANICK::Contributing]
-
-=head1 DESCRIPTION
-
-C<Dist::Zilla::PluginBundle::YANICK::Covenant> adds the file
-'I<CONTRIBUTING.md>' to the distribution. Right now that file 
-mostly explains how to deal with the dzil'ed nature of my repos.
-
-=cut
+$Dist::Zilla::PluginBundle::YANICK::Contributing::VERSION = '0.32.1';
 
 use 5.20.0;
 use warnings;
@@ -123,3 +111,42 @@ END_CONTRIBUTING
 __PACKAGE__->meta->make_immutable;
 
 1;
+
+__END__
+
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+Dist::Zilla::PluginBundle::YANICK::Contributing - add a CONTRIBUTING.md file to the package
+
+=head1 VERSION
+
+version 0.32.1
+
+=head1 SYNOPSIS
+
+In dist.ini:
+
+    [PluginBundle::YANICK::Contributing]
+
+=head1 DESCRIPTION
+
+C<Dist::Zilla::PluginBundle::YANICK::Covenant> adds the file
+'I<CONTRIBUTING.md>' to the distribution. Right now that file 
+mostly explains how to deal with the dzil'ed nature of my repos.
+
+=head1 AUTHOR
+
+Yanick Champoux <yanick@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2025 by Yanick Champoux.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
