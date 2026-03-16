@@ -4,6 +4,7 @@ Revision history for {{$dist->name}}
  [API CHANGES]
 
  [BUG FIXES]
+ - add dependencies to the dist.ini (GH#7, Grinzz)
 
  [DOCUMENTATION]
 
